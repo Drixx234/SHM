@@ -1,0 +1,23 @@
+.Barra-Navegacion{
+    background-color: #000000;
+}
+
+.Barra-Navegacion ul{
+    display: flex;   
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Barra-Navegacion ul li{
+    list-style: none;
+    align-items: center;
+    
+}
+
+.Logo{
+    height: 70px;
+    margin: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 50px;
+}
