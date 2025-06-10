@@ -19,7 +19,7 @@
     flex-direction: row;
     margin: 45px;
     margin-top: 15px;
-    gap: 30px;
+    justify-content: space-between;
 }
 
 .Access{
@@ -63,4 +63,10 @@
     border-style: solid;
     color: #FFFFFF;
     font-size: 26px;
+}
+
+.Noti{
+    height: 688px;
+    width: 540px;
+    background-color: #6D6D6D;
 }
