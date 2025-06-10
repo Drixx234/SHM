@@ -15,9 +15,31 @@
 }
 
 .Logo{
-    height: 70px;
+    height: 45px;
     margin: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.Logo-menu{
+    height: 50px;
+    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.Logo-person{
+    height: 38px;
+    width: 38px;
+    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-right: 50px;
+    cursor: pointer;
+}
+
+body{
+    background-color: #CDD4E8;
+    font-family: Jomolhari;
 }

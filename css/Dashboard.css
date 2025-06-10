@@ -1,0 +1,66 @@
+.home{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding-left: 50px;
+    padding-top: 10px;
+    color: #6D6D6D;
+}
+
+.home h2{
+    margin-top: 7px;
+    font-size: 30px;
+    pointer-events: none;
+}
+
+.principal{
+    display: flex;
+    flex-direction: row;
+    margin: 45px;
+    margin-top: 15px;
+    gap: 30px;
+}
+
+.Access{
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Access-div{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.Atajos{
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    height: 324px;
+    width: 590px;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    gap: 15px;
+}
+
+.Atajos div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Atajos button{
+    height: 66px;
+    width: 287px;
+    border-radius: 80px;
+    background-color: unset;
+    border-width: 3px;
+    border-color: #FFFFFF;
+    border-style: solid;
+    color: #FFFFFF;
+    font-size: 26px;
+}
