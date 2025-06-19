@@ -31,7 +31,6 @@
 
 .Logo-person{
     height: 38px;
-    width: 38px;
     margin: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -42,4 +41,28 @@
 body{
     background-color: #CDD4E8;
     font-family: Jomolhari;
+}
+
+@media (width < 1530px) {
+    .Logo{
+        height: 40px;
+    }
+    .Logo-menu{
+        height: 45px;
+    }
+    .Logo-person{
+        height: 33px;
+    }
+}
+
+@media (width < 1380px) {
+    .Logo{
+        height: 35px;
+    }
+    .Logo-menu{
+        height: 40px;
+    }
+    .Logo-person{
+        height: 28px;
+    }
 }
