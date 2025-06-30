@@ -1,5 +1,6 @@
 .Barra-Navegacion{
     background-color: #000000;
+    padding-bottom: 0.8%;
 }
 
 .Barra-Navegacion ul{
@@ -11,7 +12,6 @@
 .Barra-Navegacion ul li{
     list-style: none;
     align-items: center;
-    
 }
 
 .Logo{
@@ -21,26 +21,103 @@
     margin-bottom: 20px;
 }
 
+.Menu-center{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+.Unactive-Btn{
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.Active-Btn{
+    text-decoration: none;
+    background-color: #9EA3BF;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    color: white;
+    padding: 15.5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    margin-right: -2%;
+    margin-bottom: -2.5%;
+    transition: 0.3s;
+}
+
+.Menu-center hr{
+    border: 1px solid white;
+    height: 45px;
+    margin: auto;
+    margin-left: 10px;
+}
+
+.Navbar_Options{
+    background-color: #9EA3BF;
+    width: 100%;
+    height: auto;
+    margin-top: -2%;
+}
+
+.Navbar_Options ul{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    padding: 1%;
+    padding-left: 4%;
+}
+.Navbar_Options li{
+    list-style: none;
+}
+
+.Navbar_Options button{
+    width: 150%;
+    height: 100%;
+    padding: 4%;
+    border-style: none;
+    border-radius: 5%;
+    background-color: #858aaa;
+    color: #3b3e4d;
+    font-size: 110%;
+}
+
+.Navbar_Options button:hover{
+    background-color: #3b3e4d;
+    color: #858aaa;
+    transition: 0.3s;
+}
+
 .Logo-menu{
     height: 50px;
     margin: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     cursor: pointer;
+    user-select: none;
 }
 
 .Logo-person{
     height: 38px;
     margin: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-left: 0px;
     margin-right: 50px;
     cursor: pointer;
+    user-select: none;
 }
 
 body{
     background-color: #CDD4E8;
     font-family: Jomolhari;
+    user-select: none;
 }
 
 @media (width < 1530px) {
