@@ -95,12 +95,15 @@
 }
 
 .Logo-menu{
-    height: 50px;
-    margin: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    margin-left: 0px;
+    color: white;
     cursor: pointer;
     user-select: none;
+    border-style: none;
+    background-color: transparent;
 }
 
 .Logo-person{
@@ -188,15 +191,7 @@
     height: 170px;
     width: 170px;
     border-radius: 100%;
-}
-
-.Article2 button{
-    background-color: #5C0D0D;
-    color: #CDD4E8;
-    border-style: none;
-    padding: 10%;
-    width: 120%;
-    border-radius: 40px;
+    object-fit: cover;
 }
 
 .Article2 button{
@@ -232,9 +227,6 @@ body{
     .Logo{
         height: 40px;
     }
-    .Logo-menu{
-        height: 45px;
-    }
     .Unactive-Btn{
         font-size: 140%;
     }
@@ -250,8 +242,9 @@ body{
     .Logo{
         height: 35px;
     }
-    .Logo-menu{
-        height: 40px;
+    .Logo-person{
+        width: 45px;
+        height: 45px;
     }
     .Unactive-Btn{
         font-size: 120%;
@@ -261,5 +254,55 @@ body{
     }
     .Navbar_Options button{
         font-size: 100%;
+    }
+}
+
+@media (width < 1260px) {
+    .Logo{
+        height: 30px;
+    }
+    .Logo-menu{
+        height: 35px;
+    }
+    .Unactive-Btn{
+        font-size: 100%;
+    }
+    .Active-Btn{
+        font-size: 100%;
+    }
+    .Navbar_Options button{
+        font-size: 80%;
+    }
+    .Profile-content{
+        padding: 2%;
+    }
+    .Profile-content h1{
+        font-size: 190%;
+    }
+    .Profile-content h3{
+        font-size: 150%;
+    }
+    .Profile-content p{
+        font-size: 80%;
+    }
+    .Profile-image{
+        width: 150px;
+        height: 150px;
+    }
+    .Article2 button{
+        padding: 7%;
+        width: 100%;
+    }
+}
+
+@media (width < 1110px) {
+    .Logo{
+        height: 30px;
+    }
+}
+
+@media (width < 960px){
+    .Menu-center{
+        gap: 15px;
     }
 }

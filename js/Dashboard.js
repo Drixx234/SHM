@@ -34,9 +34,8 @@ function RellenarCuadro(Notis){
         })
 }
 
-function CargaInicial(){
+function CargaInicialDashboard(){
     CargarNoti();
-    CargarProfile();
 }
 
-window.addEventListener('DOMContentLoaded', CargaInicial);
+window.addEventListener('DOMContentLoaded', CargaInicialDashboard);

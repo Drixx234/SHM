@@ -1,8 +1,11 @@
 const APIADMIN_URL = 'https://686223f996f0cc4e34b86e18.mockapi.io/tbAdministradores';
 
 const btn_Profile = document.getElementById("btnPerson");
+const btn_Menu = document.getElementById("btnMenu");
 const dialog_profile = document.getElementById("Profile-content");
 const body = document.getElementById("Body");
+const btnActive = document.getElementsByClassName("Active-Btn");
+const btnUnactive = document.getElementsByClassName("Unactive-Btn");
 
 async function CargarProfile() {
     try{
@@ -47,7 +50,7 @@ function RellenarProfile(Profile){
                             <h3>Administrador</h3>
                         </div>
                     </div>
-                    <button">Cerrar Sesion</button>
+                    <button>Cerrar Sesion</button>
                 </article>
                 <button class="Btn-Close" id="Btn-close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
             </main>
@@ -71,3 +74,34 @@ dialog_profile.addEventListener('cancel', (e) => {
     dialog_profile.close();
 });
 
+function ocultarBotones(botones) {
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].hidden = true;
+    }
+}
+
+function mostrarBotones(botones) {
+    for (let i = 0; i < botones.length; i++) {
+        botones[i].hidden = false;
+    }
+}
+
+function VisibilidadBotones(){
+        if(window.innerWidth <= 960){
+        ocultarBotones(btnActive);
+        ocultarBotones(btnUnactive);
+        btn_Menu.hidden = false;
+    }else{
+        mostrarBotones(btnActive);
+        mostrarBotones(btnUnactive);
+        btn_Menu.hidden = true;
+    }
+}
+
+function CargaInicialGeneral(){
+    CargarProfile();
+    VisibilidadBotones();
+}
+
+window.addEventListener("resize", VisibilidadBotones);
+window.addEventListener("DOMContentLoaded", CargaInicialGeneral);

@@ -79,6 +79,7 @@
 .Noti{
     height: 688px;
     width: 540px;
+    max-width: 540px;
     border-radius: 18px;
     background-color: rgba(10, 62, 210, 0.35);
     display: flex;
@@ -146,6 +147,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+        white-space: nowrap;
 }
 
 .cards p{
@@ -213,6 +215,8 @@
     }
     .card-header{
         font-size: 14px;
+        padding-right: 18px;
+        padding-left: 18px;
     }
     .cards p{
         font-size: 16px;
@@ -270,6 +274,8 @@
     }
     .card-header{
         font-size: 16px;
+        padding-right: 16px;
+        padding-left: 16px;
     }
     .cards p{
         font-size: 14px;     
@@ -327,6 +333,8 @@
     }
     .card-header{
         font-size: 14px;
+        padding-right: 14px;
+        padding-left: 14px;
     }
     .cards p{
         font-size: 12px;
@@ -385,6 +393,8 @@
     }
     .card-header{
         font-size: 12px;
+        padding-right: 12px;
+        padding-left: 12px;
     }
     .cards p{
         font-size: 10px;
@@ -395,7 +405,7 @@
     }
     .home h2{
         font-size: 21px;
-        margin-top: 3px;
+        margin-top: 6px;
     }
     .home svg{
         width: 19px;
@@ -403,6 +413,118 @@
     }
 }
 
-@media (width < 1243px) {
-    
+@media (width < 1260px) {
+    .principal{
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .Access{
+        gap: 15px;
+    }
+    .Access-div{
+        gap: 13px;
+    }
+    .Atajos{
+        height: 205px;
+        width: 340px;
+    }
+    .Atajos svg{
+        width: 45px;
+        height: 45px;
+    }
+    .Atajos h4{
+        font-size: 17px;
+    }
+    .Atajos button{
+        height: 36px;
+        width: 120px;
+        font-size: 14px;
+        border-width: 2px;
+    }
+    .Noti{
+        height: 425px;
+        width: 310px;
+    }
+    .Noti-Body{
+        height: 308px;
+    }
+    .head-noti h2{
+        font-size: 18px;
+    }
+    .card-header{
+        font-size: 11px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .cards p{
+        font-size: 10px;
+    }    
+    .Noti svg{
+        width: 21px;
+        height: 21px;
+    }
+    .home h2{
+        font-size: 18px;
+        margin-top: 11px;
+    }
+    .home svg{
+        width: 17px;
+        height: 17px;
+    }
+}
+
+@media (width < 1110px) {
+    .principal{
+        margin-top: 9px;
+        gap: 8px;
+    }
+    .Access{
+        gap: 10px;
+    }
+    .Access-div{
+        gap: 13px;
+    }
+    .Atajos{
+        height: 176px;
+        width: 280px;
+    }
+    .Atajos svg{
+        width: 35px;
+        height: 35px;
+    }
+    .Atajos h4{
+        font-size: 15px;
+    }
+    .Atajos button{
+        height: 31px;
+        width: 105px;
+        font-size: 12px;
+        border-width: 1px;
+    }
+    .Noti{
+        height: 365px;
+        width: 280px;
+    }
+    .Noti-Body{
+        height: 251px;
+    }
+    .head-noti h2{
+        font-size: 16px;
+    }
+    .card-header{
+        padding-right: 8px;
+        padding-left: 8px;
+    }    
+    .Noti svg{
+        width: 19px;
+        height: 19px;
+    }
+    .home h2{
+        font-size: 16px;
+        margin-top: 8px;
+    }
+    .home svg{
+        width: 15px;
+        height: 15px;
+    }
 }
