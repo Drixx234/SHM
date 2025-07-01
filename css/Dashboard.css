@@ -100,6 +100,7 @@
 .Noti-Body{
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding-top: 20px;
     overflow-y: auto;
     height: 548px;
@@ -121,6 +122,12 @@
     transition: backgroud 0.3s ease;
 }
 
+.Noti-Body h3{
+    color: #FFFFFF;
+    background-color: #5C0D0D;
+    width: 80%;
+    text-align: center;
+}
 .cards{
     display: flex;
     flex-direction: column;

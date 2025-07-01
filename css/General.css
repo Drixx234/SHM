@@ -30,8 +30,7 @@
 
 .Unactive-Btn{
     color: white;
-    font-size: 20px;
-    cursor: pointer;
+    font-size: 160%;
     user-select: none;
     text-decoration: none;
     transition: 0.3s;
@@ -40,15 +39,14 @@
 .Active-Btn{
     text-decoration: none;
     background-color: #9EA3BF;
-    font-size: 20px;
-    cursor: pointer;
+    font-size: 160%;
     user-select: none;
     color: white;
-    padding: 15.5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-top-left-radius: 20%;
-    border-top-right-radius: 20%;
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
     margin-right: -2%;
     margin-bottom: -2.5%;
     transition: 0.3s;
@@ -87,7 +85,7 @@
     border-radius: 5%;
     background-color: #858aaa;
     color: #3b3e4d;
-    font-size: 110%;
+    font-size: 140%;
 }
 
 .Navbar_Options button:hover{
@@ -106,12 +104,122 @@
 }
 
 .Logo-person{
-    height: 38px;
-    margin: 20px;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
     margin-left: 0px;
-    margin-right: 50px;
+    margin-right: 40px;
+    color: white;
     cursor: pointer;
     user-select: none;
+    border-style: none;
+    background-color: transparent;
+}
+
+.Profile-content{
+    background-color: #CDD4E8;
+    padding: 3%;
+    border-style: none;
+}
+
+.Profile-content main{
+    display: flex;
+    flex-direction: row;
+    background-color: #8F97AD;
+    gap: 150px;
+    padding: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.Profile-content article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Article2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 30px;
+}
+
+.Div-info{
+    background-color: #D9D9D9;
+    width: 120%;    
+    padding: 2%;
+}
+
+.Div-info p{
+    color: #616161;
+    margin: 0px;
+}
+
+.Div-info h1{
+    text-align: center;
+    margin: 3px 0 0 0;
+}
+
+.Div-info h3{
+    text-align: center;
+    margin: 3px 0 0 0;
+}
+
+.Div-rol{
+    background-color: #D9D9D9;
+    width:fit-content;
+    padding: 0 10px 0 10px;
+    margin-top: 20px;
+}
+
+.Div-rol p{
+    color: #616161;
+    margin: 0px;
+}
+
+.Div-rol h3{
+    text-align: center;
+    margin: 3px 0 0 0;
+}
+
+.Profile-image{
+    height: 170px;
+    width: 170px;
+    border-radius: 100%;
+}
+
+.Article2 button{
+    background-color: #5C0D0D;
+    color: #CDD4E8;
+    border-style: none;
+    padding: 10%;
+    width: 120%;
+    border-radius: 40px;
+}
+
+.Article2 button{
+    background-color: #5C0D0D;
+    color: #CDD4E8;
+    border-style: none;
+    padding: 10%;
+    width: 120%;
+    border-radius: 40px;
+}
+
+.Btn-Close{
+    border-style: none;
+    background-color: #5C0D0D;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    border-radius: 100%;
+    position: fixed;
+    left: 2%;
+    top: 2%;
 }
 
 body{
@@ -127,8 +235,14 @@ body{
     .Logo-menu{
         height: 45px;
     }
-    .Logo-person{
-        height: 33px;
+    .Unactive-Btn{
+        font-size: 140%;
+    }
+    .Active-Btn{
+        font-size: 140%;
+    }
+    .Navbar_Options button{
+        font-size: 120%;
     }
 }
 
@@ -139,7 +253,13 @@ body{
     .Logo-menu{
         height: 40px;
     }
-    .Logo-person{
-        height: 28px;
+    .Unactive-Btn{
+        font-size: 120%;
+    }
+    .Active-Btn{
+        font-size: 120%;
+    }
+    .Navbar_Options button{
+        font-size: 100%;
     }
 }
