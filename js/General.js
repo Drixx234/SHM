@@ -6,6 +6,7 @@ const dialog_profile = document.getElementById("Profile-content");
 const body = document.getElementById("Body");
 const btnActive = document.getElementsByClassName("Active-Btn");
 const btnUnactive = document.getElementsByClassName("Unactive-Btn");
+const NavOptions = document.getElementById("Navbar_Options");
 
 async function CargarProfile() {
     try{
@@ -14,8 +15,17 @@ async function CargarProfile() {
         RellenarProfile(data);
     } catch(err){
         console.error('Error al cargar datos' , err);
-        dialog_profile.innerHTML += `<h1>Error al cargar los datos</h1>`
-    }    
+        dialog_profile.innerHTML += `
+            <h1>Error al cargar los datos</h1>
+            <button class="Btn-Close" id="Btn-close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
+        `;
+        const btn_DialogClose = document.getElementById("Btn-close");
+    
+        btn_DialogClose.addEventListener('click', () => {
+        body.style.filter = "blur(0px)";
+        dialog_profile.close();
+        });    
+    }
 }
 
 function RellenarProfile(Profile){
@@ -41,19 +51,19 @@ function RellenarProfile(Profile){
                     <p>Contraseña:</p>
                     <h3>${Profile.passwordAdmin}</h3>
                 </div>
-                </article>
-                <article class="Article2">
-                    <div>
-                        <img src="${Profile.avatarAdmin}" alt="" class="Profile-image">
-                        <div class="Div-rol">
-                            <p>Rol:</p>
-                            <h3>Administrador</h3>
-                        </div>
+            </article>
+            <article class="Article2">
+                <div class="Div-image-dialog">
+                    <img src="${Profile.avatarAdmin}" alt="" class="Profile-image">
+                    <div class="Div-rol">
+                        <p>Rol:</p>
+                        <h3>Administrador</h3>
                     </div>
-                    <button>Cerrar Sesion</button>
-                </article>
-                <button class="Btn-Close" id="Btn-close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
-            </main>
+                </div>
+                <button>Cerrar Sesion</button>
+            </article>
+            <button class="Btn-Close" id="Btn-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
+        </main>
     `;
 
     const btn_DialogClose = document.getElementById("Btn-close");
@@ -87,14 +97,17 @@ function mostrarBotones(botones) {
 }
 
 function VisibilidadBotones(){
-        if(window.innerWidth <= 960){
+        if(window.innerWidth <= 980){
         ocultarBotones(btnActive);
         ocultarBotones(btnUnactive);
         btn_Menu.hidden = false;
+        NavOptions.hidden = true
+
     }else{
         mostrarBotones(btnActive);
         mostrarBotones(btnUnactive);
         btn_Menu.hidden = true;
+        NavOptions.hidden = false;
     }
 }
 
