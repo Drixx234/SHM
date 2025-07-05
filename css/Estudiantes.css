@@ -1,0 +1,181 @@
+main{
+    padding: 80px;
+    padding-top: 10px;
+}
+
+.Alerts{
+    font-size: 200%;
+}
+
+.home{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    color: #6D6D6D;
+}
+
+.home svg{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 8px;
+}
+
+.home h2{
+    font-size: 30px;
+}
+
+.Principal{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1%;
+}
+
+.Busqueda-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.Busqueda-center input{
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #F4F4F4;
+    border-style: solid;
+    font-size: 210%;
+    border-width: 2px;
+    border-color: #7B7B7B;
+}
+
+.Btn_Especialidades{
+    border-radius: 30px;
+    background-color: #F4F4F4;
+    font-size: 210%;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #7B7B7B;
+    color: rgb(0, 0, 0, 0.75);
+}
+
+.Menu_Especialidades{
+    width: 100%;
+    background-color: #565E64;
+}
+
+.Item_Especialidades{
+    border-style: none;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #565E64;
+    font-size: 170%;
+    color: #F4F4F4;
+}
+
+.Item_Especialidades:hover{
+    background-color: #F4F4F4;
+    color: #565E64;
+}
+
+.btn-Reset{
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-Reset svg{
+    width: 60px;
+    height: 60px;
+    color: #565E64;
+}
+
+.Tabla_Estudiantes{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+    background-color: #F4F4F4;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.hr_divisor{
+    border: 1px solid rgb(95, 95, 95);
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.Card-Student{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.Card-Student hr{
+    border: 1px solid black;
+    height: 110px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.Card-Student img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+
+}
+
+.Card-Student h2{
+    font-size: 250%;
+    width: 35%;
+}
+
+.Card-Student h3{
+    font-size: 250%;
+    width: 30%;
+    text-align: center;
+}
+
+.Card-Student button{
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 60px;
+}
+
+.Card-Student svg{
+    width: 60px;
+    height: 60px;
+}
+
+.btn-More{
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #565E64;
+    border-radius: 100px;
+    padding: 10px;
+}
+
+.btn-More:hover{
+    background-color: #565E64;
+    color: white;
+}

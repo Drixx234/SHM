@@ -9,46 +9,25 @@
     <link rel="stylesheet" href="css/Dashboard.css">
 </head>
 <body id="Body">
-    <nav class="Barra-Navegacion navbar-expand-md">
-        <ul>
-            <li><a href="Dashboard - Admin.html"><img src="img/Logo-Ricaldone.png" class="Logo" alt="Logo del Instituto Tecnico Ricaldone"></a></li>
-            <ul class="Menu-center">
-                <a href="Dashboard - Admin.html" class="Active-Btn"><li>Inicio</li></a>
-                <a href="Estudiantes - Admin.html" class="Unactive-Btn"><li>Estudiantes</li></a>
-                <a href="Proyectos - Admin.html" class="Unactive-Btn"><li>Proyectos</li></a>
-                <a href="#" class="Unactive-Btn"><li>Chats</li></a>
-                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class="Logo-menu" id="btnMenu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg></button>
-                <hr>
-                <!--Dialog para ver el perfil-->
-                <button class="Logo-person" id="btnPerson"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    <header>
+        <nav class="Barra-Navegacion navbar-expand-md">
+            <ul>
+                <li><a href="Dashboard - Admin.html"><img src="img/Logo-Ricaldone.png" class="Logo" alt="Logo del Instituto Tecnico Ricaldone"></a></li>
+                <ul class="Menu-center">
+                    <a href="Dashboard - Admin.html" class="Active-Btn"><li>Inicio</li></a>
+                    <a href="Estudiantes - Admin.html" class="Unactive-Btn"><li>Estudiantes</li></a>
+                    <a href="Proyectos - Admin.html" class="Unactive-Btn"><li>Proyectos</li></a>
+                    <a href="#" class="Unactive-Btn"><li>Chats</li></a>
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class="Logo-menu" id="btnMenu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg></button>
+                    <hr>
+                    <!--Dialog para ver el perfil-->
+                    <button class="Logo-person" id="btnPerson"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                </ul>
+                <dialog id="Profile-content" class="Profile-content Conteiner"></dialog>
             </ul>
-            <dialog id="Profile-content" class="Profile-content Conteiner"></dialog>
-        </ul>
-    </nav>
-    <nav class="Navbar_Options navbar-expand-md" id="Navbar_Options">
-        <ul>
-            <li>
-                <a href="Dashboard - Admin.html"><button>Dashboard</button></a>
-            </li>
-            <li>
-                <a href="Notificaciones - Admin.html"><button>Notificaciones</button></a>
-            </li>
-            <li>
-                <button>Descargar documentos del proyecto</button>
-            </li>
-        </ul>
-    </nav>
-    <!--Menu Lateral-->
-    <div class="offcanvas offcanvas-start SideBar" tabindex="0" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-body">
-            <menu class="Bar-Menu-center">
-                <div class="Bar-Button-Active"><a href="Dashboard - Admin.html"><li>Inicio</li></a></div>
-                <div><a href="Estudiantes - Admin.html"><li>Estudiantes</li></a></div>
-                <div><a href="Proyectos - Admin.html"><li>Proyectos</li></a></div>
-                <div><a href="#"><li>Chats</li></a></div>
-            </menu>
-            <hr>
-            <menu class="Bar_Options">
+        </nav>
+        <nav class="Navbar_Options navbar-expand-md" id="Navbar_Options">
+            <ul>
                 <li>
                     <a href="Dashboard - Admin.html"><button>Dashboard</button></a>
                 </li>
@@ -58,7 +37,41 @@
                 <li>
                     <button>Descargar documentos del proyecto</button>
                 </li>
-            </menu>
+            </ul>
+        </nav>
+        <!--Menu Lateral-->
+        <div class="offcanvas offcanvas-start SideBar" tabindex="0" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-body">
+                <menu class="Bar-Menu-center">
+                    <div class="Bar-Button-Active"><a href="Dashboard - Admin.html"><li>Inicio</li></a></div>
+                    <div><a href="Estudiantes - Admin.html"><li>Estudiantes</li></a></div>
+                    <div><a href="Proyectos - Admin.html"><li>Proyectos</li></a></div>
+                    <div><a href="#"><li>Chats</li></a></div>
+                </menu>
+                <hr>
+                <menu class="Bar_Options">
+                    <li>
+                        <a href="Dashboard - Admin.html"><button>Dashboard</button></a>
+                    </li>
+                    <li>
+                        <a href="Notificaciones - Admin.html"><button>Notificaciones</button></a>
+                    </li>
+                    <li>
+                        <button>Descargar documentos del proyecto</button>
+                    </li>
+                </menu>
+            </div>
+        </div>
+    </header>
+    
+    <div>
+        <div class="alert alert-danger alert-dismissible fade show Alerts" role="alert" id="Alert_Error_Notis">
+            <strong>¡ERROR AL CARGAR DATOS!</strong> <br> Hubieron problemas al cargar las notificaciones.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show Alerts" role="alert" id="Alert_Error_Profile">
+            <strong>¡ERROR AL CARGAR DATOS!</strong> <br> Hubieron problemas al cargar la informacion del perfil.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
 
@@ -109,7 +122,6 @@
                     </div>
                     <!--Aqui van las notificaciones-->
                     <div class="Noti-Body" id="Notifi-Body">                    
-                        
                     </div>
                 </div>
                 <div class="Noti-Button">

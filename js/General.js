@@ -8,6 +8,8 @@ const btnActive = document.getElementsByClassName("Active-Btn");
 const btnUnactive = document.getElementsByClassName("Unactive-Btn");
 const NavOptions = document.getElementById("Navbar_Options");
 
+const Alert_Error_Profile = document.getElementById('Alert_Error_Profile');
+
 async function CargarProfile() {
     try{
         const res = await fetch(`${APIADMIN_URL}/1`);
@@ -19,8 +21,9 @@ async function CargarProfile() {
             <h1>Error al cargar los datos</h1>
             <button class="Btn-Close" id="Btn-close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
         `;
+        Alert_Error_Profile.hidden = false;        
         const btn_DialogClose = document.getElementById("Btn-close");
-    
+
         btn_DialogClose.addEventListener('click', () => {
         body.style.filter = "blur(0px)";
         dialog_profile.close();
@@ -114,6 +117,7 @@ function VisibilidadBotones(){
 function CargaInicialGeneral(){
     CargarProfile();
     VisibilidadBotones();
+    Alert_Error_Profile.hidden = true;
 }
 
 window.addEventListener("resize", VisibilidadBotones);
