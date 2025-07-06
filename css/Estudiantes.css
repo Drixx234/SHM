@@ -96,7 +96,10 @@ main{
     height: 60px;
     color: #565E64;
 }
-
+.btn-Reset:active{
+    transition: 0.5s;
+    transform: rotate(-360deg);
+}
 .Tabla_Estudiantes{
     display: flex;
     flex-direction: column;
@@ -136,7 +139,6 @@ main{
     height: 100px;
     border-radius: 100%;
     object-fit: cover;
-
 }
 
 .Card-Student h2{
@@ -174,8 +176,558 @@ main{
     border-radius: 100px;
     padding: 10px;
 }
-
 .btn-More:hover{
     background-color: #565E64;
     color: white;
+}
+
+@media (width < 1710px) {
+    main{
+        padding: 70px;
+        padding-top: 10px;
+    }
+    .Alerts{
+        font-size: 150%;
+    }
+    .Tabla_Estudiantes{
+        gap: 25px;
+        margin-top: 25px;
+        padding: 18px;
+    }
+    .Card-Student h2{
+        font-size: 200%;
+    }
+    .Card-Student h3{
+        font-size: 200%;
+    }
+    .Card-Student button{
+        margin-left: 40px;
+    }
+    .Card-Student svg{
+        width: 50px;
+        height: 50px;
+    }
+    .Card-Student hr{
+        height: 100px;
+    }
+    .Card-Student img{
+        width: 90px;
+        height: 90px;
+    }
+    .Busqueda-center input{
+        font-size: 180%;
+    }
+    .Btn_Especialidades{
+        font-size: 180%;
+    }
+    .Item_Especialidades{
+        font-size: 150%;
+    }
+    .btn-Reset svg{
+        width: 50px;
+        height: 50px;
+    }
+    .btn-More{
+        padding: 9px;
+    }
+}
+
+@media (width < 1520px) {
+    main{
+        padding: 60px;
+        padding-top: 10px;
+    }
+    .Alerts{
+        font-size: 130%;
+    }
+    .home svg{
+        width: 20px;
+        height: 20px;
+        margin-bottom: 8px;
+    }
+    .home h2{
+        font-size: 20px;
+    }
+    .Busqueda-center{
+        gap: 15px;
+    }
+    .Tabla_Estudiantes{
+        gap: 20px;
+        padding: 16px;
+    }
+    .Card-Student{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .Card-Student h2{
+        font-size: 180%;
+    }
+    .Card-Student h3{
+        font-size: 180%;
+    }
+    .Card-Student button{
+        margin-left: 20px;
+    }
+    .Card-Student svg{
+        width: 40px;
+        height: 40px;
+    }
+    .Card-Student img{
+        width: 80px;
+        height: 80px;
+    }
+    .btn-Reset svg{
+        width: 40px;
+        height: 40px;
+    }
+    .btn-More{
+        padding: 8px;
+    }
+}
+
+@media (width < 1370px) {
+    main{
+        padding: 50px;
+        padding-top: 10px;
+    }
+    .Alerts{
+        font-size: 110%;
+    }
+    .Tabla_Estudiantes{
+        gap: 15px;
+        margin-top: 20px;
+        padding: 14px;
+    }
+    .Card-Student{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .Card-Student h2{
+        font-size: 160%;
+    }
+    .Card-Student h3{
+        font-size: 160%;
+    }
+    .Card-Student hr{
+        height: 90px;
+    }
+    .Card-Student button{
+        margin-left: 20px;
+    }
+    .Card-Student svg{
+        width: 40px;
+        height: 40px;
+    }
+    .Card-Student img{
+        width: 70px;
+        height: 70px;
+    }
+    .Busqueda-center input{
+        font-size: 140%;
+    }
+    .Btn_Especialidades{
+        font-size: 140%;
+    }
+    .Item_Especialidades{
+        font-size: 115%;
+    }
+    .btn-Reset svg{
+        width: 40px;
+        height: 40px;
+    }
+    .btn-More h4{
+        font-size: 20px;
+    }
+    .btn-More{
+        padding: 7px;
+    }
+}
+
+@media (width < 1100px) {
+    main{
+        padding: 40px;
+        padding-top: 10px;
+    }
+    .Alerts{
+        font-size: 90%;
+    }
+    .Busqueda-center{
+        gap: 10px;
+    }
+    .Tabla_Estudiantes{
+        gap: 10px;
+        padding: 12px;
+    }
+    .Card-Student{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .Card-Student hr{
+        height: 80px;
+    }
+    .Card-Student h2{
+        font-size: 140%;
+    }
+    .Card-Student h3{
+        font-size: 140%;
+    }
+    .Card-Student button{
+        margin-left: 10px;
+    }
+    .Card-Student svg{
+        width: 30px;
+        height: 30px;
+    }
+    .Card-Student img{
+        width: 60px;
+        height: 60px;
+    }
+    .Busqueda-center input{
+        font-size: 120%;
+    }
+    .Btn_Especialidades{
+        font-size: 120%;
+    }
+    .Item_Especialidades{
+        font-size: 115%;
+    }
+    .btn-Reset svg{
+        width: 40px;
+        height: 40px;
+    }
+    .btn-More{
+        padding: 6px;
+    }
+}
+@media (width < 980px) {
+    main{
+        padding: 30px;
+        padding-top: 20px;
+    }
+    .Alerts{
+        font-size: 70%;
+    }
+    .Tabla_Estudiantes{
+        gap: 10px;
+        padding: 12px;
+    }
+    .Card-Student{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .Card-Student h2{
+        font-size: 130%;
+    }
+    .Card-Student hr{
+        height: 70px;
+    }
+    .Card-Student h3{
+        font-size: 130%;
+    }
+    .Card-Student button{
+        margin-left: 10px;
+    }
+    .Card-Student svg{
+        width: 35px;
+        height: 35px;
+    }
+    .Card-Student img{
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+    }
+    .Busqueda-center input{
+        font-size: 110%;
+        padding: 8px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .Btn_Especialidades{
+        font-size: 110%;
+    }
+    .Item_Especialidades{
+        font-size: 105%;
+    }
+    .btn-Reset svg{
+        width: 35px;
+        height: 35px;
+    }
+    .btn-More{
+        padding: 5px;
+    }
+}
+
+@media (width < 790px) {
+    .Alerts{
+        font-size: 55%;
+    }
+    .Tabla_Estudiantes{
+        padding: 10px;
+    }
+    .Card-Student{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .Card-Student h2{
+        font-size: 100%;
+    }
+    .Card-Student h3{
+        font-size: 90%;
+    }
+    .Card-Student hr{
+        height: 55px;
+    }
+    .Card-Student svg{
+        width: 25px;
+        height: 25px;
+    }
+    .Card-Student img{
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .Busqueda-center input{
+        font-size: 90%;
+    }
+    .Btn_Especialidades{
+        font-size: 100%;
+    }
+    .Item_Especialidades{
+        font-size: 95%;
+    }
+    .btn-Reset svg{
+        width: 30px;
+        height: 30px;
+    }
+    .btn-More{
+        padding: 4px;
+    }
+    .btn-More h4{
+        font-size: 15px;
+    }
+}
+@media (width < 650px) {
+    .Alerts{
+        font-size: 65%;
+    }
+    .home svg{
+        width: 15px;
+        height: 15px;
+        margin-bottom: 9px;
+    }
+    .home h2{
+        font-size: 15px;
+    }
+    .Tabla_Estudiantes{
+        gap: 10px;
+        padding: 12px;
+        padding-top: 15px;
+    }
+    .Card-Student{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .Card-Student h2{
+        font-size: 100%;
+    }
+    .Card-Student h3{
+        font-size: 90%;
+    }
+    .Card-Student hr{
+        height: 60px;
+    }
+    .Card-Student button{
+        margin-left: 10px;
+    }
+    .Card-Student svg{
+        width: 25px;
+        height: 25px;
+    }
+    .Card-Student img{
+        width: 55px;
+        height: 55px;
+    }
+    .Busqueda-center{
+        gap: 8px;
+    }
+    .Busqueda-center input{
+        padding: 6px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .Item_Especialidades{
+        font-size: 90%;
+    }
+    .btn-Reset svg{
+        width: 25px;
+        height: 25px;
+    }
+    .btn-More{
+        padding: 3px;
+    }
+}
+@media (width < 560px) {
+    .Alerts{
+        font-size: 60%;
+    }
+    .Tabla_Estudiantes{
+        gap: 10px;
+        padding: 8px;
+    }
+    .Card-Student{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .Card-Student h2{
+        font-size: 85%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .Card-Student h3{
+        font-size: 75%;
+    }
+    .Card-Student hr{
+        height: 50px;
+    }
+    .Card-Student svg{
+        width: 20px;
+        height: 20px;
+    }
+    .Card-Student img{
+        width: 45px;
+        height: 45px;
+    }
+    .Busqueda-center{
+        gap: 6px;
+    }
+    .Busqueda-center input{
+        padding: 4px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 85%;
+    }
+    .Btn_Especialidades{
+        font-size: 90%;
+        padding: 8px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .Item_Especialidades{
+        font-size: 75%;
+    }
+    .btn-More{
+        padding: 2px;
+    }
+}
+@media (width < 470px) {
+    .Alerts{
+        font-size: 55%;
+    }
+    .Tabla_Estudiantes{
+        padding-top: 15px;
+    }
+    .Card-Student{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .Card-Student h2{
+        font-size: 65%;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    .Card-Student h3{
+        font-size: 55%;
+    }
+    .Card-Student hr{
+        height: 40px;
+        border: 0.5px solid black;
+    }
+    .Card-Student svg{
+        width: 15px;
+        height: 15px;
+    }
+    .Card-Student img{
+        width: 40px;
+        height: 40px;
+    }
+    .Busqueda-center{
+        gap: 4px;
+    }
+    .Busqueda-center input{
+        padding: 3px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 75%;
+    }
+    .Btn_Especialidades{
+        font-size: 70%;
+        padding: 8px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .Item_Especialidades{
+        font-size: 75%;
+    }
+    .btn-More{
+        padding: 2px;
+        font-size: 10px;
+    }
+}
+@media (width < 370px) {
+    .Alerts{
+        font-size: 55%;
+    }
+    .Tabla_Estudiantes{
+        padding-top: 15px;
+    }
+    .Card-Student{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .Card-Student h2{
+        font-size: 55%;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    .Card-Student h3{
+        font-size: 45%;
+    }
+    .Card-Student hr{
+        height: 35px;
+        border: 0.5px solid black;
+    }
+    .Card-Student svg{
+        width: 15px;
+        height: 15px;
+    }
+    .Card-Student img{
+        width: 35px;
+        height: 35px;
+    }
+    .Busqueda-center{
+        gap: 4px;
+    }
+    .Busqueda-center input{
+        padding: 3px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 65%;
+    }
+    .Btn_Especialidades{
+        font-size: 60%;
+        padding: 6px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .Item_Especialidades{
+        font-size: 60%;
+    }
+    .btn-Reset svg{
+        width: 15px;
+        height: 15px;
+    }
+    .btn-More{
+        padding: 1px;
+        font-size: 5px;
+    }
 }

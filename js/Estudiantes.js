@@ -1,22 +1,22 @@
-const API_URL_Estudiantes = 'https://retoolapi.dev/7Gf0pd/tbEstudents';
+const API_URL_Estudiantes = "https://retoolapi.dev/7Gf0pd/tbEstudents";
 
-const btn_Conta = document.getElementById('btn-Conta');
-const btn_Arqui = document.getElementById('btn-Arqui');
-const btn_Auto = document.getElementById('btn-Auto');
-const btn_Software = document.getElementById('btn-Software');
-const btn_Diseño = document.getElementById('btn-Diseño');
-const btn_ECA = document.getElementById('btn-ECA');
-const btn_EMCA = document.getElementById('btn-EMCA');
-const btn_Energias = document.getElementById('btn-Energi');
-const btn_Reset = document.getElementById('btn-Reset');
+const btn_Conta = document.getElementById("btn-Conta");
+const btn_Arqui = document.getElementById("btn-Arqui");
+const btn_Auto = document.getElementById("btn-Auto");
+const btn_Software = document.getElementById("btn-Software");
+const btn_Diseño = document.getElementById("btn-Diseño");
+const btn_ECA = document.getElementById("btn-ECA");
+const btn_EMCA = document.getElementById("btn-EMCA");
+const btn_Energias = document.getElementById("btn-Energi");
+const btn_Reset = document.getElementById("btn-Reset");
 
-const Input_Name = document.getElementById('Students-Square');
+const Input_Name = document.getElementById("Students-Square");
 
-const Alert_Error_Tabla = document.getElementById('Alert_Error_Tabla');
+const Alert_Error_Tabla = document.getElementById("Alert_Error_Tabla");
 
-const Array_BlockLetters = ['{', '}', '[', ']', '+', '=', '-', '_', '/', '?', '.', ',', '<', '>', ':', ';', '(', ')', '|', '*', '&', '^', '%', '$', '#', '@', '!', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".", ",", "<", ">", ":", ";", "(", ")", "|", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-const tabla_estudiantes = document.getElementById('Tabla_Estudiantes');
+const tabla_estudiantes = document.getElementById("Tabla_Estudiantes");
 let CargarTable = 1;
 
 async function Cargar_Tabla(n) {
