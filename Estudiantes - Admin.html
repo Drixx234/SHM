@@ -43,7 +43,7 @@
         <div class="offcanvas offcanvas-start SideBar" tabindex="0" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-body">
                 <menu class="Bar-Menu-center">
-                    <div><a href="Estudiantes - Admin.html"><li>Estudiantes</li></a></div>
+                    <div><a href="Dashboard - Admin.html"><li>Inicio</li></a></div>
                     <div class="Bar-Button-Active"><a href="Estudiantes - Admin.html"><li>Estudiantes</li></a></div>
                     <div><a href="Proyectos - Admin.html"><li>Proyectos</li></a></div>
                     <div><a href="#"><li>Chats</li></a></div>
@@ -70,15 +70,83 @@
                 <strong>¡ERROR AL CARGAR DATOS!</strong> <br> Hubieron problemas al cargar la tabla con los datos de los estudiantes.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+            <div class="alert alert-danger alert-dismissible fade show Alerts" role="alert" id="Alert_Error_Dialog">
+                <strong>¡ERROR AL CARGAR DATOS!</strong> <br> Hubieron problemas al cargar la ventana con los datos de los estudiantes.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <div class="alert alert-danger alert-dismissible fade show Alerts" role="alert" id="Alert_Error_Profile">
                 <strong>¡ERROR AL CARGAR DATOS!</strong> <br> Hubieron problemas al cargar la informacion del perfil.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
-        </div>
+        
         <div class="home">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round-icon lucide-users-round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
             <h2>Estudiantes</h2>
         </div>
+
+        <dialog id="Dialog_Profile_Estudiante" class="Dialog_Profile_Estudiante">
+        <div class="dialogForm_Estudiante">
+            <button class="Btn-Close" id="Btn-close-Profile-Estudiante"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
+            <div>
+                <!--En cada Input se insertara la informacion-->
+                <form id="Form_Estudiante" class="Form_Estudiante">
+                    <label for="Codigo_Estudiante">Codigo:
+                        <input type="text" id="Codigo_Estudiante">
+                    </label>
+                    <div>
+                        <label for="Nombre_Estudiante">Nombre:
+                            <input type="text" id="Nombre_Estudiante">
+                        </label>
+                        <label for="Apellido_Estudiante">Apellido:
+                            <input type="text" id="Apellido_Estudiante">
+                        </label>
+                    </div>
+                    <label for="Correo_Estudiante">Correo Institucional:
+                        <input type="text" id="Correo_Estudiante">
+                    </label>
+                    <div>
+                        <label for="Especialidad_Estudiante">Especialidad:
+                            <input type="text" id="Especialidad_Estudiante">
+                        </label>
+                        <label for="GrupoTecnico_Estudiante">Grupo Tecnico:
+                            <input type="text" id="GrupoTecnico_Estudiante">
+                        </label>
+                    </div>
+                    <label for="Orientador_Estudiante">Orientador Tecnico:
+                        <input type="text" id="Orientador_Estudiante">
+                    </label>
+                    <div>
+                        <label for="AñoAcademico_Estudiante">Año Academico:
+                            <input type="text" id="AñoAcademico_Estudiante">
+                        </label>
+                        <label for="Seccion_Estudiante">Seccion Academica:
+                            <input type="text" id="Seccion_Estudiante">
+                        </label>
+                    </div>
+                    <label for="btn_Proyecto">Proyecto Asignado:
+                        <div class="dropdown-center">
+                            <button class="btn btn-secondary dropdown-toggle btn_Proyecto" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btn_Proyecto"></button>
+                            <ul class="dropdown-menu Menu_Especialidades" id="dropdown-Proyecto">
+                            </ul>
+                        </div>
+                    </label>
+                </form>
+            </div>
+            <div>
+                <article class="Article_Profile"  id="Article_Profile">
+                    <div>
+                        <button class="btn_Horas_Sociales" id="btn_Horas_Sociales">Horas Sociales</button>
+                        <button class="btn_Actualizar_Proyecto" id="btn_Actualizar_Proyecto">Actualizar</button>
+                    </div>
+                    <!--Aqui se insertara la imagen-->
+                    <div style="display: flex; align-items: center; justify-content: center;" id="img_Profile_Estudiante">                        
+                    </div>
+                </article>
+            </div>
+        </div>
+        </dialog>
+        
         <div class="Principal">
             <div class="Busqueda-center">
                 <input type="text" id="Students-Square" name="busqueda" placeholder="Buscar Estudiante...">
@@ -98,6 +166,7 @@
                 <button class="btn-Reset" id="btn-Reset"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
             </div>
             <div class="Tabla_Estudiantes" id="Tabla_Estudiantes">
+
             </div>
         </div>
     </main>

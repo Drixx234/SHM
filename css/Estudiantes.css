@@ -90,15 +90,16 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.5s;
 }
 .btn-Reset svg{
     width: 60px;
     height: 60px;
     color: #565E64;
 }
-.btn-Reset:active{
-    transition: 0.5s;
+.btn-Reset:hover{
     transform: rotate(-360deg);
+    transition: 0.5s ease;
 }
 .Tabla_Estudiantes{
     display: flex;
@@ -152,6 +153,10 @@ main{
     text-align: center;
 }
 
+.Card-Student p{
+    display: none;
+}
+
 .Card-Student button{
     background-color: transparent;
     border-style: none;
@@ -179,6 +184,85 @@ main{
 .btn-More:hover{
     background-color: #565E64;
     color: white;
+}
+.Dialog_Profile_Estudiante{
+    background-color: #CDD4E8;
+    border-style: none;
+}
+.dialogForm_Estudiante{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.dialogForm_Estudiante div{
+    background-color: #8F97AD;
+    padding: 30px;
+}
+.Form_Estudiante{
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.Form_Estudiante div{
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+.Form_Estudiante input{
+    background-color: #D9D9D9;
+    border-style: none;
+    width: 100%;
+    font-size: 20px;
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.Form_Estudiante label{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    color: #303336;
+}
+.btn_Proyecto{
+    background-color: #D9D9D9;
+    color: #202020;
+    border-style: none;
+    border-radius: 0px;
+    width: 100%;
+    font-size: 20px;
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: justify;
+}
+.Article_Profile{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100%;
+}
+.Article_Profile img{
+    height: 200px;
+    width: 200px;
+}
+.Article_Profile button{
+    width: 100%;
+    padding: 10px;
+    border-style: none;
+    font-size: 15px;
+    margin-top: 10px;
+    color: #8F97AD;
+}
+.btn_Actualizar_Proyecto{
+    background-color: #804d1e;
+}
+.btn_Horas_Sociales{
+    background-color: #223b4e;
 }
 
 @media (width < 1710px) {
@@ -573,6 +657,7 @@ main{
     .Tabla_Estudiantes{
         gap: 10px;
         padding: 8px;
+        padding-top: 15px;
     }
     .Card-Student{
         padding-left: 20px;
