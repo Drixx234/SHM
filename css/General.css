@@ -302,6 +302,9 @@ body{
     color: #858aaa;
 }
 
+a{
+    text-decoration: none;
+}
 
 @media (width < 1530px) {
     .Logo{
