@@ -1,5 +1,6 @@
 const API_URL_Estudiantes = "https://retoolapi.dev/tVBF8Z/tbEstudiantes";
 const API_URL_ServiciosVigentes = "https://retoolapi.dev/XqGGae/tbServicios_Vigentes";
+const API_URL_Proyectos = "https://retoolapi.dev/B81qu9/tbProyectos";
 
 const btn_Conta = document.getElementById("btn-Conta");
 const btn_Arqui = document.getElementById("btn-Arqui");
@@ -23,12 +24,10 @@ const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".
 const tabla_estudiantes = document.getElementById("Tabla_Estudiantes");
 const Dialog_Profile_Estudiante = document.getElementById("Dialog_Profile_Estudiante");
 const Form_Estudiante = document.getElementById("Form_Estudiante");
-//Form_Estudiante.addEventListener('keydown', (e) => {
-//    e.defaultPrevented();
-//})
 let CargarTable = 1;
 
 const Input_Dialog_Codigo = document.getElementById("Codigo_Estudiante");
+const Input_NIE_Estudiante = document.getElementById("NIE_Estudiante");
 const Input_Dialog_Nombre = document.getElementById("Nombre_Estudiante");
 const Input_Dialog_Apellido = document.getElementById("Apellido_Estudiante");
 const Input_Dialog_Correo = document.getElementById("Correo_Estudiante");
@@ -37,7 +36,9 @@ const Input_Dialog_GrupoTecnico = document.getElementById("GrupoTecnico_Estudian
 const Input_Dialog_Orientador = document.getElementById("Orientador_Estudiante");
 const Input_Dialog_AnioAcademico = document.getElementById("AñoAcademico_Estudiante");
 const Input_Dialog_Seccion = document.getElementById("Seccion_Estudiante");
+const P_Dialog_Proyecto = document.getElementById("P_Dialog_Proyecto");
 const Input_Proyecto_Asignado = document.getElementById("btn_Proyecto");
+const Proyectos_Menu_Dialog = document.getElementById("dropdown-Proyecto");
 const img_Profile_Estudiante = document.getElementById("img_Profile_Estudiante");
 
 async function Cargar_Tabla(n) {
@@ -126,6 +127,27 @@ async function Buscar_Servicio_Vigente(Codigo) {
         console.error('Error al caragar datos', err);
     }
 }
+async function Cargar_Proyectos(Comision) {
+    try{
+        const res = await fetch(API_URL_Proyectos);
+        const data = await res.json();
+        Rellenar_Menu_Proyectos(data, Comision);
+    } catch(err) {
+        console.error('Error al cargar datos' , err);
+    }
+}
+function Rellenar_Menu_Proyectos(Proyectos, Proyecto_Estudiante){
+    Proyectos_Menu_Dialog.innerHTML = '';
+    
+    Proyectos.forEach(Proyecto => {
+        if(Proyecto.Nombre_Proyecto == Proyecto_Estudiante){
+            Input_Proyecto_Asignado.textContent = `${Proyecto.Nombre_Proyecto}`
+        }
+        Proyectos_Menu_Dialog.innerHTML += `
+        <li><button class="Item_Especialidades"><p>${Proyecto.id}</p><h4>${Proyecto.Nombre_Proyecto}</h4></button></li>
+        `;
+    });
+}
 async function Dialog_Estudiante(id) {
     try{
         const res = await fetch(`${API_URL_Estudiantes}/${id}`)
@@ -138,6 +160,7 @@ async function Dialog_Estudiante(id) {
 }
 function Rellenar_Dialog(Estudiante){
     Input_Dialog_Codigo.value = `${Estudiante.Codigo_Estudiante}`;
+    Input_NIE_Estudiante.value = `${Estudiante.NIE_Estudiante}`;
     Input_Dialog_Nombre.value = `${Estudiante.Nombre_Estudiante}`;
     Input_Dialog_Apellido.value = `${Estudiante.Apellido_Estudiante}`;
     Input_Dialog_Correo.value = `${Estudiante.Correo_Electronico}`;
@@ -149,14 +172,35 @@ function Rellenar_Dialog(Estudiante){
     img_Profile_Estudiante.innerHTML = `<img src="${Estudiante.Foto_Estudiante}" alt="Foto de Perfil de ${Estudiante.Nombre_Estudiante} ${Estudiante.Apellido_Estudiante}">`;
 
     const Servicio_Vigente = Buscar_Servicio_Vigente(Estudiante.Codigo_Estudiante);
-    if(Servicio_Vigente && Servicio_Vigente.Nombre_Proyecto){
-        Input_Proyecto_Asignado.textContent = `${Servicio_Vigente.Nombre_Proyecto}`;
+    
+    if(!(Servicio_Vigente.Nombre_Proyecto)){
+        Input_Proyecto_Asignado.textContent = 'No hay proyecto asignado';
     }else{
-        Input_Proyecto_Asignado.textContent = 'No hay proyecto asignado'
+        Input_Proyecto_Asignado.textContent = `${Servicio_Vigente.Nombre_Proyecto}`;
     }
+    Cargar_Proyectos(Servicio_Vigente.Nombre_Proyecto);
 
     body.style.filter = "blur(6px)";
     Dialog_Profile_Estudiante.showModal();
+}
+async function Agregar_Servicio_Vigente(Codigo, Proyecto) {
+    
+}
+async function Eliminar_Servicio_Vigente(id) {
+    await fetch(`${API_URL_ServiciosVigentes}/${id}`, )
+}
+function Cambiar_Proyecto(Codigo, Nombre, Proyecto){
+    const confirmacion = confirm(`Seguro de cambiar el Proyecto de ${Nombre}`);
+
+    if(confirmacion){
+        const Servicio_Vigente = Buscar_Servicio_Vigente(Codigo);
+
+        if((Servicio_Vigente.Nombre_Proyecto)){
+            Eliminar_Servicio_Vigente(Servicio_Vigente.id);
+        }
+
+        Agregar_Servicio_Vigente();
+    }
 }
 
 btn_Arqui.addEventListener('click', () =>{

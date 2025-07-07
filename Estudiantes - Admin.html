@@ -32,10 +32,7 @@
                     <a href="Estudiantes - Admin.html"><button>Estudiantes</button></a>
                 </li>
                 <li>
-                    <a href="Notificaciones - Admin.html"><button>Notificaciones</button></a>
-                </li>
-                <li>
-                    <button>Descargar documentos del proyecto</button>
+                    <a href="Solicitudes - Admin.html"><button>Solicitudes de estudiantes</button></a>
                 </li>
             </ul>
         </nav>
@@ -51,13 +48,10 @@
                 <hr>
                 <menu class="Bar_Options">
                     <li>
-                        <a href="Dashboard - Admin.html"><button>Dashboard</button></a>
+                        <a href="Estudiantes - Admin.html"><button>Estudiantes</button></a>
                     </li>
                     <li>
-                        <a href="Notificaciones - Admin.html"><button>Notificaciones</button></a>
-                    </li>
-                    <li>
-                        <button>Descargar documentos del proyecto</button>
+                        <a href="Solicitudes - Admin.html"><button>Solicitudes de estudiantes</button></a>
                     </li>
                 </menu>
             </div>
@@ -88,52 +82,58 @@
         <dialog id="Dialog_Profile_Estudiante" class="Dialog_Profile_Estudiante">
         <div class="dialogForm_Estudiante">
             <button class="Btn-Close" id="Btn-close-Profile-Estudiante"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
-            <div>
+            <div style="border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
                 <!--En cada Input se insertara la informacion-->
                 <form id="Form_Estudiante" class="Form_Estudiante">
-                    <label for="Codigo_Estudiante">Codigo:
-                        <input type="text" id="Codigo_Estudiante">
-                    </label>
+                    <div>
+                        <label for="Codigo_Estudiante">Codigo:
+                            <input type="text" id="Codigo_Estudiante" readonly>
+                        </label>
+                        <label for="NIE_Estudiante">NIE:
+                            <input type="text" id="NIE_Estudiante" readonly>
+                        </label>
+                    </div>
                     <div>
                         <label for="Nombre_Estudiante">Nombre:
-                            <input type="text" id="Nombre_Estudiante">
+                            <input type="text" id="Nombre_Estudiante" readonly>
                         </label>
                         <label for="Apellido_Estudiante">Apellido:
-                            <input type="text" id="Apellido_Estudiante">
+                            <input type="text" id="Apellido_Estudiante" readonly>
                         </label>
                     </div>
                     <label for="Correo_Estudiante">Correo Institucional:
-                        <input type="text" id="Correo_Estudiante">
+                        <input type="text" id="Correo_Estudiante" readonly>
                     </label>
                     <div>
                         <label for="Especialidad_Estudiante">Especialidad:
-                            <input type="text" id="Especialidad_Estudiante">
+                            <input type="text" id="Especialidad_Estudiante" readonly>
                         </label>
                         <label for="GrupoTecnico_Estudiante">Grupo Tecnico:
-                            <input type="text" id="GrupoTecnico_Estudiante">
+                            <input type="text" id="GrupoTecnico_Estudiante" readonly>
                         </label>
                     </div>
                     <label for="Orientador_Estudiante">Orientador Tecnico:
-                        <input type="text" id="Orientador_Estudiante">
+                        <input type="text" id="Orientador_Estudiante" readonly>
                     </label>
                     <div>
                         <label for="AñoAcademico_Estudiante">Año Academico:
-                            <input type="text" id="AñoAcademico_Estudiante">
+                            <input type="text" id="AñoAcademico_Estudiante" readonly>
                         </label>
                         <label for="Seccion_Estudiante">Seccion Academica:
-                            <input type="text" id="Seccion_Estudiante">
+                            <input type="text" id="Seccion_Estudiante" readonly>
                         </label>
                     </div>
                     <label for="btn_Proyecto">Proyecto Asignado:
                         <div class="dropdown-center">
+                            <p id="P_Dialog_Proyecto"></p>
                             <button class="btn btn-secondary dropdown-toggle btn_Proyecto" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btn_Proyecto"></button>
-                            <ul class="dropdown-menu Menu_Especialidades" id="dropdown-Proyecto">
+                            <ul class="dropdown-menu Menu_Proyectos" id="dropdown-Proyecto">
                             </ul>
                         </div>
                     </label>
                 </form>
             </div>
-            <div>
+            <div style="border-top-right-radius: 50px; border-bottom-right-radius: 50px;">
                 <article class="Article_Profile"  id="Article_Profile">
                     <div>
                         <button class="btn_Horas_Sociales" id="btn_Horas_Sociales">Horas Sociales</button>

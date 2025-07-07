@@ -186,8 +186,9 @@ main{
     color: white;
 }
 .Dialog_Profile_Estudiante{
-    background-color: #CDD4E8;
+    background-color: #41485c;
     border-style: none;
+    border-radius: 50px;
 }
 .dialogForm_Estudiante{
     display: flex;
@@ -197,6 +198,9 @@ main{
 .dialogForm_Estudiante div{
     background-color: #8F97AD;
     padding: 30px;
+}
+.dropdown-center p{
+    display: none;
 }
 .Form_Estudiante{
     width: 100%;
@@ -238,6 +242,26 @@ main{
     padding-left: 8px;
     padding-right: 8px;
     text-align: justify;
+}
+.Menu_Proyectos{
+    width: 100%;
+    background-color: #565E64;
+    height: 300px;
+    overflow-y: auto;
+}
+.Menu_Proyectos::-webkit-scrollbar{
+    width: 6px;
+}
+
+.Menu_Proyectos::-webkit-scrollbar-track{
+    background: transparent;
+    box-shadow: inset 0 0 5px #6b757c;
+}
+
+.Menu_Proyectos::-webkit-scrollbar-thumb{
+    background-color: #34393d;
+    border-radius: 6px;
+    transition: backgroud 0.3s ease;
 }
 .Article_Profile{
     display: flex;
