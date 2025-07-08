@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitacora</title>
+    <link rel="stylesheet" href="css/General.css">
+    <link rel="stylesheet" href="css/Bitacora.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bitacora de actividades</h1>
+        
+        <div class="filters">
+            <input type="text" id="searchInput" placeholder="Buscar en bitácora...">
+            <select id="typeFilter">
+                <option value="">Todos los tipos</option>
+                <option value="aceptacion">Aceptación en comisión</option>
+                <option value="rechazo">Rechazo de comisión</option>
+                <option value="actividad">Agregar actividad</option>
+                <option value="evento">Agregar evento</option>
+            </select>
+        </div>
+        
+        <div class="log-container">
+            <div class="log-list" id="logList">
+                <!-- Los registros se llenarán con JavaScript -->
+            </div>
+        </div>
+        
+        <div class="pagination">
+            <button id="prevBtn">Anterior</button>
+            <span id="pageInfo">Página 1 de 1</span>
+            <button id="nextBtn">Siguiente</button>
+        </div>
+    </div>
+    <a href="Dashboard - Admin.html"><button class="button-36" role="button">Inicio</button>
+    <script src="js/Bitacora.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+/* CSS */
+.button-36 {
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 4rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+ 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+ 
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+ 
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+ 
+.filters input, .filters select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+ 
+.filters input {
+    flex: 1;
+    min-width: 200px;
+}
+ 
+.filters select {
+    min-width: 180px;
+}
+ 
+.log-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+ 
+.log-list {
+    padding: 15px;
+}
+ 
+.log-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    align-items: flex-start;
+}
+ 
+.log-item:last-child {
+    border-bottom: none;
+}
+ 
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+}
+ 
+.log-details {
+    flex: 1;
+}
+ 
+.user-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+ 
+.change-details {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+ 
+.change-date {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+ 
+.change-accepted {
+    color: #27ae60;
+}
+ 
+.change-rejected {
+    color: #e74c3c;
+}
+ 
+.change-activity {
+    color: #3498db;
+}
+ 
+.change-event {
+    color: #f39c12;
+}
+ 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+ 
+.pagination button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+ 
+.pagination button:hover {
+    background-color: #2980b9;
+}
+ 
+.pagination button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+ 
+#pageInfo {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+ 
+a{
+display: flex;
+align-items: start;
+}
+
+@media (max-width: 600px) {
+    .filters {
+        flex-direction: column;
+    }
+    
+    .log-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .profile-pic {
+        margin-bottom: 10px;
+    }
+}
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
+  }
+}
