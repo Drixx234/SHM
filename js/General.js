@@ -1,4 +1,4 @@
-const APIADMIN_URL = 'https://686223f996f0cc4e34b86e18.mockapi.io/tbAdministradores';
+const APIADMIN_URL = 'https://retoolapi.dev/EWVZu8/tbAdministradores';
 
 const btn_Profile = document.getElementById("btnPerson");
 const btn_Menu = document.getElementById("btnMenu");
@@ -12,7 +12,7 @@ const Alert_Error_Profile = document.getElementById('Alert_Error_Profile');
 
 async function CargarProfile() {
     try{
-        const res = await fetch(`${APIADMIN_URL}/1`);
+        const res = await fetch(`${APIADMIN_URL}/2`);
         const data = await res.json();
         RellenarProfile(data);
     } catch(err){
@@ -21,26 +21,28 @@ async function CargarProfile() {
             <h1>Error al cargar los datos</h1>
             <button class="Btn-Close" id="Btn-close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
         `;
-        Alert_Error_Profile.hidden = false;        
+        Alert_Error_Profile.hidden = false;
         const btn_DialogClose = document.getElementById("Btn-close");
 
         btn_DialogClose.addEventListener('click', () => {
         body.style.filter = "blur(0px)";
         dialog_profile.close();
-        });    
+        });
+        setTimeout(() => {
+            Alert_Error_Profile.hidden = true;
+        }, 3000)
     }
 }
-
 function RellenarProfile(Profile){
-    btn_Profile.title = `Perfil de ${Profile.nameAdmin} ${Profile.lastnameAdmin}`;
+    btn_Profile.title = `Perfil de ${Profile.Nombre_Administrador} ${Profile.Apellido_Administrador}`;
 
-    dialog_profile.innerHTML = 
+    dialog_profile.innerHTML = '';
     dialog_profile.innerHTML += `
        <main>
              <article>
                 <header class="Div-info">
                     <p>Nombre:</p>
-                    <h1>${Profile.nameAdmin} ${Profile.lastnameAdmin}</h1>
+                    <h1>${Profile.Nombre_Administrador} ${Profile.Apellido_Administrador}</h1>
                 </header>
                 <div class="Div-info">
                     <p>Proyecto Asignado:</p>
@@ -48,16 +50,16 @@ function RellenarProfile(Profile){
                 </div>
                 <div class="Div-info">
                     <p>Correo Institucional:</p>
-                    <h3>${Profile.usersAdmin}</h3>
+                    <h3>${Profile.Correo_Electronico}</h3>
                 </div>
                 <div class="Div-info">
                     <p>Contraseña:</p>
-                    <h3>${Profile.passwordAdmin}</h3>
+                    <h3>${Profile.Contrasenia}</h3>
                 </div>
             </article>
             <article class="Article2">
                 <div class="Div-image-dialog">
-                    <img src="${Profile.avatarAdmin}" alt="" class="Profile-image">
+                    <img src="${Profile.Foto_Perfil}" alt="" class="Profile-image">
                     <div class="Div-rol">
                         <p>Rol:</p>
                         <h3>Administrador</h3>

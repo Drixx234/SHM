@@ -3,10 +3,6 @@ main{
     padding-top: 10px;
 }
 
-.Alerts{
-    font-size: 200%;
-}
-
 .home{
     display: flex;
     flex-direction: row;
@@ -110,14 +106,12 @@ main{
     border-radius: 30px;
     padding: 20px;
 }
-
 .hr_divisor{
     border: 1px solid rgb(95, 95, 95);
     width: 100%;
     margin-top: 0px;
     margin-bottom: 0px;
 }
-
 .Card-Student{
     width: 100%;
     display: flex;
@@ -156,7 +150,6 @@ main{
 .Card-Student p{
     display: none;
 }
-
 .Card-Student button{
     background-color: transparent;
     border-style: none;
@@ -165,12 +158,10 @@ main{
     justify-content: center;
     margin-left: 60px;
 }
-
 .Card-Student svg{
     width: 60px;
     height: 60px;
 }
-
 .btn-More{
     background-color: transparent;
     border-style: none;
@@ -252,7 +243,6 @@ main{
 .Menu_Proyectos::-webkit-scrollbar{
     width: 6px;
 }
-
 .Menu_Proyectos::-webkit-scrollbar-track{
     background: transparent;
     box-shadow: inset 0 0 5px #6b757c;
@@ -280,22 +270,24 @@ main{
     border-style: none;
     font-size: 15px;
     margin-top: 10px;
-    color: #8F97AD;
 }
 .btn_Actualizar_Proyecto{
-    background-color: #804d1e;
+    background-color: #db8f1d;
+    color: #8a5300;
+}
+.btn_Actualizar_Proyecto_hover{
+    background-color: #e78d04;
+    color: #4b330e;
 }
 .btn_Horas_Sociales{
-    background-color: #223b4e;
+    background-color: #8db2cf;
+    color: #233568;
 }
 
 @media (width < 1710px) {
     main{
         padding: 70px;
         padding-top: 10px;
-    }
-    .Alerts{
-        font-size: 150%;
     }
     .Tabla_Estudiantes{
         gap: 25px;
@@ -344,9 +336,6 @@ main{
     main{
         padding: 60px;
         padding-top: 10px;
-    }
-    .Alerts{
-        font-size: 130%;
     }
     .home svg{
         width: 20px;
@@ -397,9 +386,6 @@ main{
     main{
         padding: 50px;
         padding-top: 10px;
-    }
-    .Alerts{
-        font-size: 110%;
     }
     .Tabla_Estudiantes{
         gap: 15px;
@@ -456,9 +442,6 @@ main{
         padding: 40px;
         padding-top: 10px;
     }
-    .Alerts{
-        font-size: 90%;
-    }
     .Busqueda-center{
         gap: 10px;
     }
@@ -512,9 +495,6 @@ main{
         padding: 30px;
         padding-top: 20px;
     }
-    .Alerts{
-        font-size: 70%;
-    }
     .Tabla_Estudiantes{
         gap: 10px;
         padding: 12px;
@@ -566,9 +546,6 @@ main{
 }
 
 @media (width < 790px) {
-    .Alerts{
-        font-size: 55%;
-    }
     .Tabla_Estudiantes{
         padding: 10px;
     }
@@ -615,9 +592,6 @@ main{
     }
 }
 @media (width < 650px) {
-    .Alerts{
-        font-size: 65%;
-    }
     .home svg{
         width: 15px;
         height: 15px;
@@ -675,9 +649,6 @@ main{
     }
 }
 @media (width < 560px) {
-    .Alerts{
-        font-size: 60%;
-    }
     .Tabla_Estudiantes{
         gap: 10px;
         padding: 8px;
@@ -729,9 +700,6 @@ main{
     }
 }
 @media (width < 470px) {
-    .Alerts{
-        font-size: 55%;
-    }
     .Tabla_Estudiantes{
         padding-top: 15px;
     }

@@ -40,6 +40,7 @@ const P_Dialog_Proyecto = document.getElementById("P_Dialog_Proyecto");
 const Input_Proyecto_Asignado = document.getElementById("btn_Proyecto");
 const Proyectos_Menu_Dialog = document.getElementById("dropdown-Proyecto");
 const img_Profile_Estudiante = document.getElementById("img_Profile_Estudiante");
+const btn_Actualizar_Proyecto = document.getElementById("btn_Actualizar_Proyecto");
 
 async function Cargar_Tabla(n) {
     try{
@@ -120,33 +121,53 @@ function Rellenar_Tabla(Estudiantes, n){
 }
 async function Buscar_Servicio_Vigente(Codigo) {
     try{
-        const res = await fetch(`${API_URL_ServiciosVigentes}/Codigo_Estudiante=${Codigo}`);
-        const data = await res.json();
-        return(data)
+        const res = await fetch(`${API_URL_ServiciosVigentes}?Codigo_Estudiante=${Codigo}`);
+        if(!(res.ok)){
+            alert("Error al cargar los datos");
+        }else{
+            const data = await res.json();
+            return(data[0]);
+        }
     } catch(err) {
         console.error('Error al caragar datos', err);
+        return null;
     }
 }
-async function Cargar_Proyectos(Comision) {
+async function Cargar_Proyectos(Servicio) {
     try{
-        const res = await fetch(API_URL_Proyectos);
+        const res = await fetch(`${API_URL_Proyectos}?Vigencia_Proyecto=1`);
         const data = await res.json();
-        Rellenar_Menu_Proyectos(data, Comision);
+        Rellenar_Menu_Proyectos(data, Servicio);
     } catch(err) {
         console.error('Error al cargar datos' , err);
     }
 }
-function Rellenar_Menu_Proyectos(Proyectos, Proyecto_Estudiante){
+async function Rellenar_Menu_Proyectos(Proyectos, Proyecto_Vigente){
     Proyectos_Menu_Dialog.innerHTML = '';
-    
-    Proyectos.forEach(Proyecto => {
-        if(Proyecto.Nombre_Proyecto == Proyecto_Estudiante){
-            Input_Proyecto_Asignado.textContent = `${Proyecto.Nombre_Proyecto}`
+
+    if(Proyecto_Vigente != null){
+        Proyectos.forEach(Proyecto => {
+        if(Proyecto.Nombre_Proyecto == Proyecto_Vigente){
+            Input_Proyecto_Asignado.textContent = `${Proyecto.Nombre_Proyecto}`;
+            Input_Proyecto_Asignado.dataset.id = `${Proyecto.id}`;
         }
         Proyectos_Menu_Dialog.innerHTML += `
-        <li><button class="Item_Especialidades"><p>${Proyecto.id}</p><h4>${Proyecto.Nombre_Proyecto}</h4></button></li>
+        <button type="button" data-id="${Proyecto.id}" onClick="Seleccionar_Proyecto('${Proyecto.id}', '${Proyecto.Nombre_Proyecto}')" class="Item_Especialidades"><h4>${Proyecto.Nombre_Proyecto}</h4></button>
         `;
-    });
+    });    
+    } else {
+        Input_Proyecto_Asignado.textContent = `No hay Proyecto Asignado`;
+        Proyectos.forEach(Proyecto => {
+            Proyectos_Menu_Dialog.innerHTML += `
+            <button type="button" data-id="${Proyecto.id}" onClick="Seleccionar_Proyecto('${Proyecto.id}', '${Proyecto.Nombre_Proyecto}')" class="Item_Especialidades"><h4>${Proyecto.Nombre_Proyecto}</h4></button>
+            `;
+        });
+    }    
+}
+function Seleccionar_Proyecto(id, Proyecto){
+        Input_Proyecto_Asignado.textContent = `${Proyecto}`;
+        Input_Proyecto_Asignado.dataset.id = `${id}`;
+        btn_Actualizar_Proyecto.disabled = false;
 }
 async function Dialog_Estudiante(id) {
     try{
@@ -158,7 +179,7 @@ async function Dialog_Estudiante(id) {
         Alert_Error_Dialog.hidden = false;
     }
 }
-function Rellenar_Dialog(Estudiante){
+async function Rellenar_Dialog(Estudiante){
     Input_Dialog_Codigo.value = `${Estudiante.Codigo_Estudiante}`;
     Input_NIE_Estudiante.value = `${Estudiante.NIE_Estudiante}`;
     Input_Dialog_Nombre.value = `${Estudiante.Nombre_Estudiante}`;
@@ -171,37 +192,67 @@ function Rellenar_Dialog(Estudiante){
     Input_Dialog_Seccion.value = `${Estudiante.Seccion_Academica_Estudiante}`;
     img_Profile_Estudiante.innerHTML = `<img src="${Estudiante.Foto_Estudiante}" alt="Foto de Perfil de ${Estudiante.Nombre_Estudiante} ${Estudiante.Apellido_Estudiante}">`;
 
-    const Servicio_Vigente = Buscar_Servicio_Vigente(Estudiante.Codigo_Estudiante);
-    
-    if(!(Servicio_Vigente.Nombre_Proyecto)){
-        Input_Proyecto_Asignado.textContent = 'No hay proyecto asignado';
-    }else{
-        Input_Proyecto_Asignado.textContent = `${Servicio_Vigente.Nombre_Proyecto}`;
+    let Servicio = await Buscar_Servicio_Vigente(`${Estudiante.Codigo_Estudiante}`);
+    if(Servicio && Servicio.Nombre_Proyecto){
+        Cargar_Proyectos(`${Servicio.Nombre_Proyecto}`);
+    } else {
+        Cargar_Proyectos(null);
     }
-    Cargar_Proyectos(Servicio_Vigente.Nombre_Proyecto);
 
     body.style.filter = "blur(6px)";
     Dialog_Profile_Estudiante.showModal();
 }
-async function Agregar_Servicio_Vigente(Codigo, Proyecto) {
-    
-}
-async function Eliminar_Servicio_Vigente(id) {
-    await fetch(`${API_URL_ServiciosVigentes}/${id}`, )
-}
-function Cambiar_Proyecto(Codigo, Nombre, Proyecto){
-    const confirmacion = confirm(`Seguro de cambiar el Proyecto de ${Nombre}`);
+async function Agregar_Servicio_Vigente(Codigo, Proyecto) {    
+    if((Proyecto) && (Codigo)){
 
-    if(confirmacion){
-        const Servicio_Vigente = Buscar_Servicio_Vigente(Codigo);
-
-        if((Servicio_Vigente.Nombre_Proyecto)){
-            Eliminar_Servicio_Vigente(Servicio_Vigente.id);
+        const Nuevo_Servicio = {
+            "Nombre_Proyecto": Proyecto,
+            "Codigo_Estudiante": Codigo
         }
 
-        Agregar_Servicio_Vigente();
+        try{
+            const respuesta = await fetch(API_URL_ServiciosVigentes, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Nuevo_Servicio)
+            });
+            if(respuesta.ok){
+                alert("El registro fue agregado correctamente");
+                body.style.filter = "blur(0px)";
+                Dialog_Profile_Estudiante.close();
+            }
+            else{
+                const error = await respuesta.text();
+                alert("Hubo un error al agregar" + error);    
+            }
+        } catch(err) {
+            console.error('Error al cargar datos' , err);
+        }
     }
 }
+async function Eliminar_Servicio_Vigente(id) {
+    try{
+        await fetch(`${API_URL_ServiciosVigentes}/${id}`, { method: 'DELETE' });
+    } catch(err) {
+        console.error('Error al eliminar' , err);
+    }
+}
+btn_Actualizar_Proyecto.addEventListener('click', async () => {
+    if(!(Input_Proyecto_Asignado.textContent == 'No hay proyecto asignado')){
+        let Codigo = Input_Dialog_Codigo.value;
+        let nombre = Input_Dialog_Nombre.value;
+        let Proyecto = Input_Proyecto_Asignado.textContent;
+        const confirmacion = confirm(`Seguro de cambiar el Proyecto de ${nombre} a ${Proyecto}`);
+
+        if(confirmacion){
+            const Servicio_Vigente = await Buscar_Servicio_Vigente(Codigo);
+            if(Servicio_Vigente && Servicio_Vigente.id){
+                Eliminar_Servicio_Vigente(`${Servicio_Vigente.id}`);
+            }
+            Agregar_Servicio_Vigente(Codigo, Proyecto);
+        }
+    }
+});
 
 btn_Arqui.addEventListener('click', () =>{
     CargarTable = 1;
@@ -373,5 +424,6 @@ function CargaInicialEstudiantes(){
     Cargar_Tabla(CargarTable);
     Alert_Error_Tabla.hidden = true;
     Alert_Error_Dialog.hidden = true;
+    btn_Actualizar_Proyecto.disabled = true;
 }
 window.addEventListener("DOMContentLoaded", CargaInicialEstudiantes);
