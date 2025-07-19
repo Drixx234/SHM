@@ -18,6 +18,10 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  z-index: 1001;
+  position: fixed;
+  top: 30px;
+  left: 30px;
 }
 
 .button-36:hover {

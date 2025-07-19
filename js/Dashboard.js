@@ -12,8 +12,10 @@ async function CargarNoti() {
         RellenarCuadro(data);
     } catch(err){
         console.error('Error al cargar datos' , err);
-        noti_Body.innerHTML = '<h3>Hubieron problemas para cargar las notificaciones</h3>'
         Alert_Error_Notis.hidden = false;
+        setTimeout(() => {
+            Alert_Error_Notis.hidden = true;
+        }, 3000)
     }
 
 }

@@ -50,6 +50,9 @@ async function Cargar_Tabla(n) {
     } catch(err) {
         console.error('Error al cargar datos' , err);
         Alert_Error_Tabla.hidden = false;
+        setTimeout(() => {
+            Alert_Error_Tabla.hidden = true;
+        }, 3000)
     } 
 }
 function Rellenar_Tabla(Estudiantes, n){
@@ -177,6 +180,9 @@ async function Dialog_Estudiante(id) {
     } catch(err) {
         console.error('Error al cargar datos' , err);
         Alert_Error_Dialog.hidden = false;
+        setTimeout(() => {
+            Alert_Error_Dialog.hidden = true;
+        }, 3000)
     }
 }
 async function Rellenar_Dialog(Estudiante){
