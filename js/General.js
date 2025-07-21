@@ -34,6 +34,14 @@ async function CargarProfile(id) {
     }
 }
 function RellenarProfile(Profile){
+    
+    let Proyecto_Asignado;
+    if(Profile.Proyecto_Asignado){
+        Proyecto_Asignado = Profile.Proyecto_Asignado;
+    }else{
+        Proyecto_Asignado = 'No hay Proyecto Asignado';
+    }
+
     btn_Profile.title = `Perfil de ${Profile.Nombre_Administrador} ${Profile.Apellido_Administrador}`;
 
     dialog_profile.innerHTML = '';
@@ -46,7 +54,7 @@ function RellenarProfile(Profile){
                 </header>
                 <div class="Div-info">
                     <p>Proyecto Asignado:</p>
-                    <h3>No hay proyecto Asignado</h3>
+                    <h3>${Proyecto_Asignado}</h3>
                 </div>
                 <div class="Div-info">
                     <p>Correo Institucional:</p>
