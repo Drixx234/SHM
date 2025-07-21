@@ -21,17 +21,19 @@ body {
 .institution-logo {
     width: 120px;
     margin-bottom: 20px;
+
 }
 
 .login-container {
-    background-color: white;
+    background-color: #CDD4E8;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
     padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
-    z-index: 1;
 }
 
 h1 {
@@ -89,4 +91,11 @@ input {
     color: #95a5a6;
     font-size: 0.75rem;
     font-style: italic;
+}
+
+.Alerts{
+    z-index: 1001;
+    position: fixed;
+    top: 10px;
+    right: 10px;
 }

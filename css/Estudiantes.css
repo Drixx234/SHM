@@ -234,6 +234,29 @@ main{
     padding-right: 8px;
     text-align: justify;
 }
+.Alert_Dialog_Student_Confirm_btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 3%;
+    gap: 3%;
+}
+.Alert_Dialog_Student_Confirm_btns button{
+    border-style: none;
+    width: 100%;
+    padding: 2px;
+    color: beige;
+    border-radius: 40px;
+    transition: 0.3s;
+}
+.Alert_Dialog_Student_Confirm_btns button:hover{
+    transition: 0.3s;
+    box-shadow: 3px 4px 10px #202020;
+}
+.Alert_Dialog_Student_Confirm_btns svg{
+    width: 5%;
+    height: 5%;
+}
 .Menu_Proyectos{
     width: 100%;
     background-color: #565E64;

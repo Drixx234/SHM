@@ -18,6 +18,11 @@ const Input_Name = document.getElementById("Students-Square");
 
 const Alert_Error_Tabla = document.getElementById("Alert_Error_Tabla");
 const Alert_Error_Dialog = document.getElementById("Alert_Error_Dialog");
+const Alert_Error_Cupos_Demasiados = document.getElementById("Alert_Error_Cupos_Demasiados");
+const Alert_Dialog_Student_Confirm = document.getElementById("Alert_Dialog_Student_Confirm");
+const Alert_Dialog_Profile_Project_Confirm_Span_Nombre = document.getElementById("Alert_Dialog_Student_Confirm_Span_Nombre");
+const Alert_Dialog_Student_Confirm_Span_Proyecto = document.getElementById("Alert_Dialog_Student_Confirm_Span_Proyecto");
+const Alert_Dialog_Student_Check = document.getElementById("Alert_Dialog_Student_Check");
 
 const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".", ",", "<", ">", ":", ";", "(", ")", "|", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
@@ -136,6 +141,16 @@ async function Buscar_Servicio_Vigente(Codigo) {
         return null;
     }
 }
+async function Buscar_Servicios(Proyecto) {
+    try{
+        const res = await fetch(`${API_URL_ServiciosVigentes}?Nombre_Proyecto=${Proyecto}`)
+        const data = await res.json();
+        return(data);
+    }catch(err){
+        console.error('Error al cargar datos' , err);
+        return(null);
+    }
+}
 async function Cargar_Proyectos(Servicio) {
     try{
         const res = await fetch(`${API_URL_Proyectos}?Vigencia_Proyecto=1`);
@@ -155,22 +170,32 @@ async function Rellenar_Menu_Proyectos(Proyectos, Proyecto_Vigente){
             Input_Proyecto_Asignado.dataset.id = `${Proyecto.id}`;
         }
         Proyectos_Menu_Dialog.innerHTML += `
-        <button type="button" data-id="${Proyecto.id}" onClick="Seleccionar_Proyecto('${Proyecto.id}', '${Proyecto.Nombre_Proyecto}')" class="Item_Especialidades"><h4>${Proyecto.Nombre_Proyecto}</h4></button>
+        <button type="button" data-id="${Proyecto.id}" onClick="Seleccionar_Proyecto('${Proyecto.id}', '${Proyecto.Nombre_Proyecto}', ${Proyecto.Cupos_Proyectos})" class="Item_Especialidades"><h4>${Proyecto.Nombre_Proyecto}</h4></button>
         `;
     });    
     } else {
         Input_Proyecto_Asignado.textContent = `No hay Proyecto Asignado`;
         Proyectos.forEach(Proyecto => {
             Proyectos_Menu_Dialog.innerHTML += `
-            <button type="button" data-id="${Proyecto.id}" onClick="Seleccionar_Proyecto('${Proyecto.id}', '${Proyecto.Nombre_Proyecto}')" class="Item_Especialidades"><h4>${Proyecto.Nombre_Proyecto}</h4></button>
+            <button type="button" data-id="${Proyecto.id}" onClick="Seleccionar_Proyecto('${Proyecto.id}', '${Proyecto.Nombre_Proyecto}', ${Proyecto.Cupos_Proyectos})" class="Item_Especialidades"><h4>${Proyecto.Nombre_Proyecto}</h4></button>
             `;
         });
     }    
 }
-function Seleccionar_Proyecto(id, Proyecto){
+async function Seleccionar_Proyecto(id, Proyecto, cupos){
+    let Servicios = await Buscar_Servicios(Proyecto);
+    let Cupos_Usados = Servicios.length;
+    if(Cupos_Usados < cupos){
         Input_Proyecto_Asignado.textContent = `${Proyecto}`;
         Input_Proyecto_Asignado.dataset.id = `${id}`;
         btn_Actualizar_Proyecto.disabled = false;
+    }else{
+        Alert_Error_Cupos_Demasiados.hidden = false;
+        setTimeout(() => {
+            Alert_Error_Cupos_Demasiados.hidden = true;
+        }, 3000)
+        return;
+    }
 }
 async function Dialog_Estudiante(id) {
     try{
@@ -246,19 +271,18 @@ async function Eliminar_Servicio_Vigente(id) {
 btn_Actualizar_Proyecto.addEventListener('click', async () => {
     if(!(Input_Proyecto_Asignado.textContent == 'No hay proyecto asignado')){
         let Codigo = Input_Dialog_Codigo.value;
-        let nombre = Input_Dialog_Nombre.value;
+        let nombre = Input_Dialog_Nombre.value + Input_Dialog_Apellido.value;
         let Proyecto = Input_Proyecto_Asignado.textContent;
-        const confirmacion = confirm(`Seguro de cambiar el Proyecto de ${nombre} a ${Proyecto}`);
-
-        if(confirmacion){
-            const Servicio_Vigente = await Buscar_Servicio_Vigente(Codigo);
-            if(Servicio_Vigente && Servicio_Vigente.id){
-                Eliminar_Servicio_Vigente(`${Servicio_Vigente.id}`);
-            }
-            Agregar_Servicio_Vigente(Codigo, Proyecto);
-        }
+        Alert_Dialog_Profile_Project_Confirm_Span_Nombre.textContent = nombre;
+        Alert_Dialog_Student_Confirm_Span_Proyecto.textContent = Proyecto
+        Alert_Dialog_Student_Confirm.hidden = false;
+        Input_Proyecto_Asignado.disabled = true;
+        btn_Actualizar_Proyecto.disabled = true;
+        btn_Cancelar_Dialog.disabled = true;
+        btn
     }
 });
+// Alert_Dialog_Student_Check.addEventListener()
 
 btn_Arqui.addEventListener('click', () =>{
     CargarTable = 1;
@@ -431,5 +455,8 @@ function CargaInicialEstudiantes(){
     Alert_Error_Tabla.hidden = true;
     Alert_Error_Dialog.hidden = true;
     btn_Actualizar_Proyecto.disabled = true;
+    Alert_Error_Cupos_Demasiados.hidden = true;
+    Alert_Dialog_Student_Confirm.hidden = true;
+    Alert_Dialog_Student_Check.hidden = true;
 }
 window.addEventListener("DOMContentLoaded", CargaInicialEstudiantes);

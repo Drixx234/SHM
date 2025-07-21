@@ -77,70 +77,90 @@
         </div>
 
         <dialog id="Dialog_Profile_Estudiante" class="Dialog_Profile_Estudiante">
-        <div class="dialogForm_Estudiante">
-            <button class="Btn-Close" id="Btn-close-Profile-Estudiante"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
-            <div style="border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
-                <!--En cada Input se insertara la informacion-->
-                <form id="Form_Estudiante" class="Form_Estudiante">
-                    <div>
-                        <label for="Codigo_Estudiante">Codigo:
-                            <input type="text" id="Codigo_Estudiante" readonly>
-                        </label>
-                        <label for="NIE_Estudiante">NIE:
-                            <input type="text" id="NIE_Estudiante" readonly>
-                        </label>
+            
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <div style="z-index: 1001; position: fixed; top: 10px;" class="alert alert-danger alert-dismissible fade show Alerts" role="alert" id="Alert_Error_Cupos_Demasiados">
+                    <strong>¡CUPOS LLENOS!</strong> <br> Este proyecto ya tiene todos los cupos llenos. Selecciona otro o cambia los cupos limites del proyecto
+                </div>
+                <div style="z-index: 1001; position: fixed; top: 10px" class="alert alert-success alert-dismissible fade show Alerts" role="alert" id="Alert_Dialog_Student_Check">
+                    <strong>¡CUPOS LLENOS!</strong> <br> Este proyecto ya tiene todos los cupos llenos. Selecciona otro o cambia los cupos limites del proyecto
+                </div>
+                <div style="z-index: 1001; position: fixed; top: 10px" class="alert alert-success alert-dismissible fade show Alerts" role="alert" id="Alert_Dialog_Student_Confirm">
+                    <strong>Confirmar</strong> <br> ¿Seguro que quieres agregar a <span id="Alert_Dialog_Student_Confirm_Span_Nombre"></span> al proyecto de <span id="Alert_Dialog_Student_Confirm_Span_Proyecto"></span>?
+                    <div class="Alert_Dialog_Student_Confirm_btns">
+                        <button type="button" id="Alert_Dialog_Student_Confirm_Yes" style="background-color: darkgreen;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></button>
+                        <button type="button" id="Alert_Dialog_Student_Confirm_No" style="background-color: brown;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-off-icon lucide-circle-off"><path d="m2 2 20 20"/><path d="M8.35 2.69A10 10 0 0 1 21.3 15.65"/><path d="M19.08 19.08A10 10 0 1 1 4.92 4.92"/></svg></button>
                     </div>
-                    <div>
-                        <label for="Nombre_Estudiante">Nombre:
-                            <input type="text" id="Nombre_Estudiante" readonly>
-                        </label>
-                        <label for="Apellido_Estudiante">Apellido:
-                            <input type="text" id="Apellido_Estudiante" readonly>
-                        </label>
-                    </div>
-                    <label for="Correo_Estudiante">Correo Institucional:
-                        <input type="text" id="Correo_Estudiante" readonly>
-                    </label>
-                    <div>
-                        <label for="Especialidad_Estudiante">Especialidad:
-                            <input type="text" id="Especialidad_Estudiante" readonly>
-                        </label>
-                        <label for="GrupoTecnico_Estudiante">Grupo Tecnico:
-                            <input type="text" id="GrupoTecnico_Estudiante" readonly>
-                        </label>
-                    </div>
-                    <label for="Orientador_Estudiante">Orientador Tecnico:
-                        <input type="text" id="Orientador_Estudiante" readonly>
-                    </label>
-                    <div>
-                        <label for="AñoAcademico_Estudiante">Año Academico:
-                            <input type="text" id="AñoAcademico_Estudiante" readonly>
-                        </label>
-                        <label for="Seccion_Estudiante">Seccion Academica:
-                            <input type="text" id="Seccion_Estudiante" readonly>
-                        </label>
-                    </div>
-                    <label for="btn_Proyecto">Proyecto Asignado:
-                        <div class="dropdown-center">
-                            <button class="btn btn-secondary dropdown-toggle btn_Proyecto" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btn_Proyecto"></button>
-                            <ul class="dropdown-menu Menu_Proyectos" id="dropdown-Proyecto">
-                            </ul>
+                </div>
+            </div>
+                
+            <div class="dialogForm_Estudiante">
+                <button class="Btn-Close" id="Btn-close-Profile-Estudiante"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
+
+                
+
+                <div style="border-top-left-radius: 50px; border-bottom-left-radius: 50px;">
+                    <!--En cada Input se insertara la informacion-->                
+                    <form id="Form_Estudiante" class="Form_Estudiante">
+                        <div>
+                            <label for="Codigo_Estudiante">Codigo:
+                                <input type="text" id="Codigo_Estudiante" readonly>
+                            </label>
+                            <label for="NIE_Estudiante">NIE:
+                                <input type="text" id="NIE_Estudiante" readonly>
+                            </label>
                         </div>
-                    </label>
-                </form>
+                        <div>
+                            <label for="Nombre_Estudiante">Nombre:
+                                <input type="text" id="Nombre_Estudiante" readonly>
+                            </label>
+                            <label for="Apellido_Estudiante">Apellido:
+                                <input type="text" id="Apellido_Estudiante" readonly>
+                            </label>
+                        </div>
+                        <label for="Correo_Estudiante">Correo Institucional:
+                            <input type="text" id="Correo_Estudiante" readonly>
+                        </label>
+                        <div>
+                            <label for="Especialidad_Estudiante">Especialidad:
+                                <input type="text" id="Especialidad_Estudiante" readonly>
+                            </label>
+                            <label for="GrupoTecnico_Estudiante">Grupo Tecnico:
+                                <input type="text" id="GrupoTecnico_Estudiante" readonly>
+                            </label>
+                        </div>
+                        <label for="Orientador_Estudiante">Orientador Tecnico:
+                            <input type="text" id="Orientador_Estudiante" readonly>
+                        </label>
+                        <div>
+                            <label for="AñoAcademico_Estudiante">Año Academico:
+                                <input type="text" id="AñoAcademico_Estudiante" readonly>
+                            </label>
+                            <label for="Seccion_Estudiante">Seccion Academica:
+                                <input type="text" id="Seccion_Estudiante" readonly>
+                            </label>
+                        </div>
+                        <label for="btn_Proyecto">Proyecto Asignado:
+                            <div class="dropdown-center">
+                                <button class="btn btn-secondary dropdown-toggle btn_Proyecto" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btn_Proyecto"></button>
+                                <ul class="dropdown-menu Menu_Proyectos" id="dropdown-Proyecto">
+                                </ul>
+                            </div>
+                        </label>
+                    </form>
+                </div>
+                <div style="border-top-right-radius: 50px; border-bottom-right-radius: 50px;">
+                    <article class="Article_Profile"  id="Article_Profile">
+                        <div>
+                            <button class="btn_Horas_Sociales" id="btn_Horas_Sociales">Horas Sociales</button>
+                            <button class="btn_Actualizar_Proyecto" id="btn_Actualizar_Proyecto">Actualizar</button>
+                        </div>
+                        <!--Aqui se insertara la imagen-->
+                        <div style="display: flex; align-items: center; justify-content: center;" id="img_Profile_Estudiante">                        
+                        </div>
+                    </article>
+                </div>
             </div>
-            <div style="border-top-right-radius: 50px; border-bottom-right-radius: 50px;">
-                <article class="Article_Profile"  id="Article_Profile">
-                    <div>
-                        <button class="btn_Horas_Sociales" id="btn_Horas_Sociales">Horas Sociales</button>
-                        <button class="btn_Actualizar_Proyecto" id="btn_Actualizar_Proyecto">Actualizar</button>
-                    </div>
-                    <!--Aqui se insertara la imagen-->
-                    <div style="display: flex; align-items: center; justify-content: center;" id="img_Profile_Estudiante">                        
-                    </div>
-                </article>
-            </div>
-        </div>
         </dialog>
         
         <div class="Principal">

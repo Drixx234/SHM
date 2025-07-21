@@ -10,9 +10,9 @@ const NavOptions = document.getElementById("Navbar_Options");
 
 const Alert_Error_Profile = document.getElementById('Alert_Error_Profile');
 
-async function CargarProfile() {
+async function CargarProfile(id) {
     try{
-        const res = await fetch(`${APIADMIN_URL}/2`);
+        const res = await fetch(`${APIADMIN_URL}/${id}`);
         const data = await res.json();
         RellenarProfile(data);
     } catch(err){
@@ -65,7 +65,7 @@ function RellenarProfile(Profile){
                         <h3>Administrador</h3>
                     </div>
                 </div>
-                <button>Cerrar Sesion</button>
+                <button onClick="Logout()">Cerrar Sesion</button>
             </article>
             <button class="Btn-Close" id="Btn-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></button>
         </main>
@@ -78,29 +78,37 @@ function RellenarProfile(Profile){
     dialog_profile.close();
 });
 }
-
 btn_Profile.addEventListener('click', () => {
     body.style.filter = "blur(6px)";
     dialog_profile.showModal();  
 })
-
 dialog_profile.addEventListener('cancel', (e) => {
     body.style.filter = "blur(0px)";
     dialog_profile.close();
 });
-
 function ocultarBotones(botones) {
     for (let i = 0; i < botones.length; i++) {
         botones[i].hidden = true;
     }
 }
-
 function mostrarBotones(botones) {
     for (let i = 0; i < botones.length; i++) {
         botones[i].hidden = false;
     }
 }
-
+function Guardar_Admin() {
+    const idAdmin = localStorage.getItem("id_admin");
+    
+    if (idAdmin) {
+        CargarProfile(idAdmin);
+    } else {
+        window.location.href = "Index.html";
+    }
+}
+function Logout() {
+    localStorage.removeItem("id_admin");
+    window.location.href = "Index.html";
+}
 function VisibilidadBotones(){
         if(window.innerWidth <= 980){
         ocultarBotones(btnActive);
@@ -115,12 +123,11 @@ function VisibilidadBotones(){
         NavOptions.hidden = false;
     }
 }
-
 function CargaInicialGeneral(){
-    CargarProfile();
+    Guardar_Admin();
     VisibilidadBotones();
     Alert_Error_Profile.hidden = true;
 }
 
-window.addEventListener("resize", VisibilidadBotones);
 window.addEventListener("DOMContentLoaded", CargaInicialGeneral);
+window.addEventListener("resize", VisibilidadBotones);
