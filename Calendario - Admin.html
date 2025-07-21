@@ -8,74 +8,102 @@
     <link rel="stylesheet" href="css/General.css">
 </head>
 <body>
-    <a href="Dashboard - Admin.html"><button class="button-36" role="button">Inicio</button></a>
-    
+<a href="Dashboard - Admin.html">
+    <button class="button-36" role="button">Inicio</button>
+</a>
     <div class="container">
-        <header>
-            <h1>Mi Calendario</h1>
-            <div class="clock" id="real-time-clock"></div>
-        </header>
- 
-        <div class="calendar-nav">
-            <div class="month-year" id="current-month-year"></div>
-            <div class="nav-buttons">
-                <button id="prev-month">‹</button>
-                <button id="today">Hoy</button>
-                <button id="next-month">›</button>
-            </div>
-        </div>
- 
-        <div class="calendar-grid" id="calendar-days-header">
-            <div class="day-header">Dom</div>
-            <div class="day-header">Lun</div>
-            <div class="day-header">Mar</div>
-            <div class="day-header">Mié</div>
-            <div class="day-header">Jue</div>
-            <div class="day-header">Vie</div>
-            <div class="day-header">Sáb</div>
-        </div>
- 
-        <div class="calendar-grid" id="calendar-days"></div>
- 
-        <!-- Modal para eventos -->
-        <div class="modal" id="event-modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h2 id="modal-title">Nuevo Evento</h2>
-                <form id="event-form">
-                    <input type="hidden" id="event-id">
-                    <div class="form-group">
-                        <label for="event-title">Título</label>
-                        <input type="text" id="event-title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="event-date">Fecha</label>
-                        <input type="date" id="event-date" required>
-                    </div>
-                    <div class="form-group time-group">
-                        <div>
-                            <label for="start-time">Hora inicio</label>
-                            <input type="time" id="start-time" required>
-                        </div>
-                        <div>
-                            <label for="end-time">Hora fin</label>
-                            <input type="time" id="end-time" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="event-description">Descripción</label>
-                        <textarea id="event-description" rows="6" maxlength="1000"></textarea>
-                        <div class="char-counter"><span id="char-count">0</span>/1000 caracteres</div>
-                    </div>
-                    <div class="form-buttons">
-                        <button type="submit" class="save-btn">Guardar</button>
-                        <button type="button" class="delete-btn" id="delete-btn">Eliminar</button>
-                        <button type="button" class="cancel-btn">Cancelar</button>
-                    </div>
-                </form>
-            </div>
+
+    <!--Encabezado con título del calendario y reloj en tiempo real-->
+    <header>
+        <h1>Mi Calendario</h1>
+        <div class="clock" id="real-time-clock"></div>
+    </header>
+
+    <!--Sección de navegación del calendario-->
+    <div class="calendar-nav">
+        <!--muestra el mes y año actual-->
+        <div class="month-year" id="current-month-year"></div>
+
+        <!-- Botones para navegar entre meses o volver a la fecha actual -->
+        <div class="nav-buttons">
+            <button id="prev-month">‹</button>  <!--Mes en el que estabamos-->
+            <button id="today">Hoy</button>     <!--Volver al mes en el que estamos-->
+            <button id="next-month">›</button>  <!--Mes en el que estaremos-->
         </div>
     </div>
+
+    <!--parte de arriba del calendario con los días de la semana -->
+    <div class="calendar-grid" id="calendar-days-header">
+        <div class="day-header">Dom</div>
+        <div class="day-header">Lun</div>
+        <div class="day-header">Mar</div>
+        <div class="day-header">Mié</div>
+        <div class="day-header">Jue</div>
+        <div class="day-header">Vie</div>
+        <div class="day-header">Sáb</div>
+    </div>
+
+    <!--Aquí se generarán los días del mes-->
+    <div class="calendar-grid" id="calendar-days"></div>
+
+    <!--Modal emergente para agregar o editar Actividades-->
+    <div class="modal" id="event-modal">
+        <div class="modal-content">
+
+            <!--Botón para cerrar el modal-->
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Nuevo Evento</h2>
+
+            <!--formulario para poner los datos de la actividad-->
+            <form id="event-form">
+
+                <!--guarda el ID de la activdad (usado en edicion papa)-->
+                <input type="hidden" id="event-id">
+
+                <!--Nombre de la actividad-->
+                <div class="form-group">
+                    <label for="event-title">Título</label>
+                    <input type="text" id="event-title" required>
+                </div>
+
+                <!--fecha de la acividad-->
+                <div class="form-group">
+                    <label for="event-date">Fecha</label>
+                    <input type="date" id="event-date" required>
+                </div>
+
+                <!--hora de inicio y fin de la actividad-->
+                <div class="form-group time-group">
+                    <div>
+                        <label for="start-time">Hora inicio</label>
+                        <input type="time" id="start-time" required>
+                    </div>
+                    <div>
+                        <label for="end-time">Hora fin</label>
+                        <input type="time" id="end-time" required>
+                    </div>
+                </div>
+
+                <!--descrippcion de evento-->
+                <div class="form-group">
+                    <label for="event-description">Descripción</label>
+                    <textarea id="event-description" rows="6" maxlength="1000"></textarea>
+
+                    <div class="char-counter">
+                        <span id="char-count">0</span>/1000 caracteres
+                    </div>
+                </div>
+                <!--Botones del formulario-->
+                <div class="form-buttons">
+                    <button type="submit" class="save-btn">Guardar</button>
+                    <button type="button" class="delete-btn" id="delete-btn">Eliminar</button>
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
 
     <script src="js/Calendario.js"></script>
 </body>

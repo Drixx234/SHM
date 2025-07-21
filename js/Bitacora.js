@@ -81,72 +81,12 @@ const logData = [
     }
 ];
  
-// Variables de paginación
-let currentPage = 1;
-const recordsPerPage = 4;
- 
-// Elementos del DOM
-const logList = document.getElementById('logList');
-const searchInput = document.getElementById('searchInput');
-const typeFilter = document.getElementById('typeFilter');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const pageInfo = document.getElementById('pageInfo');
- 
-// Formatear fecha y hora
-function formatDateTime(timestamp) {
-    const date = new Date(timestamp);
-    return {
-        date: date.toLocaleDateString('es-ES'),
-        time: date.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
-    };
-}
- 
-// Obtener clase CSS según el tipo de cambio
-function getChangeClass(changeType) {
-    switch(changeType) {
-        case 'aceptacion': return 'change-accepted';
-        case 'rechazo': return 'change-rejected';
-        case 'actividad': return 'change-activity';
-        case 'evento': return 'change-event';
-        default: return '';
-    }
-}
- 
-// Mostrar registros en la lista
-function displayLogs(data, page = 1) {
-    logList.innerHTML = '';
     
-    const startIndex = (page - 1) * recordsPerPage;
-    const endIndex = startIndex + recordsPerPage;
-    const paginatedData = data.slice(startIndex, endIndex);
-    
-    if (paginatedData.length === 0) {
-        logList.innerHTML = '<div class="log-item" style="justify-content: center;">No se encontraron registros</div>';
-    } else {
-        paginatedData.forEach(item => {
-            const { date, time } = formatDateTime(item.timestamp);
-            const changeClass = getChangeClass(item.changeType);
-            
-            const logItem = document.createElement('div');
-            logItem.className = 'log-item';
-            logItem.innerHTML = `
-                <div class="profile-pic">${item.profilePic}</div>
-                <div class="log-details">
-                    <div class="user-name">${item.firstName} ${item.lastName}</div>
-                    <div class="change-details ${changeClass}">${item.changeDetails}</div>
-                    <div class="change-date">${date} a las ${time}</div>
-                </div>
-            `;
-            logList.appendChild(logItem);
-        });
-    }
-    
-    // Actualizar controles de paginación
-    updatePaginationControls(data.length, page);
-}
+//Actualizar controles de paginación
+updatePaginationControls(data.length, page);
+
  
-// Actualizar controles de paginación
+//Actualizar controles de paginación
 function updatePaginationControls(totalRecords, page) {
     const totalPages = Math.ceil(totalRecords / recordsPerPage);
     
@@ -157,7 +97,7 @@ function updatePaginationControls(totalRecords, page) {
     currentPage = page;
 }
  
-// Filtrar datos según los criterios de búsqueda
+//Filtrar datos según los criterios de búsqueda
 function filterData() {
     const searchTerm = searchInput.value.toLowerCase();
     const selectedType = typeFilter.value;
@@ -171,7 +111,7 @@ function filterData() {
     });
 }
  
-// Event listeners
+//Event listeners
 searchInput.addEventListener('input', () => {
     const filteredData = filterData();
     displayLogs(filteredData, 1);
@@ -198,6 +138,5 @@ nextBtn.addEventListener('click', () => {
     }
 });
  
-// Inicialización
+//Inicialización
 displayLogs(logData);
- 

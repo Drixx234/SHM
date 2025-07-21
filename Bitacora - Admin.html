@@ -8,32 +8,43 @@
     <link rel="stylesheet" href="css/Bitacora.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Bitacora de actividades</h1>
-        
-        <div class="filters">
-            <input type="text" id="searchInput" placeholder="Buscar en bitácora...">
-            <select id="typeFilter">
-                <option value="">Todos los tipos</option>
-                <option value="aceptacion">Aceptación en comisión</option>
-                <option value="rechazo">Rechazo de comisión</option>
-                <option value="actividad">Agregar actividad</option>
-                <option value="evento">Agregar evento</option>
-            </select>
-        </div>
-        
-        <div class="log-container">
-            <div class="log-list" id="logList">
-                <!-- Los registros se llenarán con JavaScript -->
-            </div>
-        </div>
-        
-        <div class="pagination">
-            <button id="prevBtn">Anterior</button>
-            <span id="pageInfo">Página 1 de 1</span>
-            <button id="nextBtn">Siguiente</button>
+<!--Div principal de la bitácora-->
+<div class="container">
+    <h1>Bitacora de actividades</h1>
+
+    <!--Filtros de búsqueda y tipo de accion realizada-->
+    <div class="filters">
+
+        <!--búsqueda por escrito-->
+        <input type="text" id="searchInput" placeholder="Buscar en bitácora...">
+
+        <!--Menú desplegable para filtrar por tipo de actividad-->
+        <select id="typeFilter">
+            <option value="">Todos los tipos</option> <!-- Muestra todos los registros -->
+            <option value="aceptacion">Aceptación en comisión</option> <!--por aceptacion-->
+            <option value="rechazo">Rechazo de comisión</option>       <!--por rechazo-->
+            <option value="actividad">Agregar actividad</option>       <!--por actividad-->
+            <option value="evento">Agregar evento</option>             <!--por evento-->
+        </select>
+
+    </div>
+
+    <div class="log-container">
+        <div class="log-list" id="logList">
         </div>
     </div>
+
+    <!--navegacion entre páginas de registros-->
+    <div class="pagination">
+        <!--Botón para ir a la página anterior-->
+        <button id="prevBtn">Anterior</button>
+        <!--Texto sobre la página actual-->
+        <span id="pageInfo">Página 1 de 1</span>
+        <!--Botón para ir a la página siguiente -->
+        <button id="nextBtn">Siguiente</button>
+    </div>
+</div>
+
     <a href="Dashboard - Admin.html"><button class="button-36" role="button">Inicio</button>
     <script src="js/Bitacora.js"></script>
 </body>
