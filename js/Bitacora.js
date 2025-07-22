@@ -139,4 +139,5 @@ nextBtn.addEventListener('click', () => {
 });
  
 //Inicialización
+GuardarAdmin();
 displayLogs(logData);

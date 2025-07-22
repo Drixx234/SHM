@@ -122,7 +122,7 @@ async function Rellenar_Proyectos(Proyectos){
                         <hr>
                         <h2>${Coordinador.Nombre_Administrador} ${Coordinador.Apellido_Administrador}</h2>
                         <hr>
-                        <h3>${Coordinador.Correo_Electronico}</h3>
+                        <h3 lang="en">${Coordinador.Correo_Electronico}</h3>
                     </div>
                 `
             });

@@ -282,8 +282,6 @@ btn_Actualizar_Proyecto.addEventListener('click', async () => {
         btn
     }
 });
-// Alert_Dialog_Student_Check.addEventListener()
-
 btn_Arqui.addEventListener('click', () =>{
     CargarTable = 1;
     Cargar_Tabla_Especialidad('Arquitectura', CargarTable);

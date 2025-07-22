@@ -171,10 +171,14 @@ main{
 .Card-Coordinador h2{
     font-size: 250%;
     width: 35%;
+    hyphens: auto;
+    word-wrap: break-word;
 }
 .Card-Coordinador h3{
     font-size: 250%;
     width: 30%;
+    hyphens: auto;
+    word-wrap: break-word;
     text-align: center;
 }
 .Card-Coordinador p{
@@ -199,4 +203,23 @@ main{
 }
 .Input_File:hover{
     background-color: #c39a83;
+}
+@media (width < 1915) {
+    .home svg{
+        width: 25px;
+        height: 25px;
+    }
+    .home h2{
+        font-size: 25px;
+    }
+    .Card-Coordinador{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .Card-Coordinador h2{
+        font-size: 230%
+    }
+    .Card-Coordinador h3{
+        font-size: 230%
+    }
 }

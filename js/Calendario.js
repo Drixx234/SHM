@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelBtn = document.querySelector('.cancel-btn');
 
     //INICIALIZACIÓN
+    Guardar_Admin();
     renderCalendar(); //Renderiza el calendario al cargar
     updateClock();    //Muestra la hora actual
     setInterval(updateClock, 1000); //Actualiza el reloj cada segundo
