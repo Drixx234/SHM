@@ -3,23 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Admin</title>
+    <title>Login - SHMS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <div>
-        <div class="alert alert-danger alert-dismissible fade show Alerts" role="alert" id="Alert_Error_Login_Incorrect">
-            <strong>¡USUARIO NO ENCONTRADO!</strong> <br> El usuario o la constraseña son incorrectos. Intentalo con otra información.
-        </div>
-        <div class="alert alert-danger alert-dismissible fade show Alerts" role="alert" id="Alert_Error_Login">
-            <strong>¡NO SE PUDO CARGAR!</strong> <br> Hubo un problema con la conexion, no se pudieron corroborar los datos.
-        </div>
-        <div class="alert alert-success alert-dismissible fade show Alerts" role="alert" id="Alert_Correct_Login">
-            <strong>¡USUARIO CORRECTO!</strong> <br> Bienvenido! Abriendo Dashboard!
-        </div>
-    </div>
-
     <div class="login-container">
         <img src="img/image-removebg-preview.png" class="institution-logo" alt="Logo ITR">
         
@@ -42,7 +30,9 @@
         
         <p class="footer">Creado por los Estudiantes de Segundo año de Desarrollo de Software</p>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <script src="js/login.js"></script>
+    <script type="module" src="js/Controller/login.js"></script>
 </body>
 </html>

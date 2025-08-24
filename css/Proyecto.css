@@ -162,6 +162,14 @@ main{
     margin-top: 0px;
     margin-bottom: 0px;
 }
+.Card-Coordinador button{
+    border-style: none;
+    background-color: none;
+}
+.Card-Coordinador svg{
+    width: 20px;
+    height: 20px;
+}
 .Card-Coordinador img{
     width: 100px;
     height: 100px;
@@ -221,5 +229,9 @@ main{
     }
     .Card-Coordinador h3{
         font-size: 230%
+    }
+    .btn_Plus_Project{
+        width: 50px;
+        height: 50px;
     }
 }

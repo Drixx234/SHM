@@ -273,15 +273,26 @@ btn_Actualizar_Proyecto.addEventListener('click', async () => {
         let Codigo = Input_Dialog_Codigo.value;
         let nombre = Input_Dialog_Nombre.value + Input_Dialog_Apellido.value;
         let Proyecto = Input_Proyecto_Asignado.textContent;
-        Alert_Dialog_Profile_Project_Confirm_Span_Nombre.textContent = nombre;
-        Alert_Dialog_Student_Confirm_Span_Proyecto.textContent = Proyecto
-        Alert_Dialog_Student_Confirm.hidden = false;
-        Input_Proyecto_Asignado.disabled = true;
-        btn_Actualizar_Proyecto.disabled = true;
-        btn_Cancelar_Dialog.disabled = true;
-        btn
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+                });
+            }
+        });
     }
 });
+
 btn_Arqui.addEventListener('click', () =>{
     CargarTable = 1;
     Cargar_Tabla_Especialidad('Arquitectura', CargarTable);

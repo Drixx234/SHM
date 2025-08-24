@@ -39,18 +39,18 @@ main{
     padding-left: 30px;
     padding-right: 30px;
     width: 100%;
-    border-radius: 30px;
+    border-radius: 20px;
     background-color: #F4F4F4;
     border-style: solid;
-    font-size: 210%;
+    font-size: 190%;
     border-width: 2px;
     border-color: #7B7B7B;
 }
 
 .Btn_Especialidades{
-    border-radius: 30px;
+    border-radius: 20px;
     background-color: #F4F4F4;
-    font-size: 210%;
+    font-size: 190%;
     padding: 10px;
     padding-left: 30px;
     padding-right: 30px;
@@ -71,7 +71,7 @@ main{
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #565E64;
-    font-size: 170%;
+    font-size: 150%;
     color: #F4F4F4;
 }
 
@@ -137,12 +137,12 @@ main{
 }
 
 .Card-Student h2{
-    font-size: 250%;
+    font-size: 200%;
     width: 35%;
 }
 
 .Card-Student h3{
-    font-size: 250%;
+    font-size: 200%;
     width: 30%;
     text-align: center;
 }
@@ -781,8 +781,8 @@ main{
         padding-top: 15px;
     }
     .Card-Student{
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
     }
     .Card-Student h2{
         font-size: 55%;
@@ -790,7 +790,7 @@ main{
         margin-right: 6px;
     }
     .Card-Student h3{
-        font-size: 45%;
+        font-size: 55%;
     }
     .Card-Student hr{
         height: 35px;
@@ -801,8 +801,8 @@ main{
         height: 15px;
     }
     .Card-Student img{
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
     }
     .Busqueda-center{
         gap: 4px;

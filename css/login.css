@@ -8,7 +8,7 @@
 
 /* AQUÍ PUEDES AGREGAR EL FONDO */
 body {
-    background: url('https://thumbs.dreamstime.com/b/fondo-azul-del-gr%C3%A1fico-con-iconos-de-papel-escuela-dibujados-mano-volver-al-concepto-escolar-ilustraci%C3%B3n-vectorial-253362670.jpg') center/cover no-repeat;
+    background: url(../img/fondo-azul.jpg) center/cover no-repeat;
     margin: 0;
     padding: 0;
     min-height: 100vh;

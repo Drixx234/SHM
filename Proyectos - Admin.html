@@ -102,18 +102,19 @@
                     <label for="Dialog_Proyecto_Name">Nombre del Proyecto:
                         <input type="text" id="Dialog_Proyecto_Name">
                     </label>
-                    <label for="Dialog_Proyecto_Concepto">Descripcion Proyecto:
+                    <label for="Dialog_Proyecto_Concepto">Descripcion del Proyecto:
                         <textarea id="Dialog_Proyecto_Concepto"></textarea>
                     </label>
-                    <label for="Dialog_Proyecto_Cupos">Cupos Proyectos
+                    <label for="Dialog_Proyecto_Cupos">Cupos del Proyectos
                         <input type="number" id="Dialog_Proyecto_Cupos">
                     </label>
-                    <label for="Dialog_Proyecto_Icon" class="Input_File">
-                        <span id="Dialog_Proyecto_Icon_Label">Seleccionar Imagen de Icono:</span>
+                    <label for="Dialog_Proyecto_Icon" id="Dialog_Proyecto_Icon_Label" class="Input_File">Seleccionar Imagen de Icono:
+                        <span id="Dialog_Proyecto_Icon_Label"></span>
                     </label>
                     <input type="file" accept="image/*" id="Dialog_Proyecto_Icon" style="display: none;">
-                    <label for="Dialog_Proyecto_Img_Muestra" id="Dialog_Proyecto_Img_Muestra_Label" class="Input_File">
-                        <span id="Dialog_Proyecto_Icon">Seleccionar Imagen de Muestra:</span>
+
+                    <label for="Dialog_Proyecto_Img_Muestra" id="Dialog_Proyecto_Img_Muestra_Label" class="Input_File">Seleccionar Imagen de Muestra:
+                        <span id="Dialog_Proyecto_Img_Muestra_Label"></span>
                     </label>
                     <input type="file" accept="image/*" id="Dialog_Proyecto_Img_Muestra" style="display: none;">
                     <div class="Div_secondary">
@@ -127,8 +128,9 @@
 
     <button title="Agregar Nuevo Proyecto" class="btn_Plus_Project" id="btn_Agregar_Proyecto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus-icon lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></button>
 
-    <script src="js/Proyecto.js"></script>
-    <script src="js/General.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/Controller/Proyecto.js"></script>
+    <script src="js/Controller/General.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

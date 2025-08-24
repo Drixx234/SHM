@@ -30,26 +30,25 @@
 
 .Unactive-Btn{
     color: white;
-    font-size: 160%;
+    font-size: 1.2rem;
     user-select: none;
     text-decoration: none;
     transition: 0.3s;
 }
 
 .Active-Btn{
+    display: inline-block;
     text-decoration: none;
     background-color: #9EA3BF;
-    font-size: 160%;
-    user-select: none;
+    font-size: 1.2rem;
     color: white;
-    padding: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
-    border-top-left-radius: 25%;
-    border-top-right-radius: 25%;
-    margin-right: -2%;
-    margin-bottom: -2.5%;
-    transition: 0.3s;
+    user-select: none;
+    padding: 15px 30px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin: 0;
+    position: relative;
+    bottom: -10px;
 }
 
 .Menu-center hr{
@@ -69,7 +68,7 @@
 .Navbar_Options ul{
     display: flex;
     flex-direction: row;
-    gap: 6%;
+    gap: 15px;
     padding: 1%;
     padding-left: 4%;
 }
@@ -78,14 +77,13 @@
 }
 
 .Navbar_Options button{
-    width: 150%;
-    height: 100%;
-    padding: 4%;
+    padding: 8px 40px;
     border-style: none;
     border-radius: 5px;
     background-color: #858aaa;
     color: #3b3e4d;
-    font-size: 140%;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .Navbar_Options button:hover{
@@ -118,116 +116,6 @@
     border-style: none;
     background-color: transparent;
 }
-
-.Profile-content{
-    background-color: #CDD4E8;
-    padding: 3%;
-    border-style: none;
-}
-
-.Profile-content main{
-    display: flex;
-    flex-direction: row;
-    background-color: #8F97AD;
-    gap: 150px;
-    padding: 30px;
-    padding-left: 60px;
-    padding-right: 60px;
-}
-
-.Profile-content article{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.Article2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    gap: 30px;
-}
-
-.Div-info{
-    background-color: #D9D9D9;
-    width: 120%;    
-    padding: 2%;
-}
-
-.Div-info p{
-    color: #616161;
-    margin: 0px;
-}
-
-.Div-info h1{
-    text-align: center;
-    margin: 3px 0 0 0;
-}
-
-.Div-info h3{
-    text-align: center;
-    margin: 3px 0 0 0;
-}
-
-.Div-rol{
-    background-color: #D9D9D9;
-    width:fit-content;
-    padding: 0 10px 0 10px;
-    margin-top: 20px;
-}
-
-.Div-rol p{
-    color: #616161;
-    margin: 0px;
-}
-
-.Div-rol h3{
-    text-align: center;
-    margin: 3px 0 0 0;
-}
-
-.Div-image-dialog{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.Profile-image{
-    height: 170px;
-    width: 170px;
-    border-radius: 100%;
-    object-fit: cover;
-}
-
-.Article2 button{
-    background-color: #5C0D0D;
-    color: #CDD4E8;
-    border-style: none;
-    padding: 10%;
-    width: 120%;
-    border-radius: 40px;
-}
-
-.Btn-Close{
-    border-style: none;
-    background-color: #5C0D0D;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 10px 10px 10px;
-    border-radius: 100%;
-    position: fixed;
-    left: 2%;
-    top: 2%;
-}
-
-.Btn-Close svg{
-    width: 24px;
-    height: 24px;
-}
-
 body{
     background-color: #CDD4E8;
     font-family: Jomolhari;
@@ -308,24 +196,18 @@ a{
 .Alerts{
     font-size: 200%;
 }
-@media (width < 1710) {
-    .Alerts{
-        font-size: 150%;
+@media (width < 1735) {
+    .Logo{
+        height: 35px;
+        margin: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .Active-Btn{
+        font-size: 1.1rem;
     }
 }
 @media (width < 1530px) {
-    .Alerts{
-        font-size: 130%;
-    }
-    .Logo{
-        height: 40px;
-    }
-    .Unactive-Btn{
-        font-size: 140%;
-    }
-    .Active-Btn{
-        font-size: 140%;
-    }
     .Navbar_Options button{
         font-size: 120%;
     }
@@ -335,17 +217,11 @@ a{
     .Logo{
         height: 35px;
     }
-    .Alerts{
-        font-size: 110%;
-    }
     .Logo-person{
         width: 45px;
         height: 45px;
     }
     .Unactive-Btn{
-        font-size: 120%;
-    }
-    .Active-Btn{
         font-size: 120%;
     }
     .Navbar_Options button{
@@ -363,40 +239,11 @@ a{
     .Unactive-Btn{
         font-size: 100%;
     }
-    .Active-Btn{
-        font-size: 100%;
-    }
-    .Navbar_Options button{
-        font-size: 80%;
-    }
-    .Profile-content{
-        padding: 2%;
-    }
-    .Profile-content h1{
-        font-size: 190%;
-    }
-    .Profile-content h3{
-        font-size: 150%;
-    }
-    .Profile-content p{
-        font-size: 80%;
-    }
-    .Profile-image{
-        width: 150px;
-        height: 150px;
-    }
-    .Article2 button{
-        padding: 7%;
-        width: 100%;
-    }
 }
 
 @media (width < 1110px) {
     .Logo{
         height: 30px;
-    }
-    .Alerts{
-        font-size: 90%;
     }
 }
 
@@ -404,44 +251,9 @@ a{
     .Menu-center{
         gap: 15px;
     }
-    .Alerts{
-        font-size: 70%;
-    }
-    .Profile-content article{
-        gap: 20px;
-    }
-    .Profile-content{
-        padding: 2%;
-    }
-    .Profile-content main{
-        gap: 90px;
-        padding: 20px;
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-    .Profile-content h1{
-        font-size: 160%;
-    }
-    .Profile-content h3{
-        font-size: 110%;
-    }
-    .Profile-content p{
-        font-size: 60%;
-    }
-    .Profile-image{
-        width: 110px;
-        height: 110px;
-    }
-    .Article2 button{
-        padding: 5%;
-        width: 100%;
-    }
 }
 
 @media (width < 620px) {
-    .Alerts{
-        font-size: 55%;
-    }
     .Logo{
         height: 20px;
         margin: 5px;
@@ -467,73 +279,9 @@ a{
     }
     .Btn-Close{
         padding: 5px 5px 5px 5px;
-}
+    }
     .Btn-Close svg{
         width: 16px;
         height: 16px;
-}
-}
-
-@media (width < 510px) {
-    .Profile-content{
-        padding: 2%;
-    }
-    .Alerts{
-        font-size: 65%;
-    }
-    .Profile-content main{
-        gap: 60px;
-        padding: 15px;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    .Profile-content h1{
-        font-size: 130%;
-    }
-    .Profile-content h3{
-        font-size: 80%;
-    }
-    .Profile-content p{
-        font-size: 50%;
-    }
-    .Profile-image{
-        width: 80px;
-        height: 80px;
-    }
-    .Article2 button{
-        padding: 3%;
-        font-size: 80%;
-    }
-}
-
-@media (width < 410px) {
-    .Profile-content{
-        padding: 2%;
-    }
-    .Alerts{
-        font-size: 60%;
-    }
-    .Profile-content main{
-        gap: 40px;
-        padding: 10px;
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-    .Profile-content h1{
-        font-size: 110%;
-    }
-    .Profile-content h3{
-        font-size: 65%;
-    }
-    .Profile-content p{
-        font-size: 50%;
-    }
-    .Profile-image{
-        width: 65px;
-        height: 65px;
-    }
-    .Article2 button{
-        padding: 2%;
-        font-size: 70%;
     }
 }

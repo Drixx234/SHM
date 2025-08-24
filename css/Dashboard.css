@@ -10,7 +10,6 @@
     gap: 10px;
     align-items: center;
     padding-left: 50px;
-    padding-top: 10px;
     color: #6D6D6D;
 }
 
@@ -82,6 +81,58 @@
     font-size: 26px;
 }
 
+.Events{
+    height: 324px;
+    max-width: 1480px;
+    width: 100%;
+    border-radius: 18px;
+    background-color: rgba(10, 62, 210, 0.35);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    box-shadow: 3px 3px rgba(79, 79, 80, 0.2);
+}
+
+.head-Events{
+    background-color: #5C0D0D;
+    display: flex;
+    color: #FFFFFF;
+    height: 82px;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+.Events-Body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    overflow-y: auto;
+    height: 318px;
+    width: 100%;
+}
+.Events-Body::-webkit-scrollbar{
+    width: 6px;
+}
+
+.Events-Body::-webkit-scrollbar-track{
+    background: transparent;
+    box-shadow: inset 0 0 5px #0A3ED2;
+}
+
+.Events-Body::-webkit-scrollbar-thumb{
+    background-color: #5C0D0D;
+    border-radius: 6px;
+    transition: backgroud 0.3s ease;
+}
+
+.head-Events h2{
+    margin-top: 5px;
+    font-size: 25px;
+}
+
 .Noti{
     height: 688px;
     width: 540px;
@@ -90,6 +141,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    box-shadow: 3px 3px rgba(79, 79, 80, 0.2);
 }
 
 .head-noti{
@@ -144,6 +196,13 @@
     margin-right: 20px;
     border-radius: 18px;
     word-wrap: break-word;
+    transition: 0.5s;
+    width: 90%;
+}
+
+.cards:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
 }
 
 .card-header{
@@ -212,6 +271,18 @@
         width: 242px;
         font-size: 23px;
     }
+    .Events{
+        height: 308px;
+    }
+    .head-Events{
+        height: 72px;
+    }
+    .head-Events h2{
+        font-size: 20px;
+    }
+    .Events-Body{
+        height: 302px;
+    }
     .Noti{
         height: 647px;
         width: 510px;
@@ -241,7 +312,7 @@
     .home svg{
         width: 25px;
         height: 25px;
-    }
+    }    
 }
 
 @media (width < 1720px) {
@@ -271,9 +342,24 @@
         width: 197px;
         font-size: 20px;
     }
+    .Events{
+        height: 283px;
+    }
+    .head-Events{
+        height: 67px;
+    }
+    .head-Events h2{
+        font-size: 20px;
+    }
+    .Events-Body{
+        height: 277px;
+    }
     .Noti{
         height: 587px;
         width: 465px;
+    }
+    .head-noti{
+        height: 67px;
     }
     .head-noti h2{
         font-size: 25px;
@@ -330,9 +416,24 @@
         width: 152px;
         font-size: 17px;
     }
+    .Events{
+        height: 253px;
+    }
+    .head-Events{
+        height: 62px;
+    }
+    .head-Events h2{
+        font-size: 20px;
+    }
+    .Events-Body{
+        height: 247px;
+    }
     .Noti{
         height: 530px;
         width: 420px;
+    }
+    .head-noti{
+        height: 62px;
     }
     .head-noti h2{
         font-size: 22px;
@@ -390,12 +491,27 @@
         font-size: 16px;
         border-width: 2px;
     }
+    .Events{
+        height: 234px;
+    }
+    .head-Events{
+        height: 57px;
+    }
+    .head-Events h2{
+        font-size: 18px;
+    }
+    .Events-Body{
+        height: 190px;
+    }
     .Noti{
         height: 488px;
         width: 360px;
     }
     .Noti-Body{
         height: 368px;
+    }
+    .head-noti{
+        height: 57px;
     }
     .head-noti h2{
         font-size: 20px;
@@ -450,12 +566,27 @@
         font-size: 14px;
         border-width: 2px;
     }
+    .Events{
+        height: 206px;
+    }
+    .head-Events{
+        height: 52px;
+    }
+    .head-Events h2{
+        font-size: 16px;
+    }
+    .Events-Body{
+        height: 277px;
+    }
     .Noti{
         height: 425px;
         width: 310px;
     }
     .Noti-Body{
         height: 308px;
+    }
+    .head-noti{
+        height: 52px;
     }
     .head-noti h2{
         font-size: 18px;
@@ -487,6 +618,9 @@
         margin-top: 9px;
         gap: 8px;
     }
+    .home{
+        padding-top: 5px;
+    }
     .Access{
         gap: 10px;
     }
@@ -510,12 +644,27 @@
         font-size: 12px;
         border-width: 1px;
     }
+    .Events{
+        height: 178px;
+    }
+    .head-Events{
+        height: 45px;
+    }
+    .head-Events h2{
+        font-size: 14px;
+    }
+    .Events-Body{
+        height: 90px;
+    }
     .Noti{
         height: 365px;
         width: 280px;
     }
     .Noti-Body{
         height: 251px;
+    }
+    .head-noti{
+        height: 47px;
     }
     .head-noti h2{
         font-size: 16px;
@@ -544,7 +693,23 @@
         gap: 20px;
     }
     .Noti{
+        height: 345px;
         width: 100%;
+    }
+    .Noti-Body{
+        height: 241px;
+    }
+    .head-noti{
+        height: 47px;
+    }
+    .Events{
+        height: 345px;
+    }
+    .head-Events{
+        height: 47px;
+    }
+    .Events-Body{
+        height: 241px;
     }
     .card-header{
         font-size: 14px;

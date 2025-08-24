@@ -1,9 +1,7 @@
-const APINOTI_URL = 'https://686223f996f0cc4e34b86e18.mockapi.io/tbNotificaciones';
+
 
 const noti_Body = document.getElementById("Notifi-Body");
 const btn_Noti = document.getElementById("Btn-Noti");
-
-const Alert_Error_Notis = document.getElementById('Alert_Error_Notis');
 
 async function CargarNoti() {
     try{
@@ -12,12 +10,31 @@ async function CargarNoti() {
         RellenarCuadro(data);
     } catch(err){
         console.error('Error al cargar datos' , err);
-        Alert_Error_Notis.hidden = false;
-        setTimeout(() => {
-            Alert_Error_Notis.hidden = true;
+            setTimeout(() => {
+                Alert.fire({
+                icon: "error",
+                title: "¡NO SE PUDO CARGAR!",
+                html: "Hubieron problemas al cargar las notificaciones.",
+            });
         }, 3000)
     }
+}
 
+async function CargarEventos() {
+    try{
+        const res = await fetch();
+        const data = await res.json();
+        RellenarEventos
+    }catch(err){
+        console.error('Error al cargar datos', err);
+        setTimeout(() => {
+                Alert.fire({
+                icon: "error",
+                title: "¡NO SE PUDO CARGAR!",
+                html: "Hubieron problemas al cargar las notificaciones.",
+            });
+        }, 5000)
+    }
 }
 
 function RellenarCuadro(Notis){
@@ -41,7 +58,6 @@ function RellenarCuadro(Notis){
 
 function CargaInicialDashboard(){
     CargarNoti();
-    Alert_Error_Notis.hidden = true;
 }
 
 window.addEventListener('DOMContentLoaded', CargaInicialDashboard);
