@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RICALDONE - Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/Chat.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Panel de contactos -->
+        <div class="contacts-panel">
+            <div class="user-header">
+                <div class="user-info">
+                    <div class="user-avatar">U</div>
+                    <div class="user-name">Usuario</div>
+                </div>
+                <div class="icons">
+                    <span class="search-toggle"><i class="fas fa-cog"></i></span>
+                </div>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                    <input type="text" id="search-input" placeholder="Buscar contacto por nombre">
+                    <span class="clear-search" style="display: none;"><i class="fas fa-times"></i></span>
+                </div>
+            </div>
+            
+            <div class="contacts-list">
+                <!-- Los contactos se cargarán dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- Panel de chat -->
+        <div class="chat-panel">
+            <div class="chat-header">
+                <div class="current-contact">
+                    <div class="user-avatar">S</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Selecciona un contacto</div>
+                        <div class="contact-status"> </div>
+                    </div>
+                </div>
+                <div class="icons">
+                    <span><i class="fas fa-search"></i></span>
+                    <span><i class="fas fa-ellipsis-v"></i></span>
+                </div>
+            </div>
+            
+            <div class="messages-container">
+                <div class="empty-chat">
+                    <div class="empty-chat-icon"><i class="fas fa-comments"></i></div>
+                    <p>Selecciona un contacto para comenzar a chatear</p>
+                </div>
+            </div>
+            
+            <div class="input-container" style="display: none;">
+                <div class="attachment-button">
+                    <i class="fas fa-paperclip"></i>
+                </div>
+                <input type="text" class="message-input" placeholder="Escribe un mensaje">
+                <button class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Botón para toggle en móviles -->
+    <button class="mobile-toggle">
+         <i class="fas fa-comments"></i>
+    </button>
+
+    <script type="module" src="js/services/websocketService.js"></script>
+    <script type="module" src="Js/Services/apiService.js"></script>
+    <script type="module" src="Js/Controller/chatController.js"></script>
+    <script type="module" src="Js/app.js"></script>
+    <script type="module" src="js/Service/Alerts.js"></script>
+</body>
+</html>
