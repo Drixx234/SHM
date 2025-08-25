@@ -8,6 +8,25 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.home{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding-left: 50px;
+    color: #6D6D6D;
+}
+
+.home h2{
+    margin-top: 7px;
+    font-size: 30px;
+    pointer-events: none;
+}
+
+.home svg{
+    width: 27px;
+    height: 27px;
+}
 
 .Barra-Navegacion ul li{
     list-style: none;
@@ -190,11 +209,41 @@ body{
     color: #858aaa;
 }
 
+.home{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    padding-left: 50px;
+    color: #6D6D6D;
+}
+
+.home h2{
+    margin-top: 7px;
+    font-size: 30px;
+    pointer-events: none;
+}
+
+.home svg{
+    width: 27px;
+    height: 27px;
+}
+
 a{
     text-decoration: none;
 }
 .Alerts{
     font-size: 200%;
+}
+@media (width < 1870px){
+    .home h2{
+        font-size: 27px;
+        margin-top: 6px;
+    }
+    .home svg{
+        width: 25px;
+        height: 25px;
+    }   
 }
 @media (width < 1735) {
     .Logo{
@@ -206,10 +255,26 @@ a{
     .Active-Btn{
         font-size: 1.1rem;
     }
+    .home h2{
+        font-size: 25px;
+        margin-top: 5px;
+    }
+    .home svg{
+        width: 23px;
+        height: 23px;
+    }
 }
 @media (width < 1530px) {
     .Navbar_Options button{
         font-size: 120%;
+    }
+    .home h2{
+        font-size: 23px;
+        margin-top: 4px;
+    }
+    .home svg{
+        width: 21px;
+        height: 21px;
     }
 }
 
@@ -239,11 +304,38 @@ a{
     .Unactive-Btn{
         font-size: 100%;
     }
+        .home h2{
+        font-size: 21px;
+        margin-top: 6px;
+    }
+    .home svg{
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media (width > 1260px) {
+    .home h2{
+        font-size: 18px;
+        margin-top: 11px;
+    }
+    .home svg{
+        width: 17px;
+        height: 17px;
+    }
 }
 
 @media (width < 1110px) {
     .Logo{
         height: 30px;
+    }
+    .home h2{
+        font-size: 16px;
+        margin-top: 8px;
+    }
+    .home svg{
+        width: 15px;
+        height: 15px;
     }
 }
 

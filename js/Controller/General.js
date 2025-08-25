@@ -2,22 +2,11 @@ import{
     buscarAdministrador
 }from "../Service/AdministradoresService.js"
 
-const SweetAlert = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    theme: "dark",
-    timer: 3000,
-    padding: "15px",
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-    }
-});
+import{
+    AlertEsquina
+}from "../Service/Alerts.js"
 
-window.addEventListener("DOMContentLoaded", () => {
-    const btn_Profile = document.getElementById("btnPerson");
+const btn_Profile = document.getElementById("btnPerson");
     const btn_Menu = document.getElementById("btnMenu");
     const dialog_profile = document.getElementById("Profile-content");
     const body = document.getElementById("Body");
@@ -31,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
             RellenarProfile(data);
         } catch(err){
             console.error('Error al cargar datos' , err);
-            SweetAlert.fire({
+            AlertEsquina.fire({
                 icon: "error",
                 title: "¡ERROR AL CARGAR DATOS!",
                 html: "Hubieron problemas al cargar la informacion del perfil.",
@@ -83,8 +72,11 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    Guardar_Admin();
-    VisibilidadBotones();
+    function CargaInicialGeneral(){
+        Guardar_Admin();
+        VisibilidadBotones();
+    }
 
-    window.addEventListener("resize", VisibilidadBotones);
-});
+window.addEventListener("resize", VisibilidadBotones);
+
+window.addEventListener("DOMContentLoaded", CargaInicialGeneral);

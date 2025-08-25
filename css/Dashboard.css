@@ -4,26 +4,6 @@
     margin-right: 40px;
 }
 
-.home{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    padding-left: 50px;
-    color: #6D6D6D;
-}
-
-.home h2{
-    margin-top: 7px;
-    font-size: 30px;
-    pointer-events: none;
-}
-
-.home svg{
-    width: 27px;
-    height: 27px;
-}
-
 .principal{
     display: flex;
     flex-direction: row;
@@ -83,7 +63,7 @@
 
 .Events{
     height: 324px;
-    max-width: 1480px;
+    max-width: 1205px;
     width: 100%;
     border-radius: 18px;
     background-color: rgba(10, 62, 210, 0.35);
@@ -108,7 +88,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
     overflow-y: auto;
     height: 318px;
     width: 100%;
@@ -273,6 +252,7 @@
     }
     .Events{
         height: 308px;
+        max-width: 1105px;
     }
     .head-Events{
         height: 72px;
@@ -304,15 +284,7 @@
     .Noti svg{
         width: 35px;
         height: 35px;
-    }
-    .home h2{
-        font-size: 27px;
-        margin-top: 6px;
-    }
-    .home svg{
-        width: 25px;
-        height: 25px;
-    }    
+    } 
 }
 
 @media (width < 1720px) {
@@ -344,6 +316,7 @@
     }
     .Events{
         height: 283px;
+        max-width: 970px;
     }
     .head-Events{
         height: 67px;
@@ -379,14 +352,6 @@
         width: 32px;
         height: 32px;
     }
-    .home h2{
-        font-size: 25px;
-        margin-top: 5px;
-    }
-    .home svg{
-        width: 23px;
-        height: 23px;
-    }
 }
 
 @media (width < 1530px) {
@@ -418,6 +383,7 @@
     }
     .Events{
         height: 253px;
+        max-width: 858px;
     }
     .head-Events{
         height: 62px;
@@ -453,14 +419,6 @@
         width: 29px;
         height: 29px;
     }
-    .home h2{
-        font-size: 23px;
-        margin-top: 4px;
-    }
-    .home svg{
-        width: 21px;
-        height: 21px;
-    }
 }
 
 @media (width < 1380px) {
@@ -493,6 +451,7 @@
     }
     .Events{
         height: 234px;
+        max-width: 780px;
     }
     .head-Events{
         height: 57px;
@@ -528,14 +487,6 @@
         width: 26px;
         height: 26px;
     }
-    .home h2{
-        font-size: 21px;
-        margin-top: 6px;
-    }
-    .home svg{
-        width: 19px;
-        height: 19px;
-    }
 }
 
 @media (width < 1260px) {
@@ -568,6 +519,7 @@
     }
     .Events{
         height: 206px;
+        max-width: 690px;
     }
     .head-Events{
         height: 52px;
@@ -602,14 +554,6 @@
     .Noti svg{
         width: 21px;
         height: 21px;
-    }
-    .home h2{
-        font-size: 18px;
-        margin-top: 11px;
-    }
-    .home svg{
-        width: 17px;
-        height: 17px;
     }
 }
 
@@ -646,6 +590,7 @@
     }
     .Events{
         height: 178px;
+        max-width: 570px;
     }
     .head-Events{
         height: 45px;
@@ -654,7 +599,7 @@
         font-size: 14px;
     }
     .Events-Body{
-        height: 90px;
+        height: 150px;
     }
     .Noti{
         height: 365px;
@@ -677,14 +622,6 @@
         width: 19px;
         height: 19px;
     }
-    .home h2{
-        font-size: 16px;
-        margin-top: 8px;
-    }
-    .home svg{
-        width: 15px;
-        height: 15px;
-    }
 }
 
 @media (width < 960px) {
@@ -704,12 +641,13 @@
     }
     .Events{
         height: 345px;
+        max-width: 970px;
     }
     .head-Events{
         height: 47px;
     }
     .Events-Body{
-        height: 241px;
+        height: 341px;
     }
     .card-header{
         font-size: 14px;

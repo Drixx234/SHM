@@ -36,7 +36,7 @@ export async function buscarAdministrador(id) {
 }
 
 export async function agregarAdministrador(data) {
-    await fetch(`${API_URL_Administradores}/postAdmin`, {
+    return await fetch(`${API_URL_Administradores}/postAdmin`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -44,7 +44,7 @@ export async function agregarAdministrador(data) {
 }
 
 export async function actualizarAdministrador(id, data) {
-    await fetch(`${API_URL_Administradores}/putAdministrador/${id}`, {
+    return await fetch(`${API_URL_Administradores}/putAdministrador/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -52,5 +52,5 @@ export async function actualizarAdministrador(id, data) {
 }
 
 export async function eliminarAdministrador(id) {
-    await fetch(`${API_URL_Administradores}/deleteAdmin/${id}`, { method: 'DELETE' });
+    return await fetch(`${API_URL_Administradores}/deleteAdmin/${id}`, { method: 'DELETE' });
 }

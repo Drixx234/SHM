@@ -1,0 +1,134 @@
+.principal{
+    margin: 1rem 3rem;
+    padding: 15px 20px 15px 15px;
+    background-color: rgb(235, 238, 240);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 5px rgba(79, 79, 80, 0.2);
+    border-radius: 10px;
+}
+
+.principal hr{
+    border: 1px solid black;
+    height: 350px;
+    margin: 0 1rem;
+}
+
+.info_perfil{
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.divs_inputs{
+    background-color: rgb(199, 203, 206);
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.divs_inputs label{
+    font-size: 0.7rem;
+    color: rgb(96, 97, 99);
+}
+
+.divs_inputs input{
+    border: none;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: black;
+}
+
+.btnPassword{
+    border: none;
+    background-color: transparent;
+}
+
+.divs_inputs2{
+    background-color: rgb(169, 178, 185);
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.divs_inputs2 label{
+    font-size: 0.7rem;
+    color: rgb(58, 58, 59);
+}
+
+.divs_inputs2 input{
+    border: none;
+    font-size: 1rem;
+    background-color: #cbd1df;
+    color: black;
+}
+
+.img-preview {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: .5rem;
+}
+.thumb {
+    width: 48px; height: 48px; object-fit: cover; border-radius: .4rem; border: 1px solid #e9ecef;
+}
+
+.TitleModal{
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.btn-Center button{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(79, 79, 80, 0.2);
+    width: 100%;   
+}
+
+.btn-Center{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.Foto_Perfil{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.Foto_Perfil div{
+    margin: 1rem;
+}
+
+.Foto_Perfil img{
+    height: 300px;
+    width: 300px;
+}
+
+.ModalUpdate{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.Form_Update{
+    background-color: #c7cee0;
+    background: linear-gradient(rgba(143, 205, 209, 0.2), rgba(113, 173, 223, 0.4)), url(../img/fondo-azul.jpg) center/cover no-repeat;
+}

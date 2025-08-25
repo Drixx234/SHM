@@ -10,6 +10,11 @@ export async function obtenerEventosporProyecto(id) {
     return res.json();
 }
 
+export async function obtenerRecientes(page = 0, size = 5) {
+    const res = await fetch(`${API_URL_Eventos}/getRecients?page=${page}&size=${size}`);
+    return res.json();
+}
+
 export async function buscarEvento(id) {
     const res = await fetch(`${API_URL_Eventos}/getbyIdEventos/${id}`);
     return res.json();
