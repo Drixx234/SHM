@@ -71,7 +71,7 @@
         <main class="principal">
             <article>
                 <div class="info_perfil">
-                    <div style="display: flex; flex-direction: row; gap: 10px;" hidden>
+                    <div class="principal_divs" hidden>
                         <div class="divs_inputs">
                             <input type="text" id="idAdministrador" readonly>
                         </div>
@@ -82,7 +82,7 @@
                             <input type="text" id="idProyecto" readonly>
                         </div>
                     </div>
-                    <div style="display: flex; flex-direction: row; gap: 10px;">
+                    <div class="principal_divs">
                         <div class="divs_inputs">
                             <label for="NombreAdmin">Nombres del Administrador</label>
                             <input type="text" id="NombreAdmin" readonly>
@@ -97,27 +97,27 @@
                             <label for="CorreoAdmin">Correo Electronico del Administrador</label>
                             <input type="text" id="CorreoAdmin" readonly>
                         </div>
-                        <button type="button" id="btnPassword" class="btnPassword"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg></button>
+                        <button title="Mostrar Contraseña" type="button" id="btnPassword" class="btnPassword"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg></button>
                     </div>
-                    <div style="display: flex; flex-direction: row; gap: 10px;">
+                    <div class="principal_divs">
                         <div class="divs_inputs" id="div_password" hidden>
                             <label for="ConstraseniaAdmin">Constraseña del Administrador</label>
                             <input type="text" id="ConstraseniaAdmin" readonly>
                         </div>
                     </div>
-                    <div style="display: flex; flex-direction: row; gap: 10px;">
+                    <div class="principal_divs">
                         <div class="divs_inputs">
                             <label for="ProyectoAdmin">Proyecto Asignado</label>
                             <input type="text" id="ProyectoAdmin" readonly>
                         </div>
                     </div>
-                    <div style="display: flex; flex-direction: row; gap: 10px;">
+                    <div class="principal_divs">
                         <div class="btn-Center">
                             <button type="button" style="background-color: brown;" id="btnLogOut">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
                                 Cerrar sesion
                             </button>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#ModalUpdate" style="background-color: rgb(163, 96, 20);" id="btnUpdate">
+                            <button type="button" style="background-color: rgb(163, 96, 20);" id="btnUpdate">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen-icon lucide-user-pen"><path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/></svg>
                                 Actualizar informacion
                             </button>

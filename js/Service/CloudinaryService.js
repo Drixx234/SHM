@@ -4,7 +4,7 @@ export async function uploadImage(file) {
     const formData = new FormData();
     formData.append('image', file);
 
-    const res = await fetch(`${IMAGE_API}/uploadImage`, {
+    const res = await fetch(`${API_URL_Cloudinary}/uploadImage`, {
         method: 'POST',
         body: formData,
     });
@@ -17,7 +17,7 @@ export async function uploadImageToFolder(file, folder) {
     formData.append('image', file);
     formData.append('folder', folder);
 
-    const res = await fetch(`${IMAGE_API}/uploadImageToFolder`, {
+    const res = await fetch(`${API_URL_Cloudinary}/uploadImageToFolder`, {
         method: 'POST',
         body: formData,
     });

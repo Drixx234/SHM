@@ -1,16 +1,6 @@
-const SweetAlert = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    theme: "dark",
-    timer: 4000,
-    padding: "15px",
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-    }
-});
+import{
+    AlertEsquina
+}from "../Service/Alerts.js"
 
 import{
     LoginAdministradores
@@ -27,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return(data);
         } catch(err){
             console.error('Error al cargar datos' , err);
-            SweetAlert.fire({
+            AlertEsquina.fire({
                 icon: "error",
                 title: "¡NO SE PUDO CARGAR!",
                 html: "Hubo un problema con la conexion, no se pudieron corroborar los datos.",
@@ -44,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let Admin = await Buscar_Administrador(email);
             
         if (!Admin || Admin.length === 0) {
-            SweetAlert.fire({
+            AlertEsquina.fire({
                 icon: "error",
                 title: "¡USUARIO NO ENCONTRADO!",
                 html: "No se encontro ningun resultado o no corresponde a un usuario de Administrador. Intentalo con otra información.",
@@ -58,7 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if(Admin.contrasenia == password){
             localStorage.setItem("id_admin", Admin.id);
-            SweetAlert.fire({
+            AlertEsquina.fire({
                 icon: "success",
                 title: "¡USUARIO CORRECTO!",
                 html: "Bienvenido! Abriendo Dashboard!",

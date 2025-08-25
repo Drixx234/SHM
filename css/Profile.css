@@ -99,6 +99,12 @@
     width: 100%;   
 }
 
+.principal_divs{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .btn-Center{
     width: 100%;
     display: flex;
@@ -131,4 +137,126 @@
 .Form_Update{
     background-color: #c7cee0;
     background: linear-gradient(rgba(143, 205, 209, 0.2), rgba(113, 173, 223, 0.4)), url(../img/fondo-azul.jpg) center/cover no-repeat;
+}
+
+@media (width < 1245px) {
+    .principal{
+        margin: 0.5rem 1.5rem;
+        padding: 10px 15px 10px 10px;
+    }
+
+    .principal hr{
+        margin: 0 0.5rem;
+    }
+
+    .info_perfil{
+        padding: 10px 20px;
+        gap: 10px;
+    }
+
+    .divs_inputs{
+        padding: 0.3rem 0.5rem;
+    }
+
+    .divs_inputs label{
+        font-size: 0.4rem;
+    }
+
+    .divs_inputs input{
+        font-size: 1.1rem;
+    }
+
+    .btn-Center button{
+        gap: 10px;
+        padding: 0.5rem 0.7rem;
+    }
+
+    .btn-Center svg{
+        width: 17px;
+        height: 17px;
+    }
+
+    .btn-Center{
+        gap: 5px;
+    }
+
+    .Foto_Perfil img{
+        height: 200px;
+        width: 200px;
+    }
+}
+@media (width < 848px) {
+    .principal{
+        flex-direction: column-reverse;
+    }
+    .principal hr{
+        border: 1px solid black;
+        height: 1px;
+        width: 90%;
+        margin: 2rem 1rem;
+    }
+}
+
+@media (width < 630px) {
+    .principal_divs{
+        flex-direction: column;
+    }
+    .btnPassword svg{
+        height: 20px;
+        width: 20px;
+    }
+    .principal hr{
+        margin: 1rem 0.5rem;
+    }
+    .btn-Center button{
+        font-size: 0.7rem;
+        gap: 5px;
+    }
+}
+@media (width < 400px) {
+    .principal{
+        margin: 0.3rem 1rem;
+        padding: 5px 10px 5px 5px;
+    }
+
+    .principal hr{
+        margin: 1rem 0.5rem;
+    }
+
+    .info_perfil{
+        padding: 8px 15px;
+        gap: 7px;
+    }
+
+    .divs_inputs input{
+        font-size: 0.8rem;
+    }
+
+    .btn-Center button{
+        gap: 5px;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .btn-Center svg{
+        width: 15px;
+        height: 15px;
+    }
+
+    .Foto_Perfil img{
+        height: 150px;
+        width: 150px;
+    }
+
+    .home{
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
+    .TitleModal{
+        font-size: 1.2rem;
+    }
+ 
+    .img-preview {
+        max-height: 160px;
+    }
 }

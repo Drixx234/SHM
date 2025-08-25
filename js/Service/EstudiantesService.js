@@ -21,7 +21,7 @@ export async function getByNombre(nombre, page = 0, size = 3) {
 }
 
 export async function agregarEstudiante(data) {
-    await fetch(`${API_URL_Estudiantes}/postEstudiante`, {
+    return await fetch(`${API_URL_Estudiantes}/postEstudiante`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data),
@@ -29,7 +29,7 @@ export async function agregarEstudiante(data) {
 }
 
 export async function actualizarEstudiante(codigo, data) {
-    await fetch(`${API_URL_Estudiantes}/putEstudiantes/${codigo}`, {
+    return await fetch(`${API_URL_Estudiantes}/putEstudiantes/${codigo}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data),
@@ -37,5 +37,5 @@ export async function actualizarEstudiante(codigo, data) {
 }
 
 export async function borrarEstudiante(codigo) {
-    await fetch(`${API_URL_Estudiantes}/deleteEstudiante/${codigo}`, {method: "DELETE"});
+    return await fetch(`${API_URL_Estudiantes}/deleteEstudiante/${codigo}`, {method: "DELETE"});
 }

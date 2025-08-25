@@ -197,8 +197,9 @@ UpdateForm.addEventListener('submit', async (e) => {
     if(file){
         try{
             const response = await uploadImageToFolder(file, "Foto_Perfil_Admin");
-            if(response && response.Url) {
-                UpdatedFoto = response.Url;
+            console.log("Respuesta del backend:", response);
+            if(response && response.data) {
+                UpdatedFoto = response.data;
             } else {
                 AlertEsquina.fire({
                     icon: "error",
@@ -258,6 +259,7 @@ UpdateForm.addEventListener('submit', async (e) => {
                 html: "La informacion de perfil se actualizo correctamente", 
             });
             Modal_Updated.hide();
+            RellenarInfo();
         }else{
             AlertEsquina.fire({
                 icon: "error",
@@ -275,6 +277,10 @@ UpdateForm.addEventListener('submit', async (e) => {
         return;
     }
 
+});
+
+ModalUpdate.addEventListener("hidden.bs.modal", () => {
+  btnUpdate.focus();
 });
 
 window.addEventListener('DOMContentLoaded', () => {

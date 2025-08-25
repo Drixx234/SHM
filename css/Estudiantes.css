@@ -2,25 +2,6 @@ main{
     padding: 80px;
     padding-top: 10px;
 }
-
-.home{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    color: #6D6D6D;
-}
-
-.home svg{
-    width: 30px;
-    height: 30px;
-    margin-bottom: 8px;
-}
-
-.home h2{
-    font-size: 30px;
-}
-
 .Principal{
     display: flex;
     flex-direction: column;
@@ -234,29 +215,6 @@ main{
     padding-right: 8px;
     text-align: justify;
 }
-.Alert_Dialog_Student_Confirm_btns{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-top: 3%;
-    gap: 3%;
-}
-.Alert_Dialog_Student_Confirm_btns button{
-    border-style: none;
-    width: 100%;
-    padding: 2px;
-    color: beige;
-    border-radius: 40px;
-    transition: 0.3s;
-}
-.Alert_Dialog_Student_Confirm_btns button:hover{
-    transition: 0.3s;
-    box-shadow: 3px 4px 10px #202020;
-}
-.Alert_Dialog_Student_Confirm_btns svg{
-    width: 5%;
-    height: 5%;
-}
 .Menu_Proyectos{
     width: 100%;
     background-color: #565E64;
@@ -359,14 +317,6 @@ main{
     main{
         padding: 60px;
         padding-top: 10px;
-    }
-    .home svg{
-        width: 20px;
-        height: 20px;
-        margin-bottom: 8px;
-    }
-    .home h2{
-        font-size: 20px;
     }
     .Busqueda-center{
         gap: 15px;
@@ -615,14 +565,6 @@ main{
     }
 }
 @media (width < 650px) {
-    .home svg{
-        width: 15px;
-        height: 15px;
-        margin-bottom: 9px;
-    }
-    .home h2{
-        font-size: 15px;
-    }
     .Tabla_Estudiantes{
         gap: 10px;
         padding: 12px;
@@ -774,9 +716,6 @@ main{
     }
 }
 @media (width < 370px) {
-    .Alerts{
-        font-size: 55%;
-    }
     .Tabla_Estudiantes{
         padding-top: 15px;
     }

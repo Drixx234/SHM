@@ -13,7 +13,7 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    padding-left: 50px;
+    padding-left: 15px;
     color: #6D6D6D;
 }
 
@@ -209,31 +209,8 @@ body{
     color: #858aaa;
 }
 
-.home{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    padding-left: 50px;
-    color: #6D6D6D;
-}
-
-.home h2{
-    margin-top: 7px;
-    font-size: 30px;
-    pointer-events: none;
-}
-
-.home svg{
-    width: 27px;
-    height: 27px;
-}
-
 a{
     text-decoration: none;
-}
-.Alerts{
-    font-size: 200%;
 }
 @media (width < 1870px){
     .home h2{
