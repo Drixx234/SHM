@@ -7,6 +7,9 @@ import{
 }from "../Service/AdministradoresService.js"
 
 window.addEventListener('DOMContentLoaded', () => {
+    
+    localStorage.removeItem("id_admin");
+    
     const email_Box = document.getElementById('email');
     const password_Box = document.getElementById('password');
     const formLogIn = document.getElementById('loginForm');
@@ -47,17 +50,17 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         if(Admin.contrasenia == password){
-            localStorage.setItem("id_admin", Admin.id);
             AlertEsquina.fire({
                 icon: "success",
                 title: "¡USUARIO CORRECTO!",
                 html: "Bienvenido! Abriendo Dashboard!",
                 willClose: () => {
+                    localStorage.setItem("id_admin", Admin.id);
                     window.location.href = "Dashboard - Admin.html";
                 }
             });
         }else{
-            SweetAlert.fire({
+            AlertEsquina.fire({
                 icon: "error",
                 title: "¡CONTRASEÑA INCORRECTA!",
                 html: "La contraseña no se coincide con ningun usuario. Intentalo con otra información.",

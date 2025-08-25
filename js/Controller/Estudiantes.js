@@ -12,6 +12,7 @@ import{
     AlertEsquina
 }from "../Service/Alerts.js"
 
+localStorage.removeItem("IdEstudiante");
 const dropdown_Especialidades = document.getElementById("dropdown-Especialidades");
 const Input_Name = document.getElementById("Students-Square");
 const btn_Reset = document.getElementById("btn-Reset");
@@ -48,18 +49,23 @@ function Rellenar_Tabla(Estudiantes, Paginacion){
             <hr>
             <h3>${Estudiante.nombre_Especialidad}</h3>
             <hr>
-            <button title="Ver perfil de ${Estudiante.nombre} ${Estudiante.apellido}" id="btn_Profile_Student" onClick="Dialog_Estudiante(${Estudiante.codigo})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-collapse-icon lucide-list-collapse"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="m3 10 3-3-3-3"/><path d="m3 20 3-3-3-3"/></svg></button>
+            <button title="Ver perfil de ${Estudiante.nombre} ${Estudiante.apellido}" id="btn_Profile_Student" onClick="VerPerfilEstudiante(${Estudiante.codigo})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-collapse-icon lucide-list-collapse"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="m3 10 3-3-3-3"/><path d="m3 20 3-3-3-3"/></svg></button>
         </div>
         <hr class="hr_divisor">
         `;
     });
     if(Paginacion){
-        if(CargarTable > 0){
+        if(CargarTable > 0 && EstudiantesJson.length > 0){
             tabla_estudiantes.innerHTML += `
             <button class="btn-More" onClick="SiguientePagina()"><h4>Siguiente Pagina</h4></button>
             <button class="btn-More" onClick="PaginaAnterior()"><h4>Pagina Anterior</h4></button>
         `;
-        }else{
+        }else if(EstudiantesJson.length == 0 && CargarTable > 0){
+            tabla_estudiantes.innerHTML += `
+            <button class="btn-More" onClick="PaginaAnterior()"><h4>Pagina Anterior</h4></button>
+        `;
+        }
+        else{
             tabla_estudiantes.innerHTML += `
             <button class="btn-More" onclick="SiguientePagina()"><h4>Siguiente Pagina</h4></button>
         `;
@@ -136,12 +142,16 @@ btn_Reset.addEventListener('click', async () => {
     CargarTable = 0;
     await Cargar_Tabla(CargarTable);
 });
-
 function CargaInicialEstudiantes(){
     Cargar_Tabla(CargarTable);
     LlenarEspecialidades();
 }
+function VerPerfilEstudiante(id){
+    localStorage.setItem("IdEstudiante", id);
+    window.location.href = "Student Profile - Admin.html"
+}
 
+window.VerPerfilEstudiante = VerPerfilEstudiante;
 window.SiguientePagina = SiguientePagina;
 window.PaginaAnterior = PaginaAnterior;
 window.Cargar_Tabla_Especialidad = Cargar_Tabla_Especialidad;
