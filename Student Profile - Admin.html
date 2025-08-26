@@ -62,64 +62,101 @@
             <h2>Perfil de Estudiante</h2>
         </div>
 
-        <main>
+        <div>
             <div class="principal">
                 <article>
                     <div class="info_perfil">
                         <div class="principal_divs" hidden>
                             <div class="divs_inputs">
-                                <input type="text" id="idAdministrador" readonly>
-                            </div>
-                            <div class="divs_inputs">
                                 <input type="text" id="idUsuario" readonly>
                             </div>
                             <div class="divs_inputs">
-                                <input type="text" id="idProyecto" readonly>
+                                <input type="text" id="idHoras" readonly>
                             </div>
                         </div>
                         <div class="principal_divs">
                             <div class="divs_inputs">
-                                <label for="NombreAdmin">Nombres del Administrador</label>
-                                <input type="text" id="NombreAdmin" readonly>
+                                <label for="idEstudiante">Codigo del Estudiante</label>
+                                <input type="text" id="idEstudiante" readonly>
+                            </div>
+                        </div>
+                        <div class="principal_divs">
+                            <div class="divs_inputs">
+                                <label for="NombreEstudiante">Nombres del Estudiante</label>
+                                <input type="text" id="NombreEstudiante" readonly>
                             </div>
                             <div class="divs_inputs">
-                                <label for="ApellidoAdmin">Apellidos del Administrador</label>
-                                <input type="text" id="ApellidoAdmin" readonly>
+                                <label for="ApellidoEstudiante">Apellidos del Estudiante</label>
+                                <input type="text" id="ApellidoEstudiante" readonly>
+                            </div>
+                        </div>
+                        <div class="principal_divs">
+                            <div class="divs_inputs">
+                                <label for="anioEstudiante">Año academico del Estudiante</label>
+                                <input type="text" id="anioEstudiante" readonly>
+                            </div>
+                            <div class="divs_inputs">
+                                <label for="SeccionEstudiante">Seccion academica del Estudiante</label>
+                                <input type="text" id="SeccionEstudiante" readonly>
+                            </div>
+                        </div>
+                        <div class="principal_divs">
+                            <div class="divs_inputs">
+                                <label for="EspecialidadEstudiante">Especialidad del Estudiante</label>
+                                <input type="text" id="EspecialidadEstudiante" readonly>
+                            </div>
+                            <div class="divs_inputs">
+                                <label for="CoordinadorEspecialidad">Coordinador del Estudiante</label>
+                                <input type="text" id="CoordinadorEspecialidad" readonly>
                             </div>
                         </div>
                         <div style="display: flex; flex-direction: row; gap: 10px;">
                             <div class="divs_inputs">
-                                <label for="CorreoAdmin">Correo Electronico del Administrador</label>
-                                <input type="text" id="CorreoAdmin" readonly>
-                            </div>
-                            <button title="Mostrar Contraseña" type="button" id="btnPassword" class="btnPassword"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg></button>
-                        </div>
-                        <div class="principal_divs">
-                            <div class="divs_inputs" id="div_password" hidden>
-                                <label for="ConstraseniaAdmin">Constraseña del Administrador</label>
-                                <input type="text" id="ConstraseniaAdmin" readonly>
+                                <label for="CorreoEstudiante">Correo Electronico del Estudiante</label>
+                                <input type="text" id="CorreoEstudiante" readonly>
                             </div>
                         </div>
-                        <div class="principal_divs">
+                        <div style="display: flex; flex-direction: row; gap: 10px;">
                             <div class="divs_inputs">
-                                <label for="ProyectoAdmin">Proyecto Asignado</label>
-                                <input type="text" id="ProyectoAdmin" readonly>
+                                <label for="ProyectoEstudiante">Proyecto Asignado del Estudiante</label>
+                                <input type="text" id="ProyectoEstudiante" readonly>
                             </div>
                         </div>
                         <div class="principal_divs">
                             <div class="btn-Center">
-                                <button type="button" style="background-color: brown;" id="btnLogOut">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
-                                    Cerrar sesion
+                                <button type="button" style="background-color: rgb(38, 110, 110);" id="btnHoras">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+                                    Agregar Horas Sociales
                                 </button>
-                                <button type="button" style="background-color: rgb(163, 96, 20);" id="btnUpdate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen-icon lucide-user-pen"><path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/></svg>
-                                    Actualizar informacion
+                                <button type="button" style="background-color: rgb(163, 96, 20);" id="btnView">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen-icon lucide-user-pen"><path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/></svg>
+                                    Ver Horas Sociales
                                 </button>
                             </div>
                         </div>
                     </div>
                 </article>
+                <div class="modal ModalUpdate fade" id="ModalHoras" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content p-3 Form_Update">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title TitleModal">Agregar Horas Sociales</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" style="color: white;" aria-label="Cerrar"></button>
+                            </div>
+                            <form id="AgregarHorasForm">
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="HorasNumber" class="form-label">Cuantas horas quieres agregar?<span style="color:red">*</span></label>
+                                        <input type="number" step="1" class="form-control" id="HorasNumber" required />
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: center; align-items: center;">
+                                    <button type="submit" class="btn" style="width: 80%; background-color: rgb(177, 98, 43);">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <article class="Foto_Perfil">
                     <div>
@@ -127,10 +164,9 @@
                     </div>
                 </article>
             </div>
-            <div class="principal Prin2">
+            <div id="Horas_Card" class="principal Prin2" hidden>
                 <div class="col-md-6 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header"><h5 class="card-title mb-0"><i class="bi bi-graph-up me-2"></i>Progreso de Horas Sociales</h5></div>
+                    <div>
                         <div class="card-body text-center">
                             <div class="progress-pie mb-3" id="progress-pie" style="--percentage: 0%">
                                 <span class="percentage-text" id="percentage-text">0%</span>
@@ -148,13 +184,12 @@
                     </div>
                 </div>
             </div>
-        </main>
-
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="js/Controller/General.js"></script>
     <script type="module" src="js/Controller/Student Profile.js"></script>
+    <script type="module" src="js/Controller/General.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

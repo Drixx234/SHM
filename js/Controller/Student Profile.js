@@ -1,30 +1,197 @@
 import{
+    buscarHoras,
+    modificarHorasSociales
+}from "../Service/HorasSocialesService.js"
 
-}from "../Service/HorasSocialesService"
+import{
+    AlertEsquina
+}from "../Service/Alerts.js"
 
-async function loadHorasSociales() {
-    try {
-        if (!user.codigo) return;
+import{
+    buscarEstudiante
+}from "../Service/EstudiantesService.js"
 
-        const horasData = await horasService.obtenerHorasPorEstudiante(user.codigo);
-        const horas = horasData.horas || 0;
-        const porcentaje = horasData.porcentaje || 0;
+import{
+    EncontrarPorEstudiante
+}from "../Service/ServiciosVigentesService.js"
+
+window.addEventListener('DOMContentLoaded', () => {
+    
+    const idEstudiante = document.getElementById("idEstudiante");
+    const idUsuario = document.getElementById("idUsuario");
+    const idHoras = document.getElementById("idHoras");
+    const NombreEstudiante = document.getElementById("NombreEstudiante");
+    const ApellidoEstudiante = document.getElementById("ApellidoEstudiante");
+    const anioEstudiante = document.getElementById("anioEstudiante");
+    const SeccionEstudiante = document.getElementById("SeccionEstudiante");
+    const EspecialidadEstudiante = document.getElementById("EspecialidadEstudiante");
+    const CoordinadorEspecialidad = document.getElementById("CoordinadorEspecialidad");
+    const CorreoEstudiante = document.getElementById("CorreoEstudiante");
+    const ProyectoEstudiante = document.getElementById("ProyectoEstudiante");
+    const btnHoras = document.getElementById("btnHoras");
+    const btnView = document.getElementById("btnView");
+    const Foto_Perfil = document.getElementById("Foto_Perfil");
+    const Horas_Card = document.getElementById("Horas_Card");
+
+    const ModalHoras = document.getElementById("ModalHoras");
+    const Modal_Horas = new bootstrap.Modal(ModalHoras);
+    const HorasNumber = document.getElementById("HorasNumber");
+    const AgregarHorasForm = document.getElementById("AgregarHorasForm");
+
+    const CodigoEstudiante = localStorage.getItem("IdEstudiante");
+    let HorasSociales;
+
+    btnView.addEventListener('click', () => {
+        if(Horas_Card.hidden == true){
+            Horas_Card.hidden = false;
+        }else{
+            Horas_Card.hidden = true;
+        }
+    });
+    async function AgregarHorasSociales(id, json) {
+        try{
+            return await modificarHorasSociales(id, json);
+        }catch(err){
+            console.log("Hubieron problemas Modificando", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡NO SE PUDO MODIFICAR!",
+                html: "Hubo un problema con la conexion, no se pudieron agregar las horas sociales.",
+            });
+        }
+    }
+    async function BuscarServicioVigente() {
+        try{
+            const data = EncontrarPorEstudiante(CodigoEstudiante);
+            return data;
+        }catch(err){
+            console.error("Hubieron problemas buscando", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡NO SE PUDO CARGAR!",
+                html: "Hubo un problema con la conexion, no se pudieron obtener el servicio vigente del estudiante.",
+            });
+        }
+    }
+    async function Buscar_Estudiante() {
+        try{
+            const data = await buscarEstudiante(CodigoEstudiante);
+            return data;
+        }catch(err){
+            console.error("No se pudo cargar datos", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡NO SE PUDO CARGAR!",
+                html: "Hubo un problema con la conexion, no se pudieron obtener los datos del estudiante.",
+            });
+        }
+    }
+    async function ObtenerHoras() {
+        try{
+            const data = await buscarHoras(CodigoEstudiante);
+            return data;
+        }catch(err){
+            console.error("No se pudo cargar datos", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡NO SE PUDO CARGAR!",
+                html: "Hubo un problema con la conexion, no se pudieron obtener las horas sociales del estudiante.",
+            });
+        }
+    }
+    async function CargarEstudianteInfo() {
+        if(!CodigoEstudiante){
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡NO SE PUDO OBTENER!",
+                html: "Hubo un problema y no se pudo obtener el codigo del estudiante para buscar la informacion.",
+            });
+        }
+
+        const Estudiante = await Buscar_Estudiante();
+        const Horas = await ObtenerHoras();
+        const Servicio = await BuscarServicioVigente();
+
+        idEstudiante.value = Estudiante.codigo;
+        idUsuario.value = Estudiante.usuario;
+        idHoras.value = Horas.id;
+        NombreEstudiante.value = Estudiante.nombre;
+        ApellidoEstudiante.value = Estudiante.apellido;
+        anioEstudiante.value = Estudiante.año_academico;
+        SeccionEstudiante.value = Estudiante.seccion_academica;
+        EspecialidadEstudiante.value = Estudiante.nombre_Especialidad;
+        CoordinadorEspecialidad.value = Estudiante.coordinador;
+        CorreoEstudiante.value = Estudiante.correo_electronico;
+        Foto_Perfil.src = Estudiante.foto;
+        if(!Servicio.proyecto_nombre){
+            ProyectoEstudiante.value = "No hay ningun Servicio Vigente"
+        }else{
+            ProyectoEstudiante.value = Servicio.proyecto_nombre;
+        }
+
+        const horas = Horas.horas || 0;
+        const porcentaje = Horas.porcentaje || 0;
         const horasFaltantes = 150 - horas;
+        HorasSociales = Horas.horas;
 
-        // Actualizar UI
         document.getElementById('horas-completadas').textContent = horas;
         document.getElementById('horas-faltantes').textContent = horasFaltantes;
         document.getElementById('percentage-text').textContent = `${porcentaje.toFixed(1)}%`;
-        
+
         const progressBar = document.getElementById('progress-bar');
         progressBar.style.width = `${porcentaje}%`;
         progressBar.setAttribute('aria-valuenow', porcentaje);
         progressBar.textContent = `${porcentaje.toFixed(1)}%`;
-        
-        document.getElementById('progress-pie').style.setProperty('--percentage', `${porcentaje}%`);
 
-    } catch (error) {
-        console.error('Error al cargar horas sociales:', error);
-        showError('horas-completadas', 'Error al cargar horas');
+        document.getElementById('progress-pie').style.setProperty('--percentage', `${porcentaje}%`);
     }
-}
+    btnHoras.addEventListener('click', async () => {
+        Modal_Horas.show();
+    });
+    AgregarHorasForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const HorasAgregadas = parseFloat(HorasNumber.value);
+        const HorasTotales = HorasAgregadas + HorasSociales;
+        const id_horas = idHoras.value;
+
+        console.log(HorasAgregadas);
+        console.log(HorasTotales);
+        console.log(HorasSociales);
+
+        if(HorasTotales > 150.0){
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡NO SE PUDO AGREGAR!",
+                html: "Las horas en total exceden el limite de horas sociales obtenibles por un estudiante.",
+            });
+            return;
+        }
+
+        const data = {
+            "horas": HorasTotales,
+            "codigoEstudiante": CodigoEstudiante
+        }
+
+        const res = await AgregarHorasSociales(id_horas, data);
+        if(res.ok){
+            AlertEsquina.fire({
+                icon: "success",
+                title: "¡HORAS AGREGADAS!",
+                html: "Las horas fueron agregadas exitosamente.",
+            });
+            Modal_Horas.hide();
+            CargarEstudianteInfo();
+            HorasNumber.value = '';
+        }else{
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡NO SE PUDO MODIFICAR!",
+                html: "Hubieron problemas intentando modificar el registro de horas, no se pudieron agregar las horas sociales.",
+            });
+            return;
+        }
+    });
+
+    CargarEstudianteInfo();
+});

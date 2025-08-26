@@ -6,17 +6,17 @@ export async function buscarHoras(codigo) {
 }
 
 export async function crearHorasSociales(codigo) {
-    await fetch(`${API_URL_HorasSociales}/postHoras/${codigo}`, { method: 'POST' });
+    return await fetch(`${API_URL_HorasSociales}/postHoras/${codigo}`, { method: 'POST' });
 }
 
 export async function modificarHorasSociales(id, data) {
-    await fetch(`${API_URL_HorasSociales}/putHoras/${id}`, {
+    return await fetch(`${API_URL_HorasSociales}/putHoras/${id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data),
-    })
+    });
 }
 
 export async function eliminarHorasSociales(id) {
-    await fetch(`${API_URL_HorasSociales}/deleteHoras/${id}`, { method: 'DELETE' });
+    return await fetch(`${API_URL_HorasSociales}/deleteHoras/${id}`, { method: 'DELETE' });
 }

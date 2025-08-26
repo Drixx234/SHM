@@ -98,6 +98,10 @@
     box-shadow: 3px 3px 5px rgba(79, 79, 80, 0.2);
     width: 100%;   
 }
+.btn-Center svg{
+    width: 27px;
+    height: 27px;
+}
 
 .principal_divs{
     display: flex;
@@ -137,6 +141,23 @@
 .Form_Update{
     background-color: #c7cee0;
     background: linear-gradient(rgba(143, 205, 209, 0.2), rgba(113, 173, 223, 0.4)), url(../img/fondo-azul.jpg) center/cover no-repeat;
+}
+.progress-pie { 
+    width: 130px;
+    height: 130px;
+    border-radius: 50%; 
+    background: conic-gradient(#1976d2 0% var(--percentage), #e0e0e0 var(--percentage) 100%);
+    position: relative; margin: 0 auto; display: flex; align-items: center; justify-content: center; 
+}
+.progress-pie::after { 
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%; 
+    border-radius: 50%;
+    background-color: #ffffff; 
 }
 
 @media (width < 1245px) {
