@@ -17,7 +17,7 @@ const dropdown_Especialidades = document.getElementById("dropdown-Especialidades
 const Input_Name = document.getElementById("Students-Square");
 const btn_Reset = document.getElementById("btn-Reset");
 
-const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".", ",", "<", ">", ":", ";", "(", ")", "|", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".", ",", "<", ">", ":", ";", "(", ")", "|", "*", "&", "^", "%", "$", "#", "@", ,"'", '"', "!", "~", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 const tabla_estudiantes = document.getElementById("Tabla_Estudiantes");
 let CargarTable = 0;

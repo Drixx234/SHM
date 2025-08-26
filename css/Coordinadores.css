@@ -1,0 +1,319 @@
+.Principal{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.Busqueda-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 0px 2.5rem;
+}
+.Busqueda-center input{
+    padding: 0.8rem 2.3rem;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #F4F4F4;
+    border-style: solid;
+    font-size: 2rem;
+    border-width: 2px;
+    border-color: #7B7B7B;
+}
+.Btn_Proyectos{
+    border-radius: 20px;
+    background-color: #F4F4F4;
+    font-size: 2rem;
+    padding: 0.8rem 5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #7B7B7B;
+    color: rgb(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Menu_Proyectos{
+    width: 100%;
+    background-color: #565E64;
+}
+.Item_Proyectos{
+    border-style: none;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #565E64;
+    font-size: 1.5rem;
+    color: #F4F4F4;
+}
+.Item_Proyectos:hover{
+    background-color: #F4F4F4;
+    color: #565E64;
+}
+.btn-Reset{
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+.btn-Reset svg{
+    width: 60px;
+    height: 60px;
+    color: #565E64;
+}
+.btn-Reset:hover{
+    transform: rotate(-360deg);
+    transition: 0.5s ease;
+}
+.Pageable{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5rem;
+    margin-top: 1.3rem;
+}
+.Pageable button{
+    background-color: #3a5468;
+    color: azure;
+    padding: 1.3rem 4rem;
+    border: none;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1.6rem;
+    box-shadow: 3px 3px rgba(79, 79, 80, 0.2);
+    transition: 0.5s;
+}
+.Pageable button:hover{
+    transform-origin: center bottom;
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+.Pageable svg{
+    height: 35px;
+    width: 35px;
+}
+.divs_cards{
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.card_img{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    object-fit: cover;
+    justify-content: center;
+}
+.Cards{
+    flex: 1 1 200px;
+    max-width: 400px;
+    background: #ffffff;
+    box-shadow: 3px 6px rgba(79, 79, 80, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 1rem;
+    transition: 0.5s;
+}
+.Cards:hover{
+    transform-origin: center top;
+    transition: 0.5s;
+    transform: scale(1.05);
+}
+.Cards_body{
+    display: flex;
+    flex-direction: row;
+}
+.Cards_hr{
+    border: 1px solid black;
+    height: 150px;
+    margin: 0 1rem;
+}
+.card_info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    width: 100%;
+}
+.Cards h3{
+    text-align: center;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+}
+.Cards h4{
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    font-size: 1rem;
+}
+@media (width < 1710px) {
+    .Busqueda-center input{
+        font-size: 1.7rem;
+    }
+    .Btn_Proyectos{
+        font-size: 2rem;
+    }
+    .Item_Proyectos{
+        font-size: 1.4rem;
+    }
+    .btn-Reset svg{
+        width: 50px;
+        height: 50px;
+    }
+}
+@media (width < 1520px){
+    .Busqueda-center input{
+        font-size: 1.6rem;
+        padding: 0.7rem 1.8rem;
+    }
+    .Btn_Proyectos{
+        font-size: 1.5rem;
+    }
+    .Item_Proyectos{
+        font-size: 1.2rem;
+    }
+    .btn-Reset svg{
+        width: 40px;
+        height: 40px;
+    }
+    .Pageable button{
+        padding: 0.9rem 3rem;
+        border-radius: 20px;
+        gap: 15px;
+        font-size: 1rem;
+    }
+    .Pageable svg{
+        height: 30px;
+        width: 30px;
+    }
+}
+@media (width < 1370px){
+    .home{
+        margin-left: -20px;
+        margin-top: 10px;
+    }
+    .Busqueda-center{
+        gap: 10px;
+        padding: 0px 1.5rem;
+    }
+    .Busqueda-center input{
+        font-size: 1.2rem;
+        padding: 0.5rem 1.5rem;
+    }
+    .Btn_Proyectos{
+        font-size: 1.3rem;
+    }
+    .Item_Proyectos{
+        font-size: 1rem;
+    }
+    .btn-Reset svg{
+        width: 30px;
+        height: 30px;
+    }
+}
+@media (width < 1100px){
+    .Busqueda-center{
+        gap: 5px;
+        padding: 0px 1rem;
+    }
+    .Busqueda-center input{
+        font-size: 1rem;
+        padding: 0.4rem 1rem;
+    }
+    .Btn_Proyectos{
+        font-size: 1rem;
+        padding: 0.4rem 2rem;
+    }
+    .Item_Proyectos{
+        font-size: 0.7rem;
+    }
+    .Pageable{
+        padding: 1rem 2rem;
+        margin-top: 0.7rem;
+    }
+    .Pageable button{
+        padding: 0.7rem 2.5rem;
+        border-radius: 20px;
+        gap: 15px;
+        font-size: 0.8rem;
+    }
+    .Pageable svg{
+        height: 25px;
+        width: 25px;
+    }
+}
+@media (width < 790px){
+    .Cards_body{
+        flex-direction: column;
+        align-items: center;
+    }
+    .card_img{
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        object-fit: cover;
+        margin: 1rem 0;
+    }
+    .Cards_body hr{
+        width: 90%;
+        height: 0px;
+        margin: 1rem 0;
+    }
+}
+@media (width < 650px){
+    .Busqueda-center input{
+        font-size: 1rem;
+    }
+    .Btn_Proyectos{
+        font-size: 0.9rem;
+        padding: 0.6rem 2rem;
+    }
+    .Item_Proyectos{
+        font-size: 0.7rem;
+    }
+    .Pageable{
+        padding: 1rem 2rem;
+        margin-top: 0.7rem;
+    }
+    .Pageable button{
+        padding: 0.7rem 2.5rem;
+        border-radius: 20px;
+        gap: 15px;
+        font-size: 0.8rem;
+    }
+    .Pageable svg{
+        height: 25px;
+        width: 25px;
+    }
+}
+@media (width < 560px){
+    .Pageable{
+        padding: 1rem 1rem;
+    }
+    .Pageable button{
+        padding: 0.7rem 1.5rem;
+        gap: 10px;
+    }
+    .Pageable svg{
+        height: 20px;
+        width: 20px;
+    }
+}
+@media (width < 470px){
+    .Pageable button{
+        padding: 0.5rem 1rem;
+        font-size: 0.6rem;
+    }
+}
+@media (width < 370px){
+    
+}
