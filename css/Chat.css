@@ -24,18 +24,10 @@
     font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
+
 html, body {
     height: 100%;
     width: 100%;
-}
-
-body {
-    background: var(--background-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
 }
 
 /* Contenedor principal */
