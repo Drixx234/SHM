@@ -7,6 +7,19 @@ import{
 }from "../Service/ProyectosService.js"
 
 import{
+    listarRoles
+}from "../Service/RolesService.js"
+
+import{
+    agregarUsuario,
+    buscarElUsuario
+}from "../Service/UsuariosService.js"
+
+import{
+    uploadImageToFolder
+}from "../Service/CloudinaryService.js"
+
+import{
     getAllCoordinadores,
     findAllByNombre,
     findAllByProyecto,
@@ -18,14 +31,36 @@ localStorage.removeItem("IdCoordi");
 const Coordi_Square = document.getElementById("Coordi_Square");
 const Menu_Proyectos = document.getElementById("dropdown-Proyectos");
 const btn_Reset = document.getElementById("btn-Reset");
+const btnPlus = document.getElementById("btnPlus");
+const NewPerfilFoto = document.getElementById("NewPerfilFoto");
+const ImagePreview = document.getElementById("ImagePreview");
+const NewName = document.getElementById("NewName");
+const NewApellido = document.getElementById("NewApellido");
+const NewCorreo = document.getElementById("NewCorreo");
+const NewPassword = document.getElementById("NewPassword");
+const NewConfirm = document.getElementById("NewConfirm");
+const RolAdmin = document.getElementById("RolAdmin");
+const ProyectoAdmin = document.getElementById("ProyectoAdmin");
 
 const divs_cards = document.getElementById("divs_cards");
 const PageableCenter = document.getElementById("PageableCenter");
+const ModalNew = document.getElementById("ModalNew");
+const Modal_New = new bootstrap.Modal(ModalNew);
 
 const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".", ",", "<", ">", ":", ";", "(", ")", "|", "*", "&", "^", "%", "$", "#", "@", ,"'", '"', "!", "~", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 let Page = 0
 
+NewPerfilFoto.addEventListener("change", () => {
+    const file = NewPerfilFoto.files?.[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = () => (ImagePreview.src = reader.result);
+        reader.readAsDataURL(file);
+    } else {
+        NewPerfilFoto.value = "";
+    }
+});
 Coordi_Square.addEventListener('keydown', (e) => {
     if (Array_BlockLetters.includes(e.key)) {
         e.preventDefault();
@@ -91,6 +126,24 @@ async function Llenar_Box_Proyectos(){
             <li><button type="button" class="Item_Proyectos" onClick="BuscarPorProyecto('${proyecto.id}');">${proyecto.nombre}</button></li>
         `;
     });
+
+    ProyectoAdmin.innerHTML = '';
+    const opt = document.createElement("option");
+    opt.value = "";
+    opt.disabled = true;
+    opt.selected = true;
+    opt.hidden = true;
+    opt.textContent = "Seleccione...";
+    ProyectoAdmin.appendChild(opt);
+
+    proyectos.forEach(proyecto => {
+        const opt = document.createElement("option");
+        opt.value = proyecto.id;
+        opt.textContent = `${proyecto.nombre}`;
+        opt.title = `${proyecto.concepto}`
+        ProyectoAdmin.appendChild(opt);
+    });
+
 }
 async function CargarTodosCoordinadores(n) {
     try{
@@ -180,12 +233,177 @@ function VerCoordinador(id){
 function CargaInicialCoordis(){
     Llenar_Box_Proyectos();
     CargarTodosCoordinadores();
+    CargarRolesAdmin();
 }
 btn_Reset.addEventListener('click', () => {
     Page = 0;
     CargarTodosCoordinadores(Page);
 });
+async function CargarRolesAdmin() {
+    try {
+        const roles = await listarRoles();
+        Llenar_Box_Roles(roles);
+    }catch(err){
+        console.log("Hubieron problemas cargando", err);
+    }
+}
+function Llenar_Box_Roles(roles){
+    RolAdmin.innerHTML = '';
+    const opt = document.createElement("option");
+    opt.value = "";
+    opt.disabled = true;
+    opt.selected = true;
+    opt.hidden = true;
+    opt.textContent = "Seleccione...";
+    RolAdmin.appendChild(opt);
 
+    roles.forEach(rol => {
+        if(rol.idRol != 3){
+            const opt = document.createElement("option");
+            opt.value = rol.idRol;
+            opt.textContent = `${rol.nombreRol}`;
+            RolAdmin.appendChild(opt);
+        }
+    });
+}
+function ValidarCampos(){
+    if(RolAdmin.value == 2 && ProyectoAdmin.value == null){
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡PROYECTO FALTANTE!",
+            html: "No puede dejar a un coordinador sin proyecto.",
+        });
+    }
+    if(NewPassword.value !== NewConfirm.value){
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡CONFIRMACION INCORRECTA!",
+            html: "Confirmacion contraseña incorrecta.",
+        });
+    }
+}
+btnPlus.addEventListener('click', () => {
+    Modal_New.show();
+});
+function LimpiarFormulario(){
+    NewName.value = '';
+    NewApellido.value = '';
+    NewCorreo.value = '';
+    NewPassword.value = '';
+    NewConfirm.value = '';
+    NewPerfilFoto.value = '';
+    ImagePreview.src = '';
+}
+ModalNew.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    ValidarCampos;
+
+    const post_name = NewName.value;
+    const post_apellido = NewApellido.value;
+    const post_correo = NewCorreo.value;
+    const post_password = NewPassword.value;
+    const post_rol = RolAdmin.value;
+    let idUsuario;
+    let post_id_proyecto;
+    if(ProyectoAdmin.value != ''){
+            post_id_proyecto = null
+    }else{
+        post_id_proyecto = ProyectoAdmin.value;
+    }
+
+    let UpdatedFoto;
+    const file = NewPerfilFoto?.files?.[0];
+    if(file){
+        try{
+            const response = await uploadImageToFolder(file, "Foto_Perfil_Coordinador");
+            if(response && response.data) {
+                UpdatedFoto = response.data;
+            } else {
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡ERROR AL SUBIR LA FOTO!",
+                    html: "Hubieron problemas intentando subir la foto de perfil a la nube.", 
+                });
+                return;
+            }
+        }catch(err){
+            console.error("Error al subir imagen", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR AL SUBIR LA FOTO!",
+                html: "Hubieron problemas intentando subir la foto de perfil a la nube.", 
+            });
+            return;
+        }
+    }
+
+    try{
+        const jsonU = {
+            "correo": `${post_correo}`,
+            "contrasenia": `${post_password}`,
+            "id_rol": post_rol
+        }
+        const res = await agregarUsuario(jsonU);
+        console.log(res);
+        if(res.ok){
+            const res = await buscarElUsuario(post_correo, post_password);
+            idUsuario = res.id;
+        }else{
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR AL CREAR USUARIO!",
+                html: "Hubieron problemas con la conexion, no se pudo crear usuario.", 
+            });
+            return;
+        }
+    }catch(err){
+        console.error("Error creando", err);
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡ERROR AL CREAR USUARIO!",
+            html: "Hubieron problemas con la conexion, no se pudo crear usuario.", 
+        });
+        return;
+    }
+
+    const jsonA = {
+        "nombre": `${post_name}`,
+        "apellido": `${post_apellido}`,
+        "foto_perfil": `${UpdatedFoto}`,
+        "idUsuario": idUsuario,
+        "id_proyecto": post_id_proyecto,
+        "estado_admin": true
+    }
+
+    try{
+        const res = await agregarAdministrador(jsonA);
+        if(res.ok){
+            AlertEsquina.fire({
+                icon: "success",
+                title: "¡USUARIO CREADO CORRECTAMENTE!",
+                html: "No hubo problemas creando el usuario.", 
+            });
+        }else{
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡USUARIO NO CREADO CORRECTAMENTE!",
+                html: "Hubieron problemas creando el usuario.", 
+            });
+        }
+    }catch(err){
+        console.error("Hubieron problemas insertando Administrador", err);
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡USUARIO NO CREADO CORRECTAMENTE!",
+            html: "Hubieron problemas creando el usuario.", 
+        });
+    }
+
+    LimpiarFormulario();
+    Page = 0;
+    Modal_New.hide();
+    CargarTodosCoordinadores(Page);
+});
 
 window.SiguientePagina = SiguientePagina;
 window.PaginaAnterior = PaginaAnterior;

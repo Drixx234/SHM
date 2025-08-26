@@ -20,8 +20,13 @@ export async function LogInEstudiantes(correo) {
     return res.json();
 }
 
+export async function buscarElUsuario(correo, contra) {
+    const res = await fetch(`${API_URL_Usuarios}/BuscarElUsuario/${correo}/${contra}`);
+    return res.json();
+}
+
 export async function agregarUsuario(data) {
-    await fetch(`${API_URL_Usuarios}/postUsuario`, {
+    return await fetch(`${API_URL_Usuarios}/postUsuario`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -29,7 +34,7 @@ export async function agregarUsuario(data) {
 }
 
 export async function actualizarUsuarios(id, data) {
-    await fetch(`${API_URL_Usuarios}/putUsuarios/${id}`, {
+    return await fetch(`${API_URL_Usuarios}/putUsuarios/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -37,5 +42,5 @@ export async function actualizarUsuarios(id, data) {
 }
 
 export async function borrarUsuario(id) {
-    await fetch(`${API_URL_Usuarios}/deleteEstudiante/${id}`, { method: 'DELETE' });
+    return await fetch(`${API_URL_Usuarios}/deleteEstudiante/${id}`, { method: 'DELETE' });
 }

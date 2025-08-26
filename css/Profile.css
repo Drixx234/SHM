@@ -60,10 +60,17 @@
 
 .divs_inputs2 label{
     font-size: 0.7rem;
-    color: rgb(58, 58, 59);
+    color: rgb(0, 0, 0);
 }
 
 .divs_inputs2 input{
+    border: none;
+    font-size: 1rem;
+    background-color: #cbd1df;
+    color: black;
+}
+
+.divs_inputs2 select{
     border: none;
     font-size: 1rem;
     background-color: #cbd1df;
@@ -139,8 +146,7 @@
 }
 
 .Form_Update{
-    background-color: #c7cee0;
-    background: linear-gradient(rgba(143, 205, 209, 0.2), rgba(113, 173, 223, 0.4)), url(../img/fondo-azul.jpg) center/cover no-repeat;
+    background-color: #556386;
 }
 .progress-pie { 
     width: 130px;

@@ -83,6 +83,9 @@
                 </div>
             </div>
         </div>
+        <button class="btnPlus" id="btnPlus">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        </button>
         <div class="modal ModalUpdate fade" id="ModalNew" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content p-3 Form_Update">
@@ -90,14 +93,14 @@
                         <h5 class="modal-title TitleModal">Agregar Nuevo Coordinador</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" style="color: white;" aria-label="Cerrar"></button>
                     </div>
-                    <form id="UpdateForm">
+                    <form id="PostForm" method="post" autocomplete="off">
                         <div class="modal-body">
 
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewPerfilFoto" class="form-label">Imagen<span style="color:red">*</span></label>
                                 <input type="file" class="form-control" id="NewPerfilFoto" accept="image/*"/>
                                 <div class="mt-2">
-                                    <img id="ImagePreview" class="img-preview" alt="Vista previa" src="" />
+                                    <img id="ImagePreview" class="img-preview" src="" />
                                 </div>
                             </div>
 
@@ -113,16 +116,30 @@
 
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewCorreo" class="form-label">Correo del Administrador<span style="color:red">*</span></label>
-                                <input type="text" class="form-control" id="NewCorreo" required />
+                                <input type="email" class="form-control" id="NewCorreo" required />
                             </div>
 
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewPassword" class="form-label">Contraseña del Administrador<span style="color:red">*</span></label>
-                                <input type="text" class="form-control" id="NewPassword" required/>
+                                <input autocomplete="new-password" type="text" class="form-control" id="NewPassword" required/>
                             </div>
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewConfirm" class="form-label">Confirmar Contraseña del Administrador<span style="color:red">*</span></label>
-                                <input type="password" class="form-control" id="NewConfirm" required/>
+                                <input autocomplete="new-password" type="password" class="form-control" id="NewConfirm" required/>
+                            </div>
+
+                            <div class="mb-3 divs_inputs2">
+                                <label for="RolAdmin" class="form-label">Rol:<span style="color:red">*</span></label>
+                                <select class="form-select" id="RolAdmin" required>
+                                    <option value="" disabled selected hidden>Seleccione...</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3 divs_inputs2">
+                                <label for="ProyectoAdmin" class="form-label">Proyecto Asignado:<span style="color:red"></span></label>
+                                <select class="form-select" id="ProyectoAdmin">
+                                    <option value="" disabled selected hidden>Seleccione...</option>
+                                </select>
                             </div>
                         </div>
 

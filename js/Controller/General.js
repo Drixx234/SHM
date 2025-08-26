@@ -35,7 +35,6 @@ const btn_Profile = document.getElementById("btnPerson");
         }else{
             Proyecto_Asignado = 'No hay Proyecto Asignado';
         }
-
         btn_Profile.title = `Perfil de ${perfil.nombre} ${perfil.apellido}`;
     }
     function ocultarBotones(botones) {
