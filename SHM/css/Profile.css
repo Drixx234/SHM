@@ -1,0 +1,1222 @@
+/* Profile.css - Estilo para página de Perfil de Administrador */
+:root {
+    --primary: #B33335;      /* Rojo principal */
+    --primary-dark: #8C2A2B; /* Rojo oscuro */
+    --primary-light: #D64548; /* Rojo claro */
+    --secondary: #2C3E50;    /* Azul oscuro casi negro */
+    --secondary-light: #34495E; /* Azul oscuro claro */
+    --accent: #3498DB;       /* Azul brillante */
+    --accent-light: #5DADE2; /* Azul claro */
+    --light: #FFFFFF;        /* Blanco */
+    --dark: #1E1E1E;         /* Negro suave */
+    --gray-100: #F8F9FA;     /* Gris muy claro */
+    --gray-200: #E9ECEF;     /* Gris claro */
+    --gray-300: #DEE2E6;     /* Gris medio claro */
+    --gray-400: #CED4DA;     /* Gris medio */
+    --gray-500: #ADB5BD;     /* Gris */
+    --gray-600: #6C757D;     /* Gris oscuro */
+    --gray-700: #495057;     /* Gris muy oscuro */
+    --gray-800: #343A40;     /* Casi negro */
+    --gray-900: #212529;     /* Negro grisáceo */
+    --body-bg: #F5F7FB;      /* Fondo de la página */
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 10px;
+    --sidebar-width: 280px;
+}
+
+/* Estructura general */
+body {
+    background-color: var(--body-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-700);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER - Barra de navegación superior */
+.Barra-Navegacion {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70px;
+}
+
+.Barra-Navegacion > ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+}
+
+.Barra-Navegacion > ul > li:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.Logo {
+    height: 45px;
+    transition: var(--transition);
+    filter: brightness(0) invert(1);
+}
+
+.Logo:hover {
+    transform: scale(1.05);
+}
+
+.Menu-center {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.Menu-center a {
+    text-decoration: none;
+    color: var(--light);
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    position: relative;
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+.Menu-center a:hover {
+    color: var(--light);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.Active-Btn {
+    color: var(--light) !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.Unactive-Btn {
+    opacity: 0.85;
+}
+
+.Unactive-Btn:hover {
+    opacity: 1;
+}
+
+.Logo-menu, .Logo-person {
+    background: none;
+    border: none;
+    color: var(--light);
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.Logo-menu:hover, .Logo-person:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--light);
+}
+
+.Menu-center hr {
+    height: 30px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    margin: 0 0.5rem;
+}
+
+/* Navbar de opciones */
+.Navbar_Options {
+    background: var(--secondary);
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.Navbar_Options ul {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+}
+
+.Navbar_Options li {
+    display: flex;
+    align-items: center;
+}
+
+.Navbar_Options a, .Navbar_Options button {
+    text-decoration: none;
+    color: var(--light);
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.Navbar_Options a:hover, .Navbar_Options button:hover {
+    color: var(--light);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Sidebar offcanvas */
+.offcanvas-start.SideBar {
+    width: var(--sidebar-width);
+    border-right: 1px solid var(--gray-200);
+    background: var(--light);
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid var(--gray-200);
+    padding: 1rem 1.5rem;
+    background: var(--secondary);
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.offcanvas-title {
+    font-weight: 600;
+    margin: 0;
+    color: var(--light);
+}
+
+.offcanvas-body {
+    padding: 1rem 0;
+}
+
+.Bar-Menu-center {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Bar-Menu-center div {
+    margin-bottom: 0.2rem;
+}
+
+.Bar-Menu-center a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: var(--gray-700);
+    font-weight: 500;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.Bar-Menu-center a:hover {
+    background-color: rgba(179, 51, 53, 0.1);
+    color: var(--primary);
+    border-left-color: var(--primary);
+}
+
+.Bar-Button-Active a {
+    background-color: rgba(179, 51, 53, 0.1);
+    color: var(--primary);
+    border-left-color: var(--primary);
+}
+
+.Bar_Options {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    border-top: 1px solid var(--gray-200);
+}
+
+.Bar_Options li {
+    margin-bottom: 0.5rem;
+}
+
+.Bar_Options button {
+    width: 100%;
+    text-align: left;
+    padding: 0.8rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--gray-700);
+    font-weight: 500;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.Bar_Options button:hover {
+    background-color: rgba(179, 51, 53, 0.1);
+    color: var(--primary);
+    border-left-color: var(--primary);
+}
+
+/* Contenido principal */
+main {
+    padding: 0 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.home svg {
+    color: var(--primary);
+    width: 28px;
+    height: 28px;
+}
+
+.home h2 {
+    font-weight: 600;
+    color: var(--secondary);
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Layout principal */
+.principal {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Información del perfil */
+.info_perfil {
+    background: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+}
+
+.principal_divs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.divs_inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.divs_inputs label {
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.divs_inputs input {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    font-size: 1rem;
+    background: var(--gray-100);
+    color: var(--gray-700);
+    transition: var(--transition);
+}
+
+.divs_inputs input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(179, 51, 53, 0.2);
+}
+
+.divs_inputs input:read-only {
+    background: var(--gray-100);
+    color: var(--gray-600);
+    cursor: not-allowed;
+}
+
+/* Botón para mostrar contraseña */
+.btnPassword {
+    background: var(--gray-200);
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--gray-700);
+    align-self: flex-end;
+    margin-top: 1.8rem;
+    height: fit-content;
+}
+
+.btnPassword:hover {
+    background: var(--gray-300);
+    transform: translateY(-2px);
+}
+
+.btnPassword svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Botones de acción */
+.btn-Center {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+.btn-Center button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--light);
+}
+
+.btn-Center button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#btnLogOut {
+    background: var(--primary) !important;
+}
+
+#btnLogOut:hover {
+    background: var(--primary-dark) !important;
+}
+
+#btnUpdate {
+    background: #a36014 !important;
+}
+
+#btnUpdate:hover {
+    background: #8a5011 !important;
+}
+
+.btn-Center button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Foto de perfil */
+.Foto_Perfil {
+    background: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Foto_Perfil div {
+    text-align: center;
+}
+
+#Foto_Perfil {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--gray-200);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal de actualización */
+.ModalUpdate .modal-content {
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background: var(--secondary);
+    color: var(--light);
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+    padding: 1.2rem 1.5rem !important;
+}
+
+.modal-title {
+    font-weight: 600;
+    margin: 0;
+}
+
+.btn-close {
+    filter: invert(1) !important;
+    opacity: 0.8 !important;
+}
+
+.btn-close:hover {
+    opacity: 1 !important;
+}
+
+.modal-body {
+    padding: 1.5rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1.2rem !important;
+}
+
+.divs_inputs2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(179, 51, 53, 0.2);
+    outline: none;
+}
+
+/* Checkbox para cambiar contraseña */
+#chk_password {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+/* Vista previa de imagen */
+.img-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gray-300);
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.modal-footer {
+    padding: 1.2rem 1.5rem !important;
+    background: var(--gray-100);
+    border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
+}
+
+.modal-footer .btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.modal-footer .btn-secondary {
+    background: var(--gray-600);
+    border-color: var(--gray-600);
+}
+
+.modal-footer .btn-secondary:hover {
+    background: var(--gray-700);
+    border-color: var(--gray-700);
+}
+
+.modal-footer .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.modal-footer .btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* Línea divisoria */
+hr {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid var(--gray-300);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .Navbar_Options ul {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+    
+    .Menu-center a:not(.Active-Btn):not(.Logo-menu):not(.Logo-person) {
+        display: none;
+    }
+    
+    .principal {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .principal_divs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .Barra-Navegacion {
+        padding: 0.5rem 1rem;
+    }
+    
+    .Menu-center {
+        gap: 0.5rem;
+    }
+    
+    .Menu-center a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    main {
+        padding: 0 1rem 2rem;
+    }
+    
+    .home h2 {
+        font-size: 1.5rem;
+    }
+    
+    .Navbar_Options {
+        padding: 0.6rem 1rem;
+    }
+    
+    .Navbar_Options a, .Navbar_Options button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .info_perfil, .Foto_Perfil {
+        padding: 1.5rem;
+    }
+    
+    .btn-Center {
+        flex-direction: column;
+    }
+    
+    .btn-Center button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    #Foto_Perfil {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Ajustes para el campo de correo con botón */
+    .divs_inputs:has(+ .btnPassword) {
+        flex: 1;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.info_perfil, .Foto_Perfil {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* Estados para checkbox de contraseña */
+#UpdatedPassword:read-only {
+    background: var(--gray-200);
+    opacity: 0.7;
+}
+
+#UpdatedPassword:not(:read-only) {
+    background: var(--light);
+    opacity: 1;
+}
+
+/* Estilo para el checkbox y su label */
+.mb-3.divs_inputs2[style*="flex-direction: row"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--gray-100);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.mb-3.divs_inputs2[style*="flex-direction: row"] label {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+/* Iconos.css - Ajustes de tamaño para iconos SVG */
+:root {
+    --icon-size-sm: 18px;
+    --icon-size-md: 20px;
+    --icon-size-lg: 24px;
+    --icon-size-xl: 28px;
+}
+
+/* Ajustes generales para iconos SVG */
+svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    flex-shrink: 0;
+}
+
+/* Iconos en la barra de navegación */
+.Menu-center svg,
+.Logo-menu svg, 
+.Logo-person svg {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+}
+
+/* Iconos en botones */
+.btn-Center button svg,
+.btn-Reset svg,
+.btnPassword svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+}
+
+/* Icono en el título principal */
+.home svg {
+    width: var(--icon-size-xl);
+    height: var(--icon-size-xl);
+}
+
+/* Iconos en tarjetas de estudiantes/coordinadores */
+.student-btn svg,
+.coordinator-btn svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+/* Iconos en detalles */
+.student-detail svg,
+.coordinator-detail svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+/* Icono de botón flotante */
+.btnPlus svg,
+.btn_Plus_Project svg {
+    width: var(--icon-size-xl);
+    height: var(--icon-size-xl);
+}
+
+/* Ajustes específicos para el modal */
+.modal-footer .btn svg,
+.Form_Update .btn svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    margin-right: 0.3rem;
+}
+
+/* Ajustes para iconos en dropdowns */
+.dropdown-toggle::after {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+/* Mejora de visualización para todos los SVG */
+svg {
+    fill: currentColor;
+    stroke: currentColor;
+    transition: var(--transition);
+}
+
+/* Efecto hover para iconos interactivos */
+button:hover svg,
+a:hover svg,
+.btn-Center button:hover svg {
+    transform: scale(1.05);
+}
+
+/* Ajustes responsivos para iconos */
+@media (max-width: 768px) {
+    :root {
+        --icon-size-sm: 16px;
+        --icon-size-md: 18px;
+        --icon-size-lg: 20px;
+        --icon-size-xl: 24px;
+    }
+    
+    .home svg {
+        width: var(--icon-size-lg);
+        height: var(--icon-size-lg);
+    }
+}
+
+/* Corrección específica para iconos en botones de acción */
+.btn-Center button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-Center button svg {
+    margin: 0;
+}
+
+/* Ajuste para iconos en la barra de búsqueda */
+.Busqueda-center button svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+}
+
+/* Corrección para iconos en modales */
+.modal-body .divs_inputs2 label svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+}
+
+/* Asegurar que los iconos hereden el color correcto */
+svg.lucide-icon {
+    color: inherit;
+    stroke: currentColor;
+}
+
+/* Estilos específicos para tipos de iconos */
+.lucide-menu-icon,
+.lucide-user-icon,
+.lucide-eye-closed-icon,
+.lucide-log-out-icon,
+.lucide-user-pen-icon,
+.lucide-plus-icon,
+.lucide-rotate-ccw-icon,
+.lucide-notebook-pen-icon,
+.lucide-book-open-text-icon,
+.lucide-users-round-icon,
+.lucide-circle-plus-icon,
+.lucide-folder-icon,
+.lucide-bell-icon,
+.lucide-house-icon {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+}
+
+/* Iconos grandes para elementos principales */
+.home .lucide-notebook-pen-icon,
+.home .lucide-book-open-text-icon,
+.home .lucide-users-round-icon {
+    width: var(--icon-size-xl);
+    height: var(--icon-size-xl);
+}
+
+/* Ajuste para iconos en botones de la barra de opciones */
+.Navbar_Options button svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    margin-right: 0.3rem;
+}
+
+/* Corrección para iconos en el sidebar */
+.Bar-Menu-center a svg,
+.Bar_Options button svg {
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    margin-right: 0.5rem;
+}
+
+/* Ajuste fino para alineación vertical */
+svg {
+    vertical-align: -0.125em; /* Ajuste fino para alineación con texto */
+}
+
+/* Estados de focus para accesibilidad */
+button:focus svg,
+a:focus svg {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Animación sutil para iconos */
+svg {
+    transition: transform 0.2s ease, fill 0.2s ease, stroke 0.2s ease;
+}
+
+/* Efecto pulsante para iconos importantes */
+@keyframes pulse-icon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.btnPlus:hover svg,
+.btn_Plus_Project:hover svg {
+    animation: pulse-icon 1s ease-in-out infinite;
+}
+/* Profile.css - Ajustes para foto de perfil a la derecha */
+:root {
+    --primary: #B33335;
+    --primary-dark: #8C2A2B;
+    --primary-light: #D64548;
+    --secondary: #2C3E50;
+    --secondary-light: #34495E;
+    --accent: #3498DB;
+    --accent-light: #5DADE2;
+    --light: #FFFFFF;
+    --dark: #1E1E1E;
+    --gray-100: #F8F9FA;
+    --gray-200: #E9ECEF;
+    --gray-300: #DEE2E6;
+    --gray-400: #CED4DA;
+    --gray-500: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    --gray-900: #212529;
+    --body-bg: #F5F7FB;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 10px;
+    --sidebar-width: 280px;
+}
+
+/* Layout principal modificado para foto a la derecha */
+.principal {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 2/3 para info, 1/3 para foto */
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: start; /* Alinear elementos al inicio */
+}
+
+/* Contenedor de información de perfil */
+.info_perfil {
+    background: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    height: fit-content;
+}
+
+/* Contenedor de foto de perfil */
+.Foto_Perfil {
+    background: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: fit-content;
+    position: sticky;
+    top: 2rem; /* Mantener visible al hacer scroll */
+}
+
+.Foto_Perfil div {
+    text-align: center;
+    width: 100%;
+}
+
+#Foto_Perfil {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--gray-200);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    display: block;
+}
+
+/* Eliminar el hr que separaba la foto cuando estaba abajo */
+.principal hr {
+    display: none;
+}
+
+/* Ajustes para el grid de información */
+.principal_divs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Campos individuales */
+.divs_inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.divs_inputs label {
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.divs_inputs input {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    font-size: 1rem;
+    background: var(--gray-100);
+    color: var(--gray-700);
+    transition: var(--transition);
+}
+
+.divs_inputs input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(179, 51, 53, 0.2);
+}
+
+.divs_inputs input:read-only {
+    background: var(--gray-100);
+    color: var(--gray-600);
+    cursor: not-allowed;
+}
+
+/* Botón de mostrar contraseña */
+.btnPassword {
+    background: var(--gray-200);
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--gray-700);
+    align-self: flex-end;
+    margin-top: 1.8rem;
+    height: fit-content;
+}
+
+.btnPassword:hover {
+    background: var(--gray-300);
+    transform: translateY(-2px);
+}
+
+.btnPassword svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Botones de acción */
+.btn-Center {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-Center button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--light);
+    flex: 1;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.btn-Center button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#btnLogOut {
+    background: var(--primary) !important;
+}
+
+#btnLogOut:hover {
+    background: var(--primary-dark) !important;
+}
+
+#btnUpdate {
+    background: #a36014 !important;
+}
+
+#btnUpdate:hover {
+    background: #8a5011 !important;
+}
+
+.btn-Center button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Responsive: En móviles la foto va arriba */
+@media (max-width: 992px) {
+    .principal {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .Foto_Perfil {
+        order: -1; /* La foto primero en móviles */
+        position: static;
+    }
+    
+    #Foto_Perfil {
+        max-width: 200px;
+    }
+    
+    .principal_divs {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-Center {
+        flex-direction: column;
+    }
+    
+    .btn-Center button {
+        width: 100%;
+    }
+}
+
+/* Ajustes para campos que ocupan todo el ancho */
+.divs_inputs[style*="flex-direction: row"] {
+    grid-column: 1 / -1;
+}
+
+/* Mejora visual para la foto */
+.Foto_Perfil {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--light) 100%);
+    border: 1px solid var(--gray-200);
+}
+
+/* Efecto hover sutil para la foto */
+#Foto_Perfil {
+    transition: var(--transition);
+}
+
+#Foto_Perfil:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajustes para el modal de actualización */
+.ModalUpdate .modal-content {
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background: var(--secondary);
+    color: var(--light);
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+    padding: 1.2rem 1.5rem !important;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.info_perfil, .Foto_Perfil {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* Ajuste específico para el título */
+.home {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.home svg {
+    color: var(--primary);
+    width: 28px;
+    height: 28px;
+}
+
+.home h2 {
+    font-weight: 600;
+    color: var(--secondary);
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Mejora para el contenedor de correo + botón */
+.divs_inputs:has(+ .btnPassword) {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.divs_inputs:has(+ .btnPassword) > div {
+    flex: 1;
+}
+
+/* Asegurar que el diseño se vea bien en todos los dispositivos */
+@media (max-width: 768px) {
+    .divs_inputs:has(+ .btnPassword) {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btnPassword {
+        align-self: flex-start;
+        margin-top: 0;
+    }
+    
+    .home h2 {
+        font-size: 1.5rem;
+    }
+    
+    .info_perfil, .Foto_Perfil {
+        padding: 1.5rem;
+    }
+}
