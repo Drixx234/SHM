@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashborad | Socia Hours</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/General.css">
+    <link rel="stylesheet" href="css/Dashboard.css">
+</head>
+<body id="Body">
+    <header>
+        <nav class="Barra-Navegacion navbar-expand-md">
+            <ul>
+                <li><a href="Dashboard - Admin.html"><img src="img/Logo-Ricaldone.png" class="Logo" alt="Logo del Instituto Tecnico Ricaldone"></a></li>
+                <ul class="Menu-center">
+                    <a href="Dashboard - Admin.html" class="Active-Btn"><li>Inicio</li></a>
+                    <a href="Estudiantes - Admin.html" class="Unactive-Btn"><li>Estudiantes</li></a>
+                    <a href="Proyectos - Admin.html" class="Unactive-Btn"><li>Proyectos</li></a>
+                    <a href="Calendario - Admin.html" class="Unactive-Btn"><li>Calendario</li></a>
+                    <a href="Chat.html" class="Unactive-Btn"><li>Chats</li></a>
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class="Logo-menu" id="btnMenu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg></button>
+                    <hr>
+                    <!--Dialog para ver el perfil-->
+                    <a href="Profile - Admin.html"><button class="Logo-person" id="btnPerson"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button></a>
+                </ul>
+            </ul>
+        </nav>
+        <nav class="Navbar_Options navbar-expand-md" id="Navbar_Options">
+            <ul>
+                <li>
+                    <a href="Dashboard - Admin.html"><button>Dashboard</button></a>
+                </li>
+                <li>
+                    <button>Descargar documentos del proyecto</button>
+                </li>
+            </ul>
+        </nav>
+        <!--Menu Lateral-->
+        <div class="offcanvas offcanvas-start SideBar" tabindex="0" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-body">
+                <menu class="Bar-Menu-center">
+                    <div class="Bar-Button-Active"><a href="Dashboard - Admin.html"><li>Inicio</li></a></div>
+                    <div><a href="Estudiantes - Admin.html"><li>Estudiantes</li></a></div>
+                    <div><a href="Proyectos - Admin.html"><li>Proyectos</li></a></div>
+                    <div><a href="Calendario - Admin.html"><li>Calendario</li></a></div>
+                    <div><a href="Chat.html"><li>Chats</li></a></div>
+                </menu>
+                <hr>
+                <menu class="Bar_Options">
+                    <li>
+                        <a href="Dashboard - Admin.html"><button>Dashboard</button></a>
+                    </li>
+                    <li>
+                        <button>Descargar documentos del proyecto</button>
+                    </li>
+                </menu>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <h2>Dashboard</h2>
+        </div>
+        <div class="principal">
+            <div class="Access">
+                <div class="Access-div">
+                    <div class="Atajos" style="background-color: #4E4444;">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFFFFF" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-icon lucide-folder"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+                            <h4>Bitacora</h4>
+                        </div>
+                        <a href="Bitacora - Admin.html"><button>Ver</button></a>
+                    </div>
+                    <div class="Atajos" style="background-color: #B33335;">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <h4>Coordinadores</h4>
+                        </div>
+                        <a href="Coordinadores - Admin.html"><button>Ver</button></a>
+                    </div>
+                </div>
+                <div class="Access-div">
+                    <div class="Events">
+                        <div class="head-Events">
+                            <h2>Eventos proximos</h2>
+                        </div>
+                        <!--Aqui van las notificaciones-->
+                        <div class="Events-Body" id="Events-Body">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Noti">
+                <div>
+                    <div class="head-noti">
+                        <h2>Notificaciones</h2>
+                    </div>
+                    <!--Aqui van las notificaciones-->
+                    <div class="Noti-Body" id="Notifi-Body">
+                    </div>
+                </div>
+                <div class="Noti-Button">
+                    <a href="Notificacione - Admin.html"><button title="Todas las notificaciones" id="Btn-Noti">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/Controller/General.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>
