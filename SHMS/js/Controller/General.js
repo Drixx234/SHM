@@ -9,7 +9,6 @@ import{
     const btn_Profile = document.getElementById("btnPerson");
     const btn_Menu = document.getElementById("btnMenu");
     const dialog_profile = document.getElementById("Profile-content");
-    const body = document.getElementById("Body");
     const btnActive = document.getElementsByClassName("Active-Btn");
     const btnUnactive = document.getElementsByClassName("Unactive-Btn");
     const NavOptions = document.getElementById("Navbar_Options");

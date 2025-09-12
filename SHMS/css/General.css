@@ -1,3 +1,47 @@
+/* General.css - Estilo corregido con consistencia tipográfica */
+:root {
+    --primary: #B33335;
+    --primary-dark: #8C2A2B;
+    --primary-light: #D64548;
+    --secondary: #2C3E50;
+    --secondary-light: #34495E;
+    --accent: #3498DB;
+    --accent-light: #5DADE2;
+    --light: #FFFFFF;
+    --dark: #1E1E1E;
+    --gray-100: #F8F9FA;
+    --gray-200: #E9ECEF;
+    --gray-300: #DEE2E6;
+    --gray-400: #CED4DA;
+    --gray-500: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    --gray-900: #212529;
+    --body-bg: #ececee;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 10px;
+    --sidebar-width: 280px;
+    /* Fuentes consistentes */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+        /* Breakpoints */
+    --mobile: 480px;
+    --tablet: 768px;
+    --desktop: 1024px;
+}
+
 /* HEADER RESPONSIVE */
 .Barra-Navegacion {
     background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
