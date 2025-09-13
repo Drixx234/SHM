@@ -1,8 +1,7 @@
 /* Contenido principal */
 main {
-    padding: 0 1.5rem 2rem;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 2rem;
 }
 
 .home {
@@ -218,10 +217,6 @@ main {
     .Navbar_Options ul {
         flex-wrap: wrap;
         gap: 0.8rem;
-    }
-    
-    .Menu-center a:not(.Active-Btn):not(.Logo-menu):not(.Logo-person) {
-        display: none;
     }
 }
 

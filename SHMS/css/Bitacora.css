@@ -213,10 +213,6 @@ main {
         gap: 0.8rem;
     }
     
-    .Menu-center a:not(.Active-Btn):not(.Logo-menu):not(.Logo-person) {
-        display: none;
-    }
-    
     .filters {
         flex-direction: column;
     }

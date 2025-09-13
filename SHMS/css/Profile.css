@@ -92,33 +92,6 @@ main {
     cursor: not-allowed;
 }
 
-/* Botón para mostrar contraseña */
-.btnPassword {
-    background: var(--gray-200);
-    border: none;
-    border-radius: 6px;
-    padding: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    color: var(--gray-700);
-    align-self: flex-end;
-    margin-top: 1.8rem;
-    height: fit-content;
-}
-
-.btnPassword:hover {
-    background: var(--gray-300);
-    transform: translateY(-2px);
-}
-
-.btnPassword svg {
-    width: 20px;
-    height: 20px;
-}
-
 /* Botones de acción */
 .btn-Center {
     display: flex;
@@ -315,10 +288,6 @@ hr {
     .Navbar_Options ul {
         flex-wrap: wrap;
         gap: 0.8rem;
-    }
-    
-    .Menu-center a:not(.Active-Btn):not(.Logo-menu):not(.Logo-person) {
-        display: none;
     }
     
     .principal {

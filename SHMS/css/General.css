@@ -297,104 +297,40 @@ body{
 a{
     text-decoration: none;
 }
-@media (width < 1735) {
-    .Logo{
-        height: 35px;
-        margin: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+@media (width < 975px) {
+    .home{
+        margin-top: 1rem;
     }
-    .Active-Btn{
-        font-size: 1.1rem;
-    }
-    .home h2{
-        font-size: 25px;
-        margin-top: 5px;
-    }
-    .home svg{
-        width: 23px;
-        height: 23px;
-    }
-}
-@media (width < 1530px) {
-    .Navbar_Options button{
-        font-size: 120%;
-    }
-}
-
-@media (width < 1380px) {
     .Logo{
         height: 35px;
     }
-    .Logo-person{
-        width: 45px;
-        height: 45px;
-    }
-    .Unactive-Btn{
-        font-size: 120%;
-    }
-    .Navbar_Options button{
-        font-size: 100%;
-    }
-}
-
-@media (width < 1260px) {
-    .Logo{
-        height: 30px;
-    }
-    .Logo-menu{
-        height: 35px;
-    }
-    .Unactive-Btn{
-        font-size: 100%;
-    }
-        .home h2{
-        font-size: 21px;
-        margin-top: 6px;
-    }
-}
-
-@media (width < 1110px) {
-    .Logo{
-        height: 30px;
-    }
-}
-
-@media (width < 981px){
-    .Menu-center{
-        gap: 15px;
+    .Menu-center a{
+        padding: 0;
     }
 }
 
 @media (width < 620px) {
+    .Barra-Navegacion {
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .Navbar_Options {
+        padding: 0.8rem 1.5rem;
+    }
     .Logo{
-        height: 20px;
-        margin: 5px;
-        margin-top: 20px;
+        height: 30px;
+        margin-left: 0.8rem;
     }
-    .Logo-menu{
-        height: 25px;
-        width: 25px;
-        margin-top: 10px;
-    }
-    .Logo-person{
-        height: 40px;
-        width: 40px;
-        margin-top: 10px;
-        margin-right: 20px;
-    }
-    .Menu-center hr{
-        margin-top: 10px;
+    .Menu-center hr {
+        margin: 0;
     }
     .SideBar{
-        max-width: 200px;
-        width: 90%;
+        max-width: 250px;
     }
-    .Btn-Close{
-        padding: 5px 5px 5px 5px;
-    }
-    .Btn-Close svg{
-        width: 16px;
-        height: 16px;
+}
+@media (width < 435px) {
+    .Logo{
+        height: 25px;
+        margin-left: 0.4rem;
     }
 }
