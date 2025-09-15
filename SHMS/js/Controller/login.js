@@ -73,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 html: "Bienvenido! Abriendo Dashboard!",
                 willClose: () => {
                     localStorage.setItem("id_admin", Admin.id);
-                    window.location.href = "Dashboard - Admin.html";
+                    location.replace("Dashboard - Admin.html");
                 }
             });
         }else{

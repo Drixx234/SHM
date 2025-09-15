@@ -163,47 +163,73 @@ main {
 
 /* Tabla de estudiantes */
 .Tabla_Estudiantes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.Card-Student{
     background: var(--light);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     font-family: var(--font-family);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.table {
-    margin-bottom: 0;
-    width: 100%;
-    font-family: var(--font-family);
+.Card-Student hr{
+    border: 1px solid black;
+    height: 110px;
 }
 
-.table thead th {
-    background: var(--secondary);
-    color: var(--light);
-    font-weight: var(--font-weight-semibold);
-    padding: 1rem 1.2rem;
-    border: none;
-    font-size: var(--font-size-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-family: var(--font-family);
+.Card-Student img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
-.table tbody tr {
-    transition: var(--transition);
-    border-bottom: 1px solid var(--gray-200);
-    font-family: var(--font-family);
+.Card-Student h2{
+    font-size: 200%;
+    width: 35%;
 }
 
-.table tbody tr:hover {
-    background: var(--gray-100);
+.Card-Student h3{
+    font-size: 200%;
+    width: 30%;
+    text-align: center;
 }
 
-.table tbody td {
-    padding: 1rem 1.2rem;
-    vertical-align: middle;
-    border: none;
-    font-size: var(--font-size-base);
-    font-family: var(--font-family);
+.Card-Student p{
+    display: none;
+}
+.Card-Student button{
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 60px;
+}
+.Card-Student svg{
+    width: 60px;
+    height: 60px;
+}
+.btn-More{
+    background-color: transparent;
+    border-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #565E64;
+    border-radius: 100px;
+    padding: 10px;
+}
+.btn-More:hover{
+    background-color: #565E64;
+    color: white;
 }
 
 /* Badges para estados */
@@ -328,6 +354,261 @@ main {
     font-family: var(--font-family);
     font-size: var(--font-size-lg);
 }
+@media (width < 1710px) {
+    .Card-Student h2{
+        font-size: 200%;
+    }
+    .Card-Student h3{
+        font-size: 200%;
+    }
+    .Card-Student button{
+        margin-left: 40px;
+    }
+    .Card-Student svg{
+        width: 50px;
+        height: 50px;
+    }
+    .Card-Student hr{
+        height: 100px;
+    }
+    .Card-Student img{
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (width < 1520px) {
+    .Card-Student{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .Card-Student h2{
+        font-size: 180%;
+    }
+    .Card-Student h3{
+        font-size: 180%;
+    }
+    .Card-Student button{
+        margin-left: 20px;
+    }
+    .Card-Student svg{
+        width: 40px;
+        height: 40px;
+    }
+    .Card-Student img{
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (width < 1370px) {
+    .Card-Student{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .Card-Student h2{
+        font-size: 160%;
+    }
+    .Card-Student h3{
+        font-size: 160%;
+    }
+    .Card-Student hr{
+        height: 90px;
+    }
+    .Card-Student button{
+        margin-left: 20px;
+    }
+    .Card-Student svg{
+        width: 40px;
+        height: 40px;
+    }
+    .Card-Student img{
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (width < 1100px) {
+    .Card-Student{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .Card-Student hr{
+        height: 80px;
+    }
+    .Card-Student h2{
+        font-size: 140%;
+    }
+    .Card-Student h3{
+        font-size: 140%;
+    }
+    .Card-Student button{
+        margin-left: 10px;
+    }
+    .Card-Student svg{
+        width: 30px;
+        height: 30px;
+    }
+    .Card-Student img{
+        width: 60px;
+        height: 60px;
+    }
+}
+@media (width < 980px) {
+    .Card-Student{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .Card-Student h2{
+        font-size: 130%;
+    }
+    .Card-Student hr{
+        height: 70px;
+    }
+    .Card-Student h3{
+        font-size: 130%;
+    }
+    .Card-Student button{
+        margin-left: 10px;
+    }
+    .Card-Student svg{
+        width: 35px;
+        height: 35px;
+    }
+    .Card-Student img{
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+    }
+}
+
+@media (width < 790px) {
+    .Card-Student{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .Card-Student h2{
+        font-size: 100%;
+    }
+    .Card-Student h3{
+        font-size: 90%;
+    }
+    .Card-Student hr{
+        height: 55px;
+    }
+    .Card-Student svg{
+        width: 25px;
+        height: 25px;
+    }
+    .Card-Student img{
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+}
+@media (width < 650px) {
+    .Card-Student{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .Card-Student h2{
+        font-size: 100%;
+    }
+    .Card-Student h3{
+        font-size: 90%;
+    }
+    .Card-Student hr{
+        height: 60px;
+    }
+    .Card-Student button{
+        margin-left: 10px;
+    }
+    .Card-Student svg{
+        width: 25px;
+        height: 25px;
+    }
+    .Card-Student img{
+        width: 55px;
+        height: 55px;
+    }
+}
+@media (width < 560px) {
+    .Card-Student{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .Card-Student h2{
+        font-size: 85%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .Card-Student h3{
+        font-size: 75%;
+    }
+    .Card-Student hr{
+        height: 50px;
+    }
+    .Card-Student svg{
+        width: 20px;
+        height: 20px;
+    }
+    .Card-Student img{
+        width: 45px;
+        height: 45px;
+    }
+}
+@media (width < 470px) {
+    .Card-Student{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .Card-Student h2{
+        font-size: 65%;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    .Card-Student h3{
+        font-size: 55%;
+    }
+    .Card-Student hr{
+        height: 40px;
+        border: 0.5px solid black;
+    }
+    .Card-Student svg{
+        width: 15px;
+        height: 15px;
+    }
+    .Card-Student img{
+        width: 40px;
+        height: 40px;
+    }
+}
+@media (width < 370px) {
+    .Card-Student{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .Card-Student h2{
+        font-size: 55%;
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+    .Card-Student h3{
+        font-size: 55%;
+    }
+    .Card-Student hr{
+        height: 35px;
+        border: 0.5px solid black;
+    }
+    .Card-Student svg{
+        width: 15px;
+        height: 15px;
+    }
+    .Card-Student img{
+        width: 30px;
+        height: 30px;
+    }
+}
 
 /* Responsive */
 @media (max-width: 992px) {
@@ -360,7 +641,7 @@ main {
         align-items: stretch;
     }
     
-    #Students-Square, .dropdown-center, .btn-Reset {
+    #Students-Square, .Btn_Especialidades, .Menu_Especialidades, .dropdown-center, .btn-Reset {
         min-width: 100%;
     }
 }

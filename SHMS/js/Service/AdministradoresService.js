@@ -46,6 +46,13 @@ export async function actualizarAdministrador(id, data) {
     });
 }
 
+export async function DeshabilitarAdmin(id) {
+    return await fetch(`${API_URL_Administradores}/DeshabilitarAdmin/${id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'}
+    });
+}
+
 export async function eliminarAdministrador(id) {
     return await fetch(`${API_URL_Administradores}/deleteAdmin/${id}`, { method: 'DELETE' });
 }

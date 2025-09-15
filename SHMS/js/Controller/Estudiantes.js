@@ -51,7 +51,6 @@ function Rellenar_Tabla(Estudiantes, Paginacion){
             <hr>
             <button title="Ver perfil de ${Estudiante.nombre} ${Estudiante.apellido}" id="btn_Profile_Student" onClick="VerPerfilEstudiante(${Estudiante.codigo})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-collapse-icon lucide-list-collapse"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="m3 10 3-3-3-3"/><path d="m3 20 3-3-3-3"/></svg></button>
         </div>
-        <hr class="hr_divisor">
         `;
     });
     if(Paginacion){

@@ -103,13 +103,14 @@
                     </div>
                     <div class="principal_divs">
                         <div class="btn-Center">
-                            <button type="button" style="background-color: brown;" id="btnLogOut">
+                            <button type="button" style="background-color: brown;" id="btnDisabled">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
-                                Cerrar sesion
+                                Deshabilitar Coordinador
                             </button>
-                            <button type="button" style="background-color: rgb(163, 96, 20);" id="btnUpdate">
+                            <button type="button"
+                            style="background-color: aquamarine;" id="btnBack">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen-icon lucide-user-pen"><path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/></svg>
-                                Actualizar informacion
+                                Regresar
                             </button>
                         </div>
                     </div>
@@ -121,67 +122,13 @@
                     <img id="Foto_Perfil" src="" alt="foto de perfil del usuario">
                 </div>
             </article>
-
-            <div class="modal ModalUpdate fade" id="ModalUpdate" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content p-3 Form_Update">
-                        <div class="modal-header border-0">
-                            <h5 class="modal-title TitleModal">Actualizar informacion de Coordinador</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="color: white;" aria-label="Cerrar"></button>
-                        </div>
-                        <form id="UpdateForm">
-                            <div class="modal-body">
-
-                                <div class="mb-3 divs_inputs2">
-                                    <label for="UpdatedPerfilFoto" class="form-label">Imagen<span style="color:red">*</span></label>
-                                    <input type="file" class="form-control" id="UpdatedPerfilFoto" accept="image/*"/>
-                                    <div class="mt-2">
-                                    <img id="ImagePreview" class="img-preview" alt="Vista previa" src="" />
-                                    </div>
-                                </div>
-
-                                <div class="mb-3 divs_inputs2">
-                                    <label for="UpdatedName" class="form-label">Nombre del Coordinador<span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="UpdatedName" required />
-                                </div>
-
-                                <div class="mb-3 divs_inputs2">
-                                    <label for="UpdatedApellido" class="form-label">Apellido del Coordinador<span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="UpdatedApellido" required />
-                                </div>
-
-                                <div class="mb-3 divs_inputs2">
-                                    <label for="UpdatedCorreo" class="form-label">Correo del Coordinador<span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="UpdatedCorreo" required />
-                                </div>
-
-                                <div class="mb-3 divs_inputs2" style="flex-direction: row; justify-content: space-between;">
-                                    <label for="chk_password">¿Cambiar contraseña?</label>
-                                    <input type="checkbox" id="chk_password">
-                                </div>
-
-                                <div class="mb-3 divs_inputs2">
-                                    <label for="UpdatedPassword" class="form-label">Contraseña del Coordinador<span style="color:red">*</span></label>
-                                    <input type="password" class="form-control" id="UpdatedPassword" required readonly />
-                                </div>
-
-                            </div>
-
-                            <div class="modal-footer border-0">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary" id="UpdatedButton">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </main>
 
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="js/Controller/General.js"></script>
-    <script type="module" src="js/Controller/Profile.js"></script>
+    <script type="module" src="js/Controller/Coordinador Profile.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -47,7 +47,12 @@ const PageableCenter = document.getElementById("PageableCenter");
 const ModalNew = document.getElementById("ModalNew");
 const Modal_New = new bootstrap.Modal(ModalNew);
 
-const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".", ",", "<", ">", ":", ";", "(", ")", "|", "*", "&", "^", "%", "$", "#", "@", ,"'", '"', "!", "~", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const Array_AllowLetters = [
+  "A","B","C","D","E","F","G","H","I","J","K","L","M",
+  "N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+  "a","b","c","d","e","f","g","h","i","j","k","l","m",
+  "n","o","p","q","r","s","t","u","v","w","x","y","z"
+];
 
 let Page = 0
 
@@ -167,15 +172,14 @@ function Llenar_Cards(JSAdministradores, Paginacion){
 
     Administradores.forEach(administrador => {
         divs_cards.innerHTML += `
-                <div class="Cards" onclick="VerCoordinador('${administrador.id}')">
+                <div class="coordinator-card" onclick="VerCoordinador('${administrador.id}')">
                     <div class="Cards_body">
-                        <div style="display: flex; align-items: center;">
-                            <img src="${administrador.foto_perfil}" class="card_img" alt="Imagen de Coordinador">
+                        <div class="coordinator-header">
+                            <img src="${administrador.foto_perfil}" class="coordinator-image" alt="Imagen de Coordinador">
                         </div>
-                        <hr class="Cards_hr">
-                        <div class="card_info">
-                            <h3>${administrador.nombre} ${administrador.apellido}</h3>
-                            <h4>${administrador.correo_electronico}</h4>
+                        <div class="coordinator-details">
+                            <h3 class="coordinator-detail">${administrador.nombre} ${administrador.apellido}</h3>
+                            <h4 class="coordinator-detail">${administrador.correo_electronico}</h4>
                         </div>
                     </div>
                 </div>
@@ -226,7 +230,6 @@ function PaginaAnterior(){
     CargarTodosCoordinadores(Page);
 }
 function VerCoordinador(id){
-    console.log("La funcion llega");
     localStorage.setItem("IdCoordi", id);
     window.location.href = "Coordinador Profile - Admin.html";
 }

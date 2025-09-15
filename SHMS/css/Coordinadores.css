@@ -455,10 +455,10 @@ main {
     
     .Busqueda-center {
         flex-direction: column;
-        align-items: stretch;
+        
     }
-    
-    #Coordi_Square, .dropdown-center, .btn-Reset {
+
+    #Coordi_Square, .dropdown-center, .Menu_Proyectos, .Btn_Proyectos, .btn-Reset {
         min-width: 100%;
     }
     

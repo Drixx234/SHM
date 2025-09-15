@@ -139,35 +139,12 @@ main {
     height: 18px;
 }
 
-/* Foto de perfil */
-.Foto_Perfil {
-    background: var(--light);
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.Foto_Perfil div {
-    text-align: center;
-}
-
-#Foto_Perfil {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--gray-200);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
 /* Modal de actualización */
 .ModalUpdate .modal-content {
     border-radius: var(--border-radius);
     border: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 0;
 }
 
 .modal-header {
@@ -331,7 +308,7 @@ hr {
         font-size: 0.9rem;
     }
     
-    .info_perfil, .Foto_Perfil {
+    .info_perfil, .Foto_Perfil_div {
         padding: 1.5rem;
     }
     
@@ -640,22 +617,25 @@ svg {
 }
 
 /* Contenedor de foto de perfil */
-.Foto_Perfil {
+.Foto_Perfil {    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: sticky;
+    width: 100%;
+    top: 2rem; /* Mantener visible al hacer scroll */
+    gap: 1rem;
+}
+
+.Foto_Perfil_div {
     background: var(--light);
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     padding: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: fit-content;
-    position: sticky;
-    top: 2rem; /* Mantener visible al hacer scroll */
-}
-
-.Foto_Perfil div {
     text-align: center;
     width: 100%;
+    height: fit-content;
 }
 
 #Foto_Perfil {
@@ -671,9 +651,23 @@ svg {
     display: block;
 }
 
-/* Eliminar el hr que separaba la foto cuando estaba abajo */
-.principal hr {
-    display: none;
+.Card_Horas{
+    background: var(--light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Card_Horas div {
+    text-align: center;
+    width: 100%;
 }
 
 /* Ajustes para el grid de información */
@@ -788,6 +782,10 @@ svg {
     background: #a36014 !important;
 }
 
+#btnBack{
+    background-color: #6ba8d1 !important;
+}
+
 #btnUpdate:hover {
     background: #8a5011 !important;
 }
@@ -832,7 +830,7 @@ svg {
 }
 
 /* Mejora visual para la foto */
-.Foto_Perfil {
+.Foto_Perfil_div {
     background: linear-gradient(135deg, var(--gray-100) 0%, var(--light) 100%);
     border: 1px solid var(--gray-200);
 }
@@ -842,7 +840,7 @@ svg {
     transition: var(--transition);
 }
 
-#Foto_Perfil:hover {
+#Foto_Perfil_div:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
@@ -867,7 +865,7 @@ svg {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.info_perfil, .Foto_Perfil {
+.info_perfil, .Foto_Perfil_div {
     animation: fadeIn 0.4s ease forwards;
 }
 
@@ -919,7 +917,7 @@ svg {
         font-size: 1.5rem;
     }
     
-    .info_perfil, .Foto_Perfil {
+    .info_perfil, .Foto_Perfil_div {
         padding: 1.5rem;
     }
 }

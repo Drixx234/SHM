@@ -16,15 +16,12 @@ import{
     actualizarAdministrador
 }from "../Service/AdministradoresService.js"
 
-const btnPassword = document.getElementById("btnPassword");
-const div_password = document.getElementById("div_password");
 const idAdministrador = document.getElementById("idAdministrador");
 const idUsuario = document.getElementById("idUsuario");
 const idProyecto = document.getElementById("idProyecto");
 const NombreAdmin = document.getElementById("NombreAdmin");
 const ApellidoAdmin = document.getElementById("ApellidoAdmin");
 const CorreoAdmin = document.getElementById("CorreoAdmin");
-const ConstraseniaAdmin = document.getElementById("ConstraseniaAdmin");
 const ProyectoAdmin = document.getElementById("ProyectoAdmin");
 const Foto_Perfil = document.getElementById("Foto_Perfil");
 const btnLogOut = document.getElementById("btnLogOut");
@@ -40,8 +37,6 @@ const UpdatedApellido = document.getElementById("UpdatedApellido");
 const UpdatedCorreo = document.getElementById("UpdatedCorreo");
 const chk_password = document.getElementById("chk_password");
 const UpdatedPassword = document.getElementById("UpdatedPassword");
-
-let btnPasswordActive = 1;
 
 async function BuscarAdmin(adminId){
     try{
@@ -115,58 +110,6 @@ chk_password.addEventListener('change', () => {
     }
 });
 
-btnPassword.addEventListener('click', () => {
-    if(btnPasswordActive == 1){
-        alert_password_change.fire({
-                title: "¿Deseas ver tu contraseña de usuario?",
-                input: "password",
-                inputLabel: "Escribe tu contraseña",
-                inputPlaceholder: "",
-                inputValue: "",
-                preConfirm: (valor) => {
-                    if (!valor) {
-                        Swal.showValidationMessage("Ingresa tu contraseña");
-                        return false;
-                    }
-                    if (valor !== ConstraseniaAdmin.value) {
-                        Swal.showValidationMessage("Contraseña es incorrecta");
-                        return false;
-                    }
-                    return true;
-                }
-            }).then((result) => {
-            if (result.isConfirmed) {
-                    btnPassword.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-                    `;                  
-                    div_password.hidden = false;
-                    btnPasswordActive = 3;
-                    AlertEsquina.fire({
-                        icon: "success",
-                        title: "Contraseña Correcta",
-                    });
-                }else{
-                    btnPassword.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
-                    `;
-                    div_password.hidden = true;
-                    btnPasswordActive = 1;
-                }
-            });
-    }else if(btnPasswordActive == 2){
-        btnPassword.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
-        `;
-        div_password.hidden = false;
-        btnPasswordActive = 3;
-    }else if(btnPasswordActive = 3){
-        btnPassword.innerHTML = `
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon lucide-eye-closed"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>
-        `;
-        div_password.hidden = true;
-        btnPasswordActive = 2;
-    }
-});
 
 function validar_NoCambios(){
     if(UpdatedPerfilFoto.files.length == 0 && UpdatedName.value == NombreAdmin.value && UpdatedApellido.value == ApellidoAdmin.value && UpdatedCorreo.value == CorreoAdmin.value && UpdatedPassword.value == ConstraseniaAdmin.value){
