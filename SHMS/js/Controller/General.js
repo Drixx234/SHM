@@ -3,6 +3,11 @@ import{
 }from "../Service/AdministradoresService.js"
 
 import{
+    obtenerLimiteHoras,
+    obtenerLogo
+}from "../Service/GeneralidadesService.js"
+
+import{
     AlertEsquina
 }from "../Service/Alerts.js"
 
@@ -11,6 +16,7 @@ import{
     const btnActive = document.getElementsByClassName("Active-Btn");
     const btnUnactive = document.getElementsByClassName("Unactive-Btn");
     const NavOptions = document.getElementById("Navbar_Options");
+    const img_Logo = document.getElementById("img_Logo");
 
     async function CargarProfile(id) {
         try{
@@ -51,7 +57,7 @@ import{
         if (idAdmin) {
             CargarProfile(idAdmin);
         } else {
-            // window.location.href = "Index.html";
+            window.location.href = "Index.html";
         }
     }
     function VisibilidadBotones(){
@@ -69,9 +75,62 @@ import{
         }
     }
 
+    async function ObtenerLimitHoras() {
+        try{
+            const Limite = await obtenerLimiteHoras();
+            return Limite.limiteHoras;
+        }catch(err){
+            console.error("Hubieron problemas cargando el limite de Horas Sociales");
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR AL CARGAR DATOS!",
+                html: "Hubieron problemas al cargar el valor del limite de horas sociales.",
+            });
+        }
+    }
+
+    async function ObtenerLogo(){
+        try{
+            const Logo = await obtenerLogo();
+            return Logo.LogoRical;
+        }catch(err){
+            console.error("Hubieron problemas cargando el logo del colegio");
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR AL CARGAR DATOS!",
+                html: "Hubieron problemas al cargar la imagen del logo.",
+            });
+            return null;
+        }
+    }
+
+    async function CargarLogo(){
+        if(!img_Logo){
+            return;
+        }
+        const VarLogoRicaldone = localStorage.getItem("LogoRicaldone");
+        if(!VarLogoRicaldone){ 
+            const Logo = await ObtenerLogo();
+            localStorage.setItem("LogoRicaldone", Logo);
+            img_Logo.src = Logo;
+        }else{
+            img_Logo.src = VarLogoRicaldone;
+        }
+    }
+
+    async function CargarLimite() {
+        const VarLimiteHoras = localStorage.getItem("LimiteHoras");
+        if(!VarLimiteHoras){
+            const Limite = await ObtenerLimitHoras();
+            localStorage.setItem("LimiteHoras", Limite);
+        }
+    }
+
     function CargaInicialGeneral(){
         Guardar_Admin();
         VisibilidadBotones();
+        CargarLogo();
+        CargarLimite();
     }
 
 window.addEventListener("resize", VisibilidadBotones);

@@ -8,7 +8,7 @@ import{
 
 window.addEventListener('DOMContentLoaded', () => {
     
-    localStorage.removeItem("id_admin");
+    localStorage.clear();
     
     const email_Box = document.getElementById('email');
     const password_Box = document.getElementById('password');
@@ -16,9 +16,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     async function Buscar_Administrador(json) {
         try{
-            const data = await LogInAdministradores(json);
-            if(data.ok){
-                 
+            const res = await LogInAdministradores(json);
+            const textResponse = await res.text();
+            console.log('Respuesta del servidor:', textResponse);
+            if(textResponse.includes('Inicio de sesion exitoso')){
+                return true;
             }else{
                 AlertEsquina.fire({
                     icon: "error",
@@ -51,22 +53,9 @@ window.addEventListener('DOMContentLoaded', () => {
             "id_rol": 1
         }
 
-        await Buscar_Administrador(json);
+        const Admin = await Buscar_Administrador(json);
             
         if (Admin) {
-            AlertEsquina.fire({
-                icon: "error",
-                title: "¡USUARIO NO ENCONTRADO!",
-                html: "No se encontro ningun resultado o no corresponde a un usuario de Administrador. Intentalo con otra información.",
-                willClose: () => {
-                    email_Box.value = '';
-                    password_Box.value = '';
-                }
-            });
-            return;
-        }
-
-        if(Admin.contrasenia == password){
             AlertEsquina.fire({
                 icon: "success",
                 title: "¡USUARIO CORRECTO!",
@@ -74,16 +63,6 @@ window.addEventListener('DOMContentLoaded', () => {
                 willClose: () => {
                     localStorage.setItem("id_admin", Admin.id);
                     location.replace("Dashboard - Admin.html");
-                }
-            });
-        }else{
-            AlertEsquina.fire({
-                icon: "error",
-                title: "¡CONTRASEÑA INCORRECTA!",
-                html: "La contraseña no se coincide con ningun usuario. Intentalo con otra información.",
-                willClose: () => {
-                    email_Box.value = '';
-                    password_Box.value = '';
                 }
             });
         }
