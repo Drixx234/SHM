@@ -1,6 +1,5 @@
 import{
-    AlertEsquina,
-    alert_password_change
+    AlertEsquina
 }from "../Service/Alerts.js"
 
 import{
@@ -15,6 +14,10 @@ import{
     buscarAdministrador,
     actualizarAdministrador
 }from "../Service/AdministradoresService.js"
+
+import{
+    LogOut
+}from "../Service/AuthService.js"
 
 const idAdministrador = document.getElementById("idAdministrador");
 const idUsuario = document.getElementById("idUsuario");
@@ -52,9 +55,17 @@ async function BuscarAdmin(adminId){
     }
 }
 
-    btnLogOut.addEventListener('click', () => {
-        localStorage.removeItem("id_admin");
-        window.location.href = "Index.html";
+    btnLogOut.addEventListener('click', async () => {
+        const res = await LogOut();
+        if(res.ok){
+            location.replace("Index.html");
+        }else{
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR CON LA COOKIE!",
+                html: "Hubieron problemas al intentar eliminar el token de autenticacion."
+            });
+        }
     });
 
     async function RellenarInfo(){
@@ -73,7 +84,6 @@ async function BuscarAdmin(adminId){
         NombreAdmin.value = admin.nombre;
         ApellidoAdmin.value = admin.apellido;
         CorreoAdmin.value = admin.correo_electronico;
-        ConstraseniaAdmin.value = admin.contrasenia;
         Foto_Perfil.src = admin.foto_perfil;
     }
 

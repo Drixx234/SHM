@@ -37,10 +37,8 @@ async function Cargar_Tabla(n) {
 }
 function Rellenar_Tabla(Estudiantes, Paginacion){
     tabla_estudiantes.innerHTML = ` `;
-    
-    const EstudiantesJson = Estudiantes.content;
 
-    EstudiantesJson.forEach(Estudiante => {
+    Estudiantes.forEach(Estudiante => {
         tabla_estudiantes.innerHTML += `
         <div class="Card-Student">
             <img src="${Estudiante.foto}" alt="Foto del estudiante ${Estudiante.nombre} ${Estudiante.apellido}">

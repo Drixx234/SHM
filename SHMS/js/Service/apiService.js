@@ -8,7 +8,7 @@ class ApiService {
     async getChats() {
         try {
             // En una app real, el usuario actual se obtendría del sistema de autenticación
-            const response = await fetch(`${this.baseURL}/chats/usuario/current-user-id`);
+            const response = await fetch(`${this.baseURL}/chats/usuario/current-user-id`, {credentials: "include"});
             if (!response.ok) throw new Error('Error obteniendo chats');
             return await response.json();
         } catch (error) {
@@ -20,7 +20,7 @@ class ApiService {
     // Obtener mensajes de un chat específico
     async getMessages(chatId) {
         try {
-            const response = await fetch(`${this.baseURL}/mensajes/chat/${chatId}`);
+            const response = await fetch(`${this.baseURL}/mensajes/chat/${chatId}`, {credentials: "include"});
             if (!response.ok) throw new Error('Error obteniendo mensajes');
             return await response.json();
         } catch (error) {
@@ -33,6 +33,7 @@ class ApiService {
     async sendMessage(messageData) {
         try {
             const response = await fetch(`${this.baseURL}/mensajes`, {
+                credentials: "include",
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +52,7 @@ class ApiService {
     // Buscar contactos
     async searchContacts(query) {
         try {
-            const response = await fetch(`${this.baseURL}/usuarios/buscar?nombre=${encodeURIComponent(query)}`);
+            const response = await fetch(`${this.baseURL}/usuarios/buscar?nombre=${encodeURIComponent(query)}`, {credentials: "include"});
             if (!response.ok) throw new Error('Error buscando contactos');
             return await response.json();
         } catch (error) {
@@ -64,6 +65,7 @@ class ApiService {
     async createChat(contactId) {
         try {
             const response = await fetch(`${this.baseURL}/chats`, {
+                credentials: "include",
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

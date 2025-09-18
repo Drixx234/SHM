@@ -8,6 +8,11 @@ import{
 }from "../Service/GeneralidadesService.js"
 
 import{
+    me,
+    LogOut
+}from "../Service/AuthService.js"
+
+import{
     AlertEsquina
 }from "../Service/Alerts.js"
 
@@ -21,7 +26,7 @@ import{
     async function CargarProfile(id) {
         try{
             const data = await buscarAdministrador(id);
-            RellenarProfile(data);
+            btn_Profile.title = `Perfil de ${data.nombre} ${data.apellido}`;
         } catch(err){
             console.error('Error al cargar datos' , err);
             AlertEsquina.fire({
@@ -31,15 +36,6 @@ import{
             });
             btn_Profile.disabled = true;
         }
-    }
-    function RellenarProfile(perfil){
-        let Proyecto_Asignado;
-        if(perfil.nombre_Proyecto){
-            Proyecto_Asignado = perfil.nombre_Proyecto;
-        }else{
-            Proyecto_Asignado = 'No hay Proyecto Asignado';
-        }
-        btn_Profile.title = `Perfil de ${perfil.nombre} ${perfil.apellido}`;
     }
     function ocultarBotones(botones) {
         for (let i = 0; i < botones.length; i++) {
@@ -51,13 +47,49 @@ import{
             botones[i].hidden = false;
         }
     }
-    function Guardar_Admin() {
-        const idAdmin = localStorage.getItem("id_admin");
-        
-        if (idAdmin) {
-            CargarProfile(idAdmin);
-        } else {
-            window.location.href = "Index.html";
+    async function Guardar_Admin() {
+        try{
+            const res = await me();
+            const auth = await res.json();
+
+            if(auth.authenticated){
+                const idAdmin = localStorage.getItem("id_admin");
+                if (idAdmin) {
+                    CargarProfile(idAdmin);
+                } else {
+                    const res = await LogOut();
+                    if(res.ok){
+                        location.replace("Index.html");
+                    }else{
+                        AlertEsquina.fire({
+                            icon: "error",
+                            title: "¡ERROR CON LA COOKIE!",
+                            html: "Hubieron problemas al intentar eliminar el token de autenticacion."
+                        });
+                    }
+                }
+            }else{
+                const res = await LogOut();
+                if(res.ok){
+                    location.replace("Index.html");
+                }else{
+                    AlertEsquina.fire({
+                        icon: "error",
+                        title: "¡ERROR CON LA COOKIE!",
+                        html: "Hubieron problemas al intentar eliminar el token de autenticacion."
+                    });
+                }
+            }
+        }catch(err){
+            console.error("Error en la conexion", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR CON LA CONEXION!",
+                html: "Hubieron problemas al intentar comprobar la sesion iniciada.",
+                willClose: () => {
+                    location.replace("Index.html");
+                }
+            });
         }
     }
     function VisibilidadBotones(){

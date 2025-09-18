@@ -1,41 +1,54 @@
 const API_URL_Proyectos = "http://localhost:8080/apiProyectos";
 
 export async function traerProyectosActivos(page = 0, size = 5) {
-    const res = await fetch(`${API_URL_Proyectos}/getProyectosActivos?page=${page}&size=${size}`);
+    const res = await fetch(`${API_URL_Proyectos}/getProyectosActivos?page=${page}&size=${size}`, {
+        credentials: "include"
+    });
     return res.json();
 }
 
 export async function traerProyectosCompletos(page = 0, size = 5) {
-    const res = await fetch(`${API_URL_Proyectos}/getAllProyectos?page=${page}&size=${size}`);
+    const res = await fetch(`${API_URL_Proyectos}/getAllProyectos?page=${page}&size=${size}`, {
+        credentials: "include"
+    });
     return res.json();
 }
 
 export async function cargarProyectos() {
-    const res = await fetch(`${API_URL_Proyectos}/cargarProyectos`);
+    const res = await fetch(`${API_URL_Proyectos}/cargarProyectos`, {
+        credentials: "include"
+    });
     return res.json();
 }
 
 export async function buscarProyecto(id) {
-    const res = await fetch(`${API_URL_Proyectos}/getIDProyectos/${id}`);
+    const res = await fetch(`${API_URL_Proyectos}/getIDProyectos/${id}`, {
+        credentials: "include"
+    });
     return res.json();
 }
 
 export async function nuevoProyecto(data) {
     return await fetch(`${API_URL_Proyectos}/postProyectos`, {
+        credentials: "include",
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
     });
 }
 
 export async function actualizarProyecto(id, data) {
     return await fetch(`${API_URL_Proyectos}/putProyectos/${id}`, {
+        credentials: "include",
         method: "PUT",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
     });
 }
 
 export async function eliminarProyecto(id) {
-    return await fetch(`${API_URL_Proyectos}/deleteProyectos/${id}`, {method: "DELETE"});
+    return await fetch(`${API_URL_Proyectos}/deleteProyectos/${id}`, {
+        credentials: "include",
+        method: "DELETE"
+    });
 }

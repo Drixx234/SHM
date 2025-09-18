@@ -5,8 +5,9 @@ export async function uploadImage(file) {
     formData.append('image', file);
 
     const res = await fetch(`${API_URL_Cloudinary}/uploadImage`, {
+        credentials: "include",
         method: 'POST',
-        body: formData,
+        body: formData
     });
 
     return res.json();
@@ -18,8 +19,9 @@ export async function uploadImageToFolder(file, folder) {
     formData.append('folder', folder);
 
     const res = await fetch(`${API_URL_Cloudinary}/uploadImageToFolder`, {
+        credentials: "include",
         method: 'POST',
-        body: formData,
+        body: formData
     });
 
     return res.json();
