@@ -363,7 +363,7 @@ hr {
     margin-bottom: 1rem;
 }
 
-.mb-3.divs_inputs2[style*="flex-direction: row"] label {
+.divs_inputs2[style*="flex-direction: row"] label {
     margin-bottom: 0;
     font-weight: 500;
     color: var(--gray-700);

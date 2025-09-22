@@ -8,7 +8,9 @@ import{
 
 import{
     cargarEspecialidades,
-    createEspecidalidad
+    createEspecidalidad,
+    getById,
+    updateEspecialidad
 }from "../Service/EspecialidadService.js"
 
 import{
@@ -63,6 +65,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const ModalNewEspecialidad = document.getElementById("ModalNewEspecialidad");
     const Modal_NewEspecialidad = new bootstrap.Modal(ModalNewEspecialidad);
     const NewEspeForm = document.getElementById("NewEspeForm");
+    const NewIdEspecialidad = document.getElementById("NewIdEspecialidad");
     const NewNombreEspecialidad =document.getElementById("NewNombreEspecialidad");
     const NewOrientadorEspecialidad = document.getElementById("NewOrientadorEspecialidad");
     const btn_NewEspecialidad = document.getElementById("btn_NewEspecialidad");
@@ -142,23 +145,59 @@ window.addEventListener('DOMContentLoaded', () => {
         Foto_Perfil.src = admin.foto_perfil;
 
         await LlenarEspecialidades();
-        await LlenarGeneralidades();
+        //await LlenarGeneralidades();
     }
 
     async function LlenarEspecialidades(){
         const Especialidades = await CargarEspecialidades();
-        Especialidades_Div.innerHTML == '';
+        Especialidades_Div.innerHTML = '';
         Especialidades.forEach(Especialidad => {
             Especialidades_Div.innerHTML += `
                 <div class="divs_inputs2">
                     <input type="text" readonly placeholder="${Especialidad.nombre}">
                     <input type="text" readonly placeholder="${Especialidad.orientador}">
-                    <button class="btn_Config">
+                    <button class="btn_Config" onClick="BuscarEspecialidad(${Especialidad.id})">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bolt-icon lucide-bolt"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><circle cx="12" cy="12" r="4"/></svg>
                     </button>
                 </div>
             `;
         });
+    }
+
+    async function BuscarEspecialidad(id) {
+        const Especialidad = await TraerEspecialidad(id);
+        const res = Especialidad.status;
+
+        if(res && res == "success"){
+            const data = Especialidad.data;
+            NewIdEspecialidad.value = data.id;
+            NewNombreEspecialidad.value = data.nombre;
+            NewOrientadorEspecialidad.value = data.orientador;
+
+            Modal_NewEspecialidad.show();
+        }else{
+            console.error("Problemas buscando una especialidad");
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR EN LA CONEXION!",
+                html: "Hubieron problemas con la conexion, por lo que no se pudo conseguir la especialidad."
+            });
+            return;
+        }
+    }
+
+    async function TraerEspecialidad(id) {
+        try {
+            return await getById(id);
+        } catch (err) {
+            console.error("Problemas buscando una especialidad", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR EN LA CONEXION!",
+                html: "Hubieron problemas con la conexion, por lo que no se pudo conseguir la especialidad."
+            });
+            return;   
+        }
     }
 
     async function LlenarGeneralidades() {
@@ -169,6 +208,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
             `;
         });
+    }
+
+    async function ActualizarEspecialidad(id, json) {
+        try {
+            const res = await updateEspecialidad(id, json);
+            return res.json();
+        } catch (err) {
+            console.error("Problemas actualizando una especialidad", err);
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR EN LA CONEXION!",
+                html: "Hubieron problemas con la conexion, por lo que no se pudo actualizar la especialidad."
+            });
+            return;   
+        }
     }
 
     async function CrearEspecialidades(json) {
@@ -351,53 +405,93 @@ window.addEventListener('DOMContentLoaded', () => {
 
     btnAddEspe.addEventListener('click', async () => {
         Modal_NewEspecialidad.show();
+        NewIdEspecialidad.value = '';
+        NewNombreEspecialidad.value = '';
+        NewOrientadorEspecialidad.value = '';
+        btn_NewEspecialidad.disable = false;
     });
 
     NewEspeForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        btn_NewEspecialidad.disable = true;
 
+        const IdEspecialidad = NewIdEspecialidad.value.trim();
         const NombreEspe = NewNombreEspecialidad.value.trim();
         const Orientador = NewOrientadorEspecialidad.value.trim();
 
-        const json = {
-            "nombre": NombreEspe,
-            "orientador": Orientador
-        }
+        console.log(IdEspecialidad, NombreEspe, Orientador);
 
-        const respuesta = await CrearEspecialidades(json);
-        if(respuesta.status == "success"){
-            AlertEsquina.fire({
-                icon: "success",
-                title: "¡CREACION EXITOSA!",
-                html: "La especialidad fue creada sin problemas.",
-                willClose: async () => {
-                    Modal_NewEspecialidad.hide();
-                    NewNombreEspecialidad.value = '';
-                    NewOrientadorEspecialidad.value = '';
-                    await LlenarEspecialidades();
-                }
-            });
-
-        }else if(respuesta.status == "failed"){
-            AlertEsquina.fire({
-                icon: "error",
-                title: "¡NO SE PUDO CREAR!",
-                html: "Hubieron problemas creando la nueva especialidad, .",
-                willClose: async () => {
-                    Modal_NewEspecialidad.hide();
-                    NewNombreEspecialidad.value = '';
-                    NewOrientadorEspecialidad.value = '';
-                }
-            });
+        if(IdEspecialidad == ''){
+            const json = {
+                "nombre": NombreEspe,
+                "orientador": Orientador
+            }
+    
+            const respuesta = await CrearEspecialidades(json);
+            if(respuesta.status == "success"){
+                AlertEsquina.fire({
+                    icon: "success",
+                    title: "¡CREACION EXITOSA!",
+                    html: "La especialidad fue creada sin problemas.",
+                    willClose: async () => {
+                        Modal_NewEspecialidad.hide();
+                        await LlenarEspecialidades();
+                    }
+                });
+    
+            }else if(respuesta.status == "failed"){
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡NO SE PUDO CREAR!",
+                    html: "Hubieron problemas creando la nueva especialidad.",
+                    willClose: async () => {
+                        NewNombreEspecialidad.value = '';
+                        NewOrientadorEspecialidad.value = '';
+                        btn_NewEspecialidad.disable = false;
+                    }
+                });
+            }else{
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡ERROR INTERNO!",
+                    html: "Hubieron problemas internos en el servidor, por lo que no se pudo crear la especialidad."
+                });
+                return;
+            }
         }else{
-            AlertEsquina.fire({
-                icon: "error",
-                title: "¡ERROR INTERNO!",
-                html: "Hubieron problemas internos en el servidor, por lo que no se pudo crear la especialidad."
-            });
-            return;
+            
+            const json = {
+                "nombre": NombreEspe,
+                "orientador": Orientador
+            }
+
+            const respuesta = await ActualizarEspecialidad(IdEspecialidad, json);
+            if(respuesta && respuesta.status == "success"){
+                AlertEsquina.fire({
+                    icon: "success",
+                    title: "¡ACTUALIZACION EXITOSA!",
+                    html: "No hubo problemas actualizando la especialidad.",
+                    willClose: async () => {
+                        Modal_NewEspecialidad.hide();
+                        await LlenarEspecialidades();
+                    }
+                });
+            }else{
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡PROBLEMAS ACTUALIZANDO!",
+                    html: "Hubo problemas internos intentando actualizar la informacion.",
+                    willClose: async () => {
+                        NewNombreEspecialidad.value = '';
+                        NewOrientadorEspecialidad.value = '';
+                        btn_NewEspecialidad.disable = false;
+                    }
+                });
+            }
         }
     });
+
+    window.BuscarEspecialidad = BuscarEspecialidad;
     
 RellenarInfo();
 });

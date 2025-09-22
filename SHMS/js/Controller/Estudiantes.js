@@ -127,10 +127,14 @@ async function Cargar_Especialidades(){
 async function Cargar_Tabla_Especialidad(id) {
     try{
         const data = await getByEspecialidad(id, 0, 50);
-        Rellenar_Tabla(data, true);
+        Rellenar_Tabla(data, false);
     }catch{
         console.error('Error al cargar datos' , err);
-        Alert_Error_Tabla.hidden = false;
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡ERROR AL CARGAR DATOS!",
+            html: "Hubieron problemas intentando cargar los estudiantes.",
+        });
     }
 }
 Input_Name.addEventListener('keydown', (e) => {

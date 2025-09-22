@@ -31,7 +31,7 @@ export async function createEspecidalidad(data) {
 }
 
 export async function updateEspecialidad(id, data) {
-    await fetch(`${API_URL_Especialidades}/putEspecialidades/${id}`, {
+    return await fetch(`${API_URL_Especialidades}/putEspecialidades/${id}`, {
         credentials: "include",
         method: "PUT",
         headers: {"Content-Type": "application/json"},
@@ -40,7 +40,7 @@ export async function updateEspecialidad(id, data) {
 }
 
 export async function deleteEspecialidades(id) {
-    await fetch(`${API_URL_Especialidades}/deleteEspecialidades/${id}`, {
+    return await fetch(`${API_URL_Especialidades}/deleteEspecialidades/${id}`, {
         credentials: "include",
         method: "DELETE"
     });
