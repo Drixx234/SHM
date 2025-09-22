@@ -3,7 +3,6 @@ import{
 }from "../Service/AdministradoresService.js"
 
 import{
-    obtenerLimiteHoras,
     obtenerLogo
 }from "../Service/GeneralidadesService.js"
 
@@ -51,24 +50,11 @@ import{
         try{
             const res = await me();
             const auth = await res.json();
+            const idAdmin = localStorage.getItem("id_admin");
 
-            if(auth.authenticated){
-                const idAdmin = localStorage.getItem("id_admin");
-                if (idAdmin) {
-                    CargarProfile(idAdmin);
-                } else {
-                    const res = await LogOut();
-                    if(res.ok){
-                        location.replace("Index.html");
-                    }else{
-                        AlertEsquina.fire({
-                            icon: "error",
-                            title: "¡ERROR CON LA COOKIE!",
-                            html: "Hubieron problemas al intentar eliminar el token de autenticacion."
-                        });
-                    }
-                }
-            }else{
+            if(auth.authenticated && idAdmin){
+                CargarProfile(idAdmin);
+            }else if(auth.authenticated && !idAdmin){
                 const res = await LogOut();
                 if(res.ok){
                     location.replace("Index.html");
@@ -79,13 +65,15 @@ import{
                         html: "Hubieron problemas al intentar eliminar el token de autenticacion."
                     });
                 }
+            }else{
+                location.replace("Index.html");
             }
         }catch(err){
             console.error("Error en la conexion", err);
             AlertEsquina.fire({
                 icon: "error",
                 title: "¡ERROR CON LA CONEXION!",
-                html: "Hubieron problemas al intentar comprobar la sesion iniciada.",
+                html: "Hubieron problemas al intentar comprobar la sesion iniciada. Regresando al LogIn",
                 willClose: () => {
                     location.replace("Index.html");
                 }
@@ -104,20 +92,6 @@ import{
             mostrarBotones(btnUnactive);
             btn_Menu.hidden = true;
             NavOptions.hidden = false;
-        }
-    }
-
-    async function ObtenerLimitHoras() {
-        try{
-            const Limite = await obtenerLimiteHoras();
-            return Limite.limiteHoras;
-        }catch(err){
-            console.error("Hubieron problemas cargando el limite de Horas Sociales");
-            AlertEsquina.fire({
-                icon: "error",
-                title: "¡ERROR AL CARGAR DATOS!",
-                html: "Hubieron problemas al cargar el valor del limite de horas sociales.",
-            });
         }
     }
 
@@ -150,19 +124,10 @@ import{
         }
     }
 
-    async function CargarLimite() {
-        const VarLimiteHoras = localStorage.getItem("LimiteHoras");
-        if(!VarLimiteHoras){
-            const Limite = await ObtenerLimitHoras();
-            localStorage.setItem("LimiteHoras", Limite);
-        }
-    }
-
     function CargaInicialGeneral(){
         Guardar_Admin();
         VisibilidadBotones();
         CargarLogo();
-        CargarLimite();
     }
 
 window.addEventListener("resize", VisibilidadBotones);

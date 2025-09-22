@@ -65,7 +65,7 @@
         </div>
 
         <main class="principal">
-            <article>
+            <article class="Principal_Article">
                 <div class="info_perfil">
                     <div class="principal_divs" hidden>
                         <div class="divs_inputs">
@@ -98,7 +98,7 @@
                             <input type="text" id="ProyectoAdmin" readonly>
                         </div>
                     </div>
-                    <div class="principal_divs">
+                    <div class="secondary_divs">
                         <div class="btn-Center">
                             <button type="button" style="background-color: brown;" id="btnLogOut">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
@@ -111,6 +111,24 @@
                         </div>
                     </div>
                 </div>
+                <div class="info_perfil" id="article_especialidades" hidden>
+                    <h4>Especialidades</h4>
+                    <div id="Especialidades_Div" style="margin-top: 1.5rem;" class="secondary_divs">
+                    </div>
+                    <div class="secondary_divs">
+                        <div class="btn-Center">
+                            <button type="button" style="background-color: rgb(63, 165, 42);" id="btnAddEspe">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-fading-plus-icon lucide-circle-fading-plus"><path d="M12 2a10 10 0 0 1 7.38 16.75"/><path d="M12 8v8"/><path d="M16 12H8"/><path d="M2.5 8.875a10 10 0 0 0-.5 3"/><path d="M2.83 16a10 10 0 0 0 2.43 3.4"/><path d="M4.636 5.235a10 10 0 0 1 .891-.857"/><path d="M8.644 21.42a10 10 0 0 0 7.631-.38"/></svg>
+                                Agregar Especialidad
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="info_perfil" id="article_generalidades" hidden>
+                    <h4>Ajustes Generales</h4>
+                    <div class="secondary_divs" id="Generalidades_Div">
+                    </div>
+                </div>
             </article>
             <article class="Foto_Perfil">
                 <div class="Foto_Perfil_div">
@@ -119,6 +137,16 @@
                 <div class="Foto_Perfil_div">
                     <div class="Generals_header">
                         <h4>Ajustes</h4>
+                    </div>
+                    <div class="btn-Center">
+                        <button style="background-color: rgb(74, 101, 102);" id="btn_especialidades">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+                            Especialidades
+                        </button>
+                        <button style="background-color: rgb(74, 101, 102);" id="btn_generalidades">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+                            Generalidades
+                        </button>
                     </div>
                 </div>
             </article>
@@ -171,6 +199,37 @@
                             <div class="modal-footer border-0">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary" id="UpdatedButton">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal ModalUpdate fade" id="ModalNewEspecialidad" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-3 Form_Update">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title TitleModal">Agregar Nueva Especialidad</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="color: white;" aria-label="Cerrar"></button>
+                        </div>
+                        <form id="NewEspeForm">
+                            <div class="modal-body">
+
+                                <div class="mb-3 divs_inputs2">
+                                    <label for="NewNombreEspecialidad" class="form-label">Nombre de la Especialidad<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="NewNombreEspecialidad" required />
+                                </div>
+
+                                <div class="mb-3 divs_inputs2">
+                                    <label for="NewOrientadorEspecialidad" class="form-label">Apellido del Administrador<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="NewOrientadorEspecialidad" required />
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer border-0">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" id="btn_NewEspecialidad">Guardar</button>
                             </div>
                         </form>
                     </div>

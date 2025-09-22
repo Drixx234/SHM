@@ -36,7 +36,7 @@ export async function findAllByProyecto(id, page = 0, size = 5) {
 }
 
 export async function buscarAdministrador(id) {
-    const res =await fetch(`${API_URL_Administradores}/getById/${id}`, {
+    const res = await fetch(`${API_URL_Administradores}/getById/${id}`, {
         credentials: "include"
     });
     return res.json();

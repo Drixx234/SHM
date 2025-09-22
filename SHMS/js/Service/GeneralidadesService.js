@@ -14,6 +14,13 @@ export async function obtenerLogo() {
     return res.json();
 }
 
+export async function CargarGeneralidades() {
+    const res = await fetch(`${API_URL_Generalidades}/getAllGeneralidades`, {
+        credentials: "include"
+    });
+    return res.json();
+}
+
 export async function ActualizarValores(id, valor) {
     return await fetch(`${API_URL_Generalidades}/ActualizarValor/${id}/${valor}`, {
         credentials: "include",

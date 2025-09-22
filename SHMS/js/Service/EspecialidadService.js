@@ -22,7 +22,7 @@ export async function getById(id) {
 }
 
 export async function createEspecidalidad(data) {
-    await fetch(`${API_URL_Especialidades}/postEspecialidades`, {
+    return await fetch(`${API_URL_Especialidades}/postEspecialidades`, {
         credentials: "include",
         method: "POST",
         headers: {"Content-Type": "application/json"},

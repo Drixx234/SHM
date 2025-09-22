@@ -68,7 +68,7 @@
 
         <div class="Principal">
             <div class="Busqueda-center">
-                <input type="text" id="Coordi_Square" name="busqueda" placeholder="Buscar Coordinador...">
+                <input type="text" id="Coordi_Square" name="busqueda" placeholder="Buscar Coordinador..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <div class="dropdown-center">
                     <button class="btn btn-secondary Btn_Proyectos" type="button" data-bs-toggle="dropdown" aria-expanded="false">Proyectos...</button>
                     <ul class="dropdown-menu Menu_Proyectos" id="dropdown-Proyectos">
@@ -106,26 +106,26 @@
 
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewName" class="form-label">Nombre del Administrador<span style="color:red">*</span></label>
-                                <input type="text" class="form-control" id="NewName" required />
+                                <input type="text" class="form-control" id="NewName" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
                             </div>
 
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewApellido" class="form-label">Apellido del Administrador<span style="color:red">*</span></label>
-                                <input type="text" class="form-control" id="NewApellido" required />
+                                <input type="text" class="form-control" id="NewApellido" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
                             </div>
 
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewCorreo" class="form-label">Correo del Administrador<span style="color:red">*</span></label>
-                                <input type="email" class="form-control" id="NewCorreo" required />
+                                <input type="email" class="form-control" id="NewCorreo" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
                             </div>
 
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewPassword" class="form-label">Contraseña del Administrador<span style="color:red">*</span></label>
-                                <input autocomplete="new-password" type="text" class="form-control" id="NewPassword" required/>
+                                <input autocomplete="new-password" type="password" class="form-control" id="NewPassword" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
                             </div>
                             <div class="mb-3 divs_inputs2">
                                 <label for="NewConfirm" class="form-label">Confirmar Contraseña del Administrador<span style="color:red">*</span></label>
-                                <input autocomplete="new-password" type="password" class="form-control" id="NewConfirm" required/>
+                                <input autocomplete="new-password" type="password" class="form-control" id="NewConfirm" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
                             </div>
 
                             <div class="mb-3 divs_inputs2">
@@ -154,8 +154,8 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="js/Controller/General.js"></script>
     <script type="module" src="js/Controller/Coordinadores.js"></script>
+    <script type="module" src="js/Controller/General.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>

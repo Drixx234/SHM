@@ -14,22 +14,8 @@ export async function buscarUsuario(id) {
     return res.json();
 }
 
-export async function LoginCoordinadores(correo) {
-    const res = await fetch(`${API_URL_Usuarios}/LogInCoordinadores/${correo}`, {
-        credentials: "include"
-    });
-    return res.json();
-}
-
-export async function LogInEstudiantes(correo) {
-    const res = await fetch(`${API_URL_Usuarios}/LogInEstudiantes/${correo}`, {
-        credentials: "include"
-    });
-    return res.json();
-}
-
-export async function buscarElUsuario(correo, contra) {
-    const res = await fetch(`${API_URL_Usuarios}/BuscarElUsuario/${correo}/${contra}`, {
+export async function comprobarUsuario(correo) {
+    const res = await fetch(`${API_URL_Usuarios}/comprobarUsuario/${correo}`, {
         credentials: "include"
     });
     return res.json();

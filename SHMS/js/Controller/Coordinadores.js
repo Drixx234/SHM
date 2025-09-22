@@ -12,7 +12,8 @@ import{
 
 import{
     agregarUsuario,
-    buscarElUsuario
+    comprobarUsuario,
+    borrarUsuario
 }from "../Service/UsuariosService.js"
 
 import{
@@ -25,8 +26,6 @@ import{
     findAllByProyecto,
     agregarAdministrador
 }from "../Service/AdministradoresService.js"
-
-localStorage.removeItem("IdCoordi");
 
 const Coordi_Square = document.getElementById("Coordi_Square");
 const Menu_Proyectos = document.getElementById("dropdown-Proyectos");
@@ -45,13 +44,14 @@ const ProyectoAdmin = document.getElementById("ProyectoAdmin");
 const divs_cards = document.getElementById("divs_cards");
 const PageableCenter = document.getElementById("PageableCenter");
 const ModalNew = document.getElementById("ModalNew");
+const NewButton = document.getElementById("NewButton");
 const Modal_New = new bootstrap.Modal(ModalNew);
 
 const Array_AllowLetters = [
   "A","B","C","D","E","F","G","H","I","J","K","L","M",
   "N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
   "a","b","c","d","e","f","g","h","i","j","k","l","m",
-  "n","o","p","q","r","s","t","u","v","w","x","y","z"
+  "n","o","p","q","r","s","t","u","v","w","x","y","z", ' ', 'Del', 'Delete', 'Backspace'
 ];
 
 let Page = 0
@@ -67,20 +67,22 @@ NewPerfilFoto.addEventListener("change", () => {
     }
 });
 Coordi_Square.addEventListener('keydown', (e) => {
-    if (Array_BlockLetters.includes(e.key)) {
+    if (!Array_AllowLetters.includes(e.key)) {
         e.preventDefault();
     }
 });
-Coordi_Square.addEventListener('blur', () =>{
-    Coordi_Square.value = '';
-    Page = 0;
-    CargarTodosCoordinadores(Page);
+Coordi_Square.addEventListener('blur', async () =>{
+    setTimeout(() => {
+        Coordi_Square.value = '';
+        Page = 0;
+        CargarTodosCoordinadores(Page);
+    }, 1000);
 });
 Coordi_Square.addEventListener('input', async () => {
     if(Coordi_Square.value.length < 3){
         return;
     }else{
-        let Name = Coordi_Square.value;
+        let Name = Coordi_Square.value.trim();
         await BuscarByNombre(Name);
     }
 });
@@ -89,11 +91,11 @@ async function BuscarByNombre(nombre) {
         const res = await findAllByNombre(nombre, 0, 6);
         Llenar_Cards(res, false);
     }catch(err){
-        console.error("Hubieron problemas cargando", err);
+        console.error("Hubo problemas cargando", err);
         AlertEsquina.fire({
             icon: "error",
             title: "¡ERROR AL CARGAR DATOS!",
-            html: "Hubieron problemas intentando buscar los coordinadores por nombre.",
+            html: "Hubo problemas intentando buscar los coordinadores por nombre.",
         });
     }
 }
@@ -106,31 +108,28 @@ async function BuscarPorProyecto(id) {
         AlertEsquina.fire({
             icon: "error",
             title: "¡ERROR AL CARGAR DATOS!",
-            html: "Hubieron problemas intentando cargar los coordinadores.",
+            html: "Hubo problemas intentando cargar los coordinadores.",
         });
     }
 }
 async function cargar_Proyectos() {
     try{
         const data = await cargarProyectos();
+        console.log(data);
         return data;
     }catch(err){
-        console.error("Hubieron problemas cargando", err);
+        console.error("Hubo problemas cargando", err);
         AlertEsquina.fire({
             icon: "error",
             title: "¡ERROR AL CARGAR DATOS!",
-            html: "Hubieron problemas intentando cargar la caja de proyecciones.",
+            html: "Hubo problemas intentando cargar la caja de proyecciones.",
         });
     }
 }
 async function Llenar_Box_Proyectos(){
     const proyectos = await cargar_Proyectos();
+    
     Menu_Proyectos.innerHTML = '';
-    proyectos.forEach((proyecto) => {
-        Menu_Proyectos.innerHTML += `
-            <li><button type="button" class="Item_Proyectos" onClick="BuscarPorProyecto('${proyecto.id}');">${proyecto.nombre}</button></li>
-        `;
-    });
 
     ProyectoAdmin.innerHTML = '';
     const opt = document.createElement("option");
@@ -142,6 +141,10 @@ async function Llenar_Box_Proyectos(){
     ProyectoAdmin.appendChild(opt);
 
     proyectos.forEach(proyecto => {
+        Menu_Proyectos.innerHTML += `
+            <li><button type="button" class="dropdown-item" onClick="BuscarPorProyecto('${proyecto.id}');">${proyecto.nombre}</button></li>
+        `;
+
         const opt = document.createElement("option");
         opt.value = proyecto.id;
         opt.textContent = `${proyecto.nombre}`;
@@ -230,8 +233,13 @@ function PaginaAnterior(){
     CargarTodosCoordinadores(Page);
 }
 function VerCoordinador(id){
-    localStorage.setItem("IdCoordi", id);
-    window.location.href = "Coordinador Profile - Admin.html";
+    const idAdmin = localStorage.getItem("id_admin");
+    if(id == idAdmin){
+        window.location.href = "Profile - Admin.html";    
+    }else{
+        localStorage.setItem("IdCoordi", id);
+        window.location.href = "Coordinador Profile - Admin.html";
+    }
 }
 function CargaInicialCoordis(){
     Llenar_Box_Proyectos();
@@ -270,22 +278,43 @@ function Llenar_Box_Roles(roles){
     });
 }
 function ValidarCampos(){
-    if(RolAdmin.value == 2 && ProyectoAdmin.value == null){
+    if(!(NewCorreo.value.trim().endsWith('@ricaldone.edu.sv'))){
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡CORREO RECHAZADO!",
+            html: "El correo al que se ancle la cuenta debe ser institucional.",
+            willClose: () => {
+                NewButton.disabled = false;
+            }
+        });
+        return false;
+    }
+    if(RolAdmin.value == 2 && ProyectoAdmin.value == ''){
         AlertEsquina.fire({
             icon: "error",
             title: "¡PROYECTO FALTANTE!",
             html: "No puede dejar a un coordinador sin proyecto.",
+            willClose: () => {
+                NewButton.disabled = false;
+            }
         });
+        return false;
     }
     if(NewPassword.value !== NewConfirm.value){
         AlertEsquina.fire({
             icon: "error",
             title: "¡CONFIRMACION INCORRECTA!",
             html: "Confirmacion contraseña incorrecta.",
+            willClose: () => {
+                NewButton.disabled = false;
+            }
         });
+        return false;
     }
+    return true;
 }
 btnPlus.addEventListener('click', () => {
+    LimpiarFormulario();
     Modal_New.show();
 });
 function LimpiarFormulario(){
@@ -296,23 +325,23 @@ function LimpiarFormulario(){
     NewConfirm.value = '';
     NewPerfilFoto.value = '';
     ImagePreview.src = '';
+    NewButton.disabled = false;
 }
 ModalNew.addEventListener('submit', async (e) => {
     e.preventDefault();
-    ValidarCampos;
-
-    const post_name = NewName.value;
-    const post_apellido = NewApellido.value;
-    const post_correo = NewCorreo.value;
-    const post_password = NewPassword.value;
-    const post_rol = RolAdmin.value;
-    let idUsuario;
-    let post_id_proyecto;
-    if(ProyectoAdmin.value != ''){
-            post_id_proyecto = null
-    }else{
-        post_id_proyecto = ProyectoAdmin.value;
+    NewButton.disabled = true;
+    const valid = await ValidarCampos();
+    if(!valid){
+        return;
     }
+
+    const post_name = NewName.value.trim();
+    const post_apellido = NewApellido.value.trim();
+    const post_correo = NewCorreo.value.trim();
+    const post_password = NewPassword.value.trim();
+    const post_rol = RolAdmin.value;
+    const post_id_proyecto = ProyectoAdmin.value;
+    let idUsuario;
 
     let UpdatedFoto;
     const file = NewPerfilFoto?.files?.[0];
@@ -325,7 +354,10 @@ ModalNew.addEventListener('submit', async (e) => {
                 AlertEsquina.fire({
                     icon: "error",
                     title: "¡ERROR AL SUBIR LA FOTO!",
-                    html: "Hubieron problemas intentando subir la foto de perfil a la nube.", 
+                    html: "Hubo problemas intentando subir la foto de perfil a la nube.",
+                    willClose: () => {
+                        NewButton.disabled = false;
+                    }
                 });
                 return;
             }
@@ -334,28 +366,50 @@ ModalNew.addEventListener('submit', async (e) => {
             AlertEsquina.fire({
                 icon: "error",
                 title: "¡ERROR AL SUBIR LA FOTO!",
-                html: "Hubieron problemas intentando subir la foto de perfil a la nube.", 
+                html: "Hubo problemas intentando subir la foto de perfil a la nube.",
+                willClose: () => {
+                    NewButton.disabled = false;
+                }
             });
             return;
         }
     }
 
     try{
+        const com = await comprobarUsuario(post_correo);
+        const resul = await com.message;
+        if(resul == "Usuario existente"){
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡USUARIO YA EXISTENTE!",
+                html: "El correo ingresado ya existe y no se puede atribuir a otro usuario.",
+                willClose: () => {
+                    NewCorreo.value = '';
+                    NewPassword.value = '';
+                    NewConfirm.value = '';
+                    NewButton.disabled = false;
+                }
+            });
+            return;
+        }
+
         const jsonU = {
-            "correo": `${post_correo}`,
-            "contrasenia": `${post_password}`,
+            "correo": post_correo,
+            "contrasenia": post_password,
             "id_rol": post_rol
         }
         const res = await agregarUsuario(jsonU);
-        console.log(res);
         if(res.ok){
-            const res = await buscarElUsuario(post_correo, post_password);
-            idUsuario = res.id;
+            const us = await res.json();
+            idUsuario = us.data.id;
         }else{
             AlertEsquina.fire({
                 icon: "error",
                 title: "¡ERROR AL CREAR USUARIO!",
-                html: "Hubieron problemas con la conexion, no se pudo crear usuario.", 
+                html: "Hubo problemas intentando crear el usuario.", 
+                willClose: () => {
+                    NewButton.disabled = false;
+                }
             });
             return;
         }
@@ -364,15 +418,18 @@ ModalNew.addEventListener('submit', async (e) => {
         AlertEsquina.fire({
             icon: "error",
             title: "¡ERROR AL CREAR USUARIO!",
-            html: "Hubieron problemas con la conexion, no se pudo crear usuario.", 
+            html: "Hubo problemas con la conexion, no se pudo crear usuario.", 
+            willClose: () => {
+                NewButton.disabled = false;
+            }
         });
         return;
     }
 
     const jsonA = {
-        "nombre": `${post_name}`,
-        "apellido": `${post_apellido}`,
-        "foto_perfil": `${UpdatedFoto}`,
+        "nombre": post_name,
+        "apellido": post_apellido,
+        "foto_perfil": UpdatedFoto,
         "idUsuario": idUsuario,
         "id_proyecto": post_id_proyecto,
         "estado_admin": true
@@ -381,31 +438,42 @@ ModalNew.addEventListener('submit', async (e) => {
     try{
         const res = await agregarAdministrador(jsonA);
         if(res.ok){
+            const data = res.json();
+            console.log(data.data);
             AlertEsquina.fire({
                 icon: "success",
                 title: "¡USUARIO CREADO CORRECTAMENTE!",
-                html: "No hubo problemas creando el usuario.", 
+                html: "No hubo problemas creando el usuario.",
+                willClose: () => {
+                    LimpiarFormulario();
+                    Page = 0;
+                    Modal_New.hide();
+                    CargarTodosCoordinadores(Page);
+                }
             });
         }else{
             AlertEsquina.fire({
                 icon: "error",
                 title: "¡USUARIO NO CREADO CORRECTAMENTE!",
-                html: "Hubieron problemas creando el usuario.", 
+                html: "Hubo problemas creando el usuario.", 
+                willClose: () => {
+                    NewButton.disabled = false;
+                }
             });
+            return;
         }
     }catch(err){
-        console.error("Hubieron problemas insertando Administrador", err);
+        console.error("Hubo problemas insertando Administrador", err);
         AlertEsquina.fire({
             icon: "error",
-            title: "¡USUARIO NO CREADO CORRECTAMENTE!",
-            html: "Hubieron problemas creando el usuario.", 
+            title: "¡PROBLEMAS DE CONEXION!",
+            html: "Hubo problemas con la conexion al intentar crear un nuevo usuario.", 
+            willClose: () => {
+                NewButton.disabled = false;
+            }
         });
+        return;
     }
-
-    LimpiarFormulario();
-    Page = 0;
-    Modal_New.hide();
-    CargarTodosCoordinadores(Page);
 });
 
 window.SiguientePagina = SiguientePagina;

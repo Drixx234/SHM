@@ -13,6 +13,7 @@ const idProyecto = document.getElementById("idProyecto");
 const NombreCoordi = document.getElementById("NombreCoordi");
 const ApellidoCoordi = document.getElementById("ApellidoCoordi");
 const CorreoCoordi = document.getElementById("CorreoCoordi");
+const RolCoordi = document.getElementById("RolCoordi");
 const ProyectoCoordi = document.getElementById("ProyectoCoordi");
 const Foto_Perfil = document.getElementById("Foto_Perfil");
 const btnDisabled = document.getElementById("btnDisabled");
@@ -79,6 +80,7 @@ async function RellenarInfoCoordi(){
     NombreCoordi.value = Coordi.nombre;
     ApellidoCoordi.value = Coordi.apellido;
     CorreoCoordi.value = Coordi.correo_electronico;
+    RolCoordi.value = Coordi.rol;
     Foto_Perfil.src = Coordi.foto_perfil;
 }
 

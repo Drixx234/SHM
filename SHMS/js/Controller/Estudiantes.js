@@ -12,12 +12,17 @@ import{
     AlertEsquina
 }from "../Service/Alerts.js"
 
-localStorage.removeItem("IdEstudiante");
 const dropdown_Especialidades = document.getElementById("dropdown-Especialidades");
 const Input_Name = document.getElementById("Students-Square");
+const PageableCenter = document.getElementById("PageableCenter");
 const btn_Reset = document.getElementById("btn-Reset");
 
-const Array_BlockLetters = ["{", "}", "[", "]", "+", "=", "-", "_", "/", "?", ".", ",", "<", ">", ":", ";", "(", ")", "|", "*", "&", "^", "%", "$", "#", "@", ,"'", '"', "!", "~", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const Array_AllowLetters = [
+  "A","B","C","D","E","F","G","H","I","J","K","L","M",
+  "N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+  "a","b","c","d","e","f","g","h","i","j","k","l","m",
+  "n","o","p","q","r","s","t","u","v","w","x","y","z", ' ', 'Del', 'Delete', 'Backspace'
+];
 
 const tabla_estudiantes = document.getElementById("Tabla_Estudiantes");
 let CargarTable = 0;
@@ -35,8 +40,10 @@ async function Cargar_Tabla(n) {
         });
     } 
 }
-function Rellenar_Tabla(Estudiantes, Paginacion){
+function Rellenar_Tabla(EstudiantesJS, Paginacion){
     tabla_estudiantes.innerHTML = ` `;
+
+    const Estudiantes = EstudiantesJS.content;
 
     Estudiantes.forEach(Estudiante => {
         tabla_estudiantes.innerHTML += `
@@ -52,20 +59,38 @@ function Rellenar_Tabla(Estudiantes, Paginacion){
         `;
     });
     if(Paginacion){
-        if(CargarTable > 0 && EstudiantesJson.length > 0){
-            tabla_estudiantes.innerHTML += `
-            <button class="btn-More" onClick="SiguientePagina()"><h4>Siguiente Pagina</h4></button>
-            <button class="btn-More" onClick="PaginaAnterior()"><h4>Pagina Anterior</h4></button>
-        `;
-        }else if(EstudiantesJson.length == 0 && CargarTable > 0){
-            tabla_estudiantes.innerHTML += `
-            <button class="btn-More" onClick="PaginaAnterior()"><h4>Pagina Anterior</h4></button>
-        `;
-        }
-        else{
-            tabla_estudiantes.innerHTML += `
-            <button class="btn-More" onclick="SiguientePagina()"><h4>Siguiente Pagina</h4></button>
-        `;
+        if(CargarTable > 0 && Estudiantes.length > 0){
+            PageableCenter.innerHTML = `
+                <button class="page-btn" onclick="PaginaAnterior()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-from-line-icon lucide-arrow-left-from-line"><path d="m9 6-6 6 6 6"/><path d="M3 12h14"/><path d="M21 19V5"/></svg>
+                    Pagina Anterior...
+                </button>
+                <button class="page-btn" onclick="SiguientePagina()">
+                    Siguente Pagina...
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-from-line-icon lucide-arrow-right-from-line"><path d="M3 5v14"/><path d="M21 12H7"/><path d="m15 18 6-6-6-6"/></svg>
+                </button>
+            `;
+        }else if(Estudiantes.length == 0 && CargarTable > 0){
+            PageableCenter.innerHTML = `
+                <button class="page-btn" onclick="PaginaAnterior()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-from-line-icon lucide-arrow-left-from-line"><path d="m9 6-6 6 6 6"/><path d="M3 12h14"/><path d="M21 19V5"/></svg>
+                    Pagina Anterior...
+                </button>
+            `;
+        }else if(Estudiantes.length == 0){
+            PageableCenter.innerHTML = '';
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡SIN RESULTADOS!",
+                    html: "No se encontro ningun resultado de estudiantes.",
+                });
+        }else{
+            PageableCenter.innerHTML = `
+                <button class="page-btn" onclick="SiguientePagina()">
+                    Siguente Pagina...
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-from-line-icon lucide-arrow-right-from-line"><path d="M3 5v14"/><path d="M21 12H7"/><path d="m15 18 6-6-6-6"/></svg>
+                </button>
+            `;
         }
     }
 }
@@ -82,7 +107,7 @@ async function LlenarEspecialidades(){
     dropdown_Especialidades.innerHTML = '';
     especialidades.forEach(especialidad => {
         dropdown_Especialidades.innerHTML += `
-            <li><button class="Item_Especialidades" onclick="Cargar_Tabla_Especialidad(${especialidad.id})">${especialidad.nombre}</button></li>
+            <li><button class="dropdown-item" onclick="Cargar_Tabla_Especialidad(${especialidad.id})">${especialidad.nombre}</button></li>
         `;
     });
 }
@@ -102,14 +127,14 @@ async function Cargar_Especialidades(){
 async function Cargar_Tabla_Especialidad(id) {
     try{
         const data = await getByEspecialidad(id, 0, 50);
-        Rellenar_Tabla(data, false);
+        Rellenar_Tabla(data, true);
     }catch{
         console.error('Error al cargar datos' , err);
         Alert_Error_Tabla.hidden = false;
     }
 }
 Input_Name.addEventListener('keydown', (e) => {
-    if (Array_BlockLetters.includes(e.key)) {
+    if (!Array_AllowLetters.includes(e.key)) {
         e.preventDefault();
     }
 });

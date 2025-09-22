@@ -127,13 +127,61 @@ main {
 }
 
 .Menu_Especialidades .dropdown-item:hover {
-    background: rgba(179, 51, 53, 0.1);
+    background: rgba(179, 51, 53, 0.219);
     color: var(--primary);
 }
 
 .Menu_Especialidades .dropdown-item.active {
     background: var(--primary);
     color: var(--light);
+}
+
+.Pageable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 4px;
+    background: var(--light);
+    color: var(--gray-700);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.page-btn:hover:not(.active):not(:disabled) {
+    background: var(--primary);
+    color: var(--light);
+    border-color: var(--primary);
+}
+
+.page-btn.active {
+    background: var(--primary);
+    color: var(--light);
+    border-color: var(--primary);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-btn svg{
+    width: 2rem;
+    height: 2rem;
 }
 
 /* Botón de reset */

@@ -97,7 +97,7 @@ main {
 }
 
 .Menu_Proyectos .dropdown-item:hover {
-    background: rgba(179, 51, 53, 0.1);
+    background: rgba(179, 51, 53, 0.219);
     color: var(--primary);
 }
 
