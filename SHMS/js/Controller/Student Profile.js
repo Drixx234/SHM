@@ -183,11 +183,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         
         const HorasAgregadas = parseFloat(HorasNumber.value);
         const HorasTotales = HorasAgregadas + HorasSociales;
+        const limiteHoras = await ObtenerLimitHoras();
         const id_horas = idHoras.value;
-
-        console.log(HorasAgregadas);
-        console.log(HorasTotales);
-        console.log(HorasSociales);
+        const Porcentaje = (HorasTotales / limiteHoras) * 100.00;
 
         if(HorasTotales > 150.0){
             AlertEsquina.fire({
@@ -200,6 +198,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         const data = {
             "horas": HorasTotales,
+            "porcentaje": Porcentaje,
             "codigoEstudiante": CodigoEstudiante
         }
 
@@ -209,10 +208,12 @@ window.addEventListener('DOMContentLoaded', async () => {
                 icon: "success",
                 title: "¡HORAS AGREGADAS!",
                 html: "Las horas fueron agregadas exitosamente.",
+                willClose: () => {
+                    Modal_Horas.hide();
+                    CargarEstudianteInfo();
+                    HorasNumber.value = '';
+                }
             });
-            Modal_Horas.hide();
-            CargarEstudianteInfo();
-            HorasNumber.value = '';
         }else{
             AlertEsquina.fire({
                 icon: "error",
