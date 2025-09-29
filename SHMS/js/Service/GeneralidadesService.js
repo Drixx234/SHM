@@ -1,4 +1,4 @@
-const API_URL_Generalidades = "http://localhost:8080/apiGeneralidades";
+const API_URL_Generalidades = "https://shmsapi-9871bf53b299.herokuapp.com/apiGeneralidades";
 
 export async function obtenerLimiteHoras() {
     const res = await fetch(`${API_URL_Generalidades}/getLimiteHoras`, {
@@ -21,10 +21,11 @@ export async function CargarGeneralidades() {
     return res.json();
 }
 
-export async function ActualizarValores(id, valor) {
-    return await fetch(`${API_URL_Generalidades}/ActualizarValor/${id}/${valor}`, {
+export async function ActualizarValores(json) {
+    return await fetch(`${API_URL_Generalidades}/ActualizarValor`, {
         credentials: "include",
         method: 'PATCH',
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(json)
     });
 }

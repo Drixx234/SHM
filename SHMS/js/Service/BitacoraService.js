@@ -1,4 +1,4 @@
-const API_URL_Bitacora = "http://localhost:8080/apiMovimientos";
+const API_URL_Bitacora = "https://shmsapi-9871bf53b299.herokuapp.com/apiMovimientos";
 
 export async function GetAllMovimientos(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Bitacora}/getAllPage?page=${page}&size=${size}`, {

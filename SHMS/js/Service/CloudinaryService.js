@@ -1,4 +1,4 @@
-const API_URL_Cloudinary = "http://localhost:8080/apiCloudinary";
+const API_URL_Cloudinary = "https://shmsapi-9871bf53b299.herokuapp.com/apiCloudinary";
 
 export async function uploadImage(file) {
     const formData = new FormData();

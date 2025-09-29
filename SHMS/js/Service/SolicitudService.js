@@ -1,4 +1,4 @@
-const API_URL_Solicitudes = "http://localhost:8080/apiSolicitudes";
+const API_URL_Solicitudes = "https://shmsapi-9871bf53b299.herokuapp.com/apiSolicitudes";
 
 export async function getAllSolicitudes(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Solicitudes}/getSolicitudes?page=${page}&size=${size}`, {

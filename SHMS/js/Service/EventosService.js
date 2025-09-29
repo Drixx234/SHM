@@ -1,4 +1,4 @@
-const API_URL_Eventos = "http://localhost:8080/apiEventos";
+const API_URL_Eventos = "https://shmsapi-9871bf53b299.herokuapp.com/apiEventos";
 
 export async function obtenerEventos(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Eventos}/getEventos?page=${page}&size=${size}`, {

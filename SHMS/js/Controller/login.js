@@ -3,8 +3,7 @@ import{
 }from "../Service/Alerts.js"
 
 import{
-    LogInAdministradores,
-    me
+    LogInAdministradores
 }from "../Service/AuthService.js"
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -25,9 +24,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem("id_admin", textResponse.id);
                 return true;
             }else{
+                if(textResponse.result == "Credenciales incorrectas"){
+                }else{
+                }
                 return false;
             }
         } catch(err){
+            console.error('Hubo problemas buscando el usuario', err);
             AlertEsquina.fire({
                 icon: "error",
                 title: "¡NO SE PUDO CARGAR!",
@@ -48,6 +51,8 @@ window.addEventListener('DOMContentLoaded', () => {
             "contrasenia": password,
             "id_rol": 1
         }
+
+        console.log(json);
 
         const Admin = await Buscar_Administrador(json);
         

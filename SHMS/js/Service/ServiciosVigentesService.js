@@ -1,4 +1,4 @@
-const API_URL_Servicios = "http://localhost:8080/apiServiciosVigentes";
+const API_URL_Servicios = "https://shmsapi-9871bf53b299.herokuapp.com/apiServiciosVigentes";
 
 export async function traerServicios(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Servicios}/getServicios?page=${page}&size=${size}`, {
@@ -7,8 +7,8 @@ export async function traerServicios(page = 0, size = 5) {
     return res.json();
 }
 
-export async function EncontrarPorProyectos(proyecto, page = 0, size = 5) {
-    const res = await fetch(`${API_URL_Servicios}/getServicioByProyecto/${proyecto}?page=${page}&size=${size}`, {
+export async function EncontrarPorProyectos(idProyecto, page = 0, size = 5) {
+    const res = await fetch(`${API_URL_Servicios}/getServicioByProyecto/${idProyecto}?page=${page}&size=${size}`, {
         credentials: "include"
     });
     return res.json();

@@ -36,22 +36,6 @@ main {
     font-size: 1.8rem;
 }
 
-/* Layout principal */
-.principal {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-/* Información del perfil */
-.info_perfil {
-    background: var(--light);
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    padding: 2rem;
-}
-
 .principal_divs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -59,44 +43,12 @@ main {
     margin-bottom: 1.5rem;
 }
 
-.divs_inputs {
-    display: flex;
-    flex-direction: column;
-}
-
-.divs_inputs label {
-    font-weight: 500;
-    color: var(--gray-700);
-    margin-bottom: 0.5rem;
-}
-
-.divs_inputs input {
-    padding: 0.8rem 1rem;
-    border: 1px solid var(--gray-300);
-    border-radius: 6px;
-    font-size: 1rem;
-    background: var(--gray-100);
-    color: var(--gray-700);
-    transition: var(--transition);
-}
-
-.divs_inputs input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(179, 51, 53, 0.2);
-}
-
-.divs_inputs input:read-only {
-    background: var(--gray-100);
-    color: var(--gray-600);
-    cursor: not-allowed;
-}
-
 /* Botones de acción */
 .btn-Center {
     display: flex;
-    gap: 1rem; 
+    gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn-Center button {
@@ -110,11 +62,14 @@ main {
     cursor: pointer;
     transition: var(--transition);
     color: var(--light);
+    flex: 1;
+    min-width: 160px;
+    justify-content: center;
 }
 
 .btn-Center button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #btnLogOut {
@@ -129,6 +84,10 @@ main {
     background: #a36014 !important;
 }
 
+#btnBack{
+    background-color: #6ba8d1 !important;
+}
+
 #btnUpdate:hover {
     background: #8a5011 !important;
 }
@@ -137,6 +96,7 @@ main {
     width: 18px;
     height: 18px;
 }
+
 
 /* Modal de actualización */
 .ModalUpdate .modal-content {
@@ -213,6 +173,16 @@ main {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gray-300);
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.img-preview2 {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
     object-fit: cover;
     border: 2px solid var(--gray-300);
     display: block;
@@ -707,14 +677,6 @@ svg {
     margin-bottom: 2rem;
 }
 
-/* Ajustes para el grid de información */
-.principal_divs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
 .secondary_divs{
     display: flex;
     flex-direction: column;
@@ -795,61 +757,6 @@ svg {
     color: var(--gray-600);
     cursor: not-allowed;
 }
-
-/* Botones de acción */
-.btn-Center {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.btn-Center button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-    color: var(--light);
-    flex: 1;
-    min-width: 160px;
-    justify-content: center;
-}
-
-.btn-Center button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-#btnLogOut {
-    background: var(--primary) !important;
-}
-
-#btnLogOut:hover {
-    background: var(--primary-dark) !important;
-}
-
-#btnUpdate {
-    background: #a36014 !important;
-}
-
-#btnBack{
-    background-color: #6ba8d1 !important;
-}
-
-#btnUpdate:hover {
-    background: #8a5011 !important;
-}
-
-.btn-Center button svg {
-    width: 18px;
-    height: 18px;
-}
-
 /* Responsive: En móviles la foto va arriba */
 @media (max-width: 992px) {
     .principal {

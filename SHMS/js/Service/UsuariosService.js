@@ -1,4 +1,4 @@
-const API_URL_Usuarios = "http://localhost:8080/apiUsuarios";
+const API_URL_Usuarios = "https://shmsapi-9871bf53b299.herokuapp.com/apiUsuarios";
 
 export async function traerUsuarios(page = 0, size = 10) {
     const res = await fetch(`${API_URL_Usuarios}/getUsuarios?page=${page}&size=${size}`, {

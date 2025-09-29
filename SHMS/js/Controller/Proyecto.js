@@ -1,340 +1,388 @@
-const API_URL_Proyectos = "https://retoolapi.dev/B81qu9/tbProyectos";
-const API_URL_Coordinadores = "https://retoolapi.dev/EWVZu8/tbAdministradores";
-const API_URL_ServiciosVigentes = "https://retoolapi.dev/XqGGae/tbServicios_Vigentes";
-const API_URL_IMGBB = "https://api.imgbb.com/1/upload?key=a4006c882382c9abcda6901d193c61fe";
+import{
+    AlertEsquina
+}from "../Service/Alerts.js"
 
-const Alert_Error_Proyects = document.getElementById("Alert_Error_Proyects");
-const Alert_Error_Coordinadores = document.getElementById("Alert_Error_Coordinadores");
-const Alert_Error_Insert = document.getElementById("Alert_Error_Insert");
-const Alert_OK_Proyecto = document.getElementById("Alert_OK_Proyecto");
-const Proyectos_Vigentes_Div = document.getElementById("accordionFlushExample");
-const Dialog_Insert_Update = document.getElementById("Dialog_Insert_Update");
-const Title_Dialog = document.getElementById("Title_Dialog");
-const Dialog_Proyecto_Id = document.getElementById("Dialog_Proyecto_Id");
-const Dialog_Proyecto_Name = document.getElementById("Dialog_Proyecto_Name");
-const Dialog_Proyecto_Concepto = document.getElementById("Dialog_Proyecto_Concepto");
-const Dialog_Proyecto_Cupos = document.getElementById("Dialog_Proyecto_Cupos");
-const Dialog_Proyecto_Icon = document.getElementById("Dialog_Proyecto_Icon");
-const Dialog_Proyecto_Icon_Label = document.getElementById("Dialog_Proyecto_Icon_Label");
-const Dialog_Proyecto_Img_Muestra = document.getElementById("Dialog_Proyecto_Img_Muestra");
-const Dialog_Proyecto_Img_Muestra_Label = document.getElementById("Dialog_Proyecto_Img_Muestra_Label");
-const btn_Guardar_Cambios = document.getElementById("btn_Guardar_Cambios");
+import{
+    nuevoProyecto,
+    traerProyectosCompletos,
+    buscarProyectoPorNombre
+}from "../Service/ProyectosService.js"
+
+import{
+    uploadImageToFolder
+}from "../Service/CloudinaryService.js"
+
+const Proyecto_Square = document.getElementById("Proyecto_Square");
+const divs_cards = document.getElementById("divs_cards");
+const PageableCenter = document.getElementById("PageableCenter");
+
 const btn_Agregar_Proyecto = document.getElementById("btn_Agregar_Proyecto");
-const btn_Cancelar_Dialog = document.getElementById("btn_Cancelar_Dialog");
+const ModalNew = document.getElementById("ModalNew");
+const DialogInsert = new bootstrap.Modal(ModalNew);
 
-async function Cargar_Proyectos() {
-    try{
-        const res = await fetch(`${API_URL_Proyectos}?Vigencia_Proyecto=1`);
-        const data = await res.json();
-        Rellenar_Proyectos(data);
-    } catch(err) {
-        console.error('Error al cargar datos' , err);
-        Alert_Error_Proyects.hidden = false;
-        setTimeout(() => {
-            Alert_Error_Proyects.hidden = true;       
-        }, 3000)
-    }
-}
-async function Buscar_Coordinadores(Proyecto) {
-    try{
-        const res = await fetch(`${API_URL_Coordinadores}?Proyecto_Asignado=${Proyecto}&Estado_Admin=2`);
-        if(!(res.ok)){
-            console.error(`Error HTTP: ${res.status}`);
-            return(null);
-        }
-        const data = await res.json();
-        return(data);
-    } catch(err){
-        console.error('Error al cargar datos' , err);
-        Alert_Error_Coordinadores.hidden = false;
-        return(null);
-        setTimeout(() => {
-            Alert_Error_Coordinadores.hidden = true;
-        }, 3000)
-    }
-}
-async function Buscar_Servicios(Proyecto) {
-    try{
-        const res = await fetch(`${API_URL_ServiciosVigentes}?Nombre_Proyecto=${Proyecto}`)
-        const data = await res.json();
-        return(data);
-    }catch(err){
-        console.error('Error al cargar datos' , err);
-    }
-}
-async function Rellenar_Proyectos(Proyectos){
-    Proyectos_Vigentes_Div.innerHTML = '';
+//Inputs del modal
+const PostForm = document.getElementById("PostForm");
+const NewLogo = document.getElementById("NewLogo");
+const ImagePreviewLogo = document.getElementById("ImagePreviewLogo");
+const NewMuestra = document.getElementById("NewMuestra");
+const ImagePreviewMuestra = document.getElementById("ImagePreviewMuestra");
+const NewName = document.getElementById("NewName");
+const NewConcepto = document.getElementById("NewConcepto");
+const NewCupos = document.getElementById("NewCupos");
 
-    Proyectos.forEach(async (Proyecto, index) => {
-        const Index_ID = `flush-collapse${index}`;
-        const Encabezado_ID = `flush-heading-${index}`;
+const Array_AllowLetters = [
+  "A","B","C","D","E","F","G","H","I","J","K","L","M",
+  "N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+  "a","b","c","d","e","f","g","h","i","j","k","l","m",
+  "n","o","p","q","r","s","t","u","v","w","x","y","z", ' ', 'Del', 'Delete', 'Backspace'
+];
 
-        let DIV_Proyecto = `
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed Proyectos_Center" type="button" data-bs-toggle="collapse" data-bs-target="#${Index_ID}" aria-expanded="false" aria-controls="${Index_ID}">${Proyecto.Nombre_Proyecto}</button>
-            </h2>
-            <div id="${Index_ID}" class="accordion-collapse collapse" aria-labelledby="${Encabezado_ID}" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">
-                        <div class="Div_Info2">
-                            <div class="Proyectos_Info_div">
-                                <label class="Label_IMG">Icono de Proyecto:
-                                    <img src="${Proyecto.Icono_Proyecto}" alt="Icono del Proyecto" class="IMG_Icon_Proyecto">
-                                </label>
-                                <label class="Label_IMG">Imagen de muestra:
-                                    <img src="${Proyecto.Img_Muestra}" alt="Imagen de muestra de ${Proyecto.Nombre_Proyecto}" class="IMG_Muestra_Proyecto">
-                                </label>
-                            </div>
-                            <div class="Proyectos_Info_div Info_Proyectos" style="width: 50%;">
-                                <label>Descripcion Proyecto:
-                                    <textarea readonly>${Proyecto.Concepto_Proyecto}</textarea>
-                                </label>
-                                <div class="Div_secondary">
-                                    <label>Cupos Proyectos
-                                        <input type="number" readonly value="${Proyecto.Cupos_Proyectos}">
-                                    </label>
-        `;
+let Page = 0;
 
-        let Servicios = await Buscar_Servicios(Proyecto.Nombre_Proyecto);
-        let Cupos_Usados = Servicios.length;
-        Cupos_disponibles = Proyecto.Cupos_Proyectos - Cupos_Usados;
-        DIV_Proyecto += `
-                                    <label>Cupos Disponibles
-                                        <input type="number" readonly value="${Cupos_disponibles}">
-                                    </label>
-                                </div>
-                                <div class="Div_secondary">
-                                    <button type="button" style="background-color: rgb(185, 129, 24);" onClick="Editar_Proyecto(${Proyecto.id}, '${Proyecto.Nombre_Proyecto}', '${Proyecto.Concepto_Proyecto}', ${Proyecto.Cupos_Proyectos}, '${Proyecto.Icono_Proyecto}', '${Proyecto.Img_Muestra}')">Actualizar</button>
-                                    <button type="button" style="background-color: brown;">Deshabilitar Proyecto</button>
-                                </div>
-                            </div>
-                        </div>
-                    <hr>
-                    <h2 class="Coordinadores_Asignados">COORDINADORES ASIGNADOS:</h2>
-        `;
-        
-        const Coordinadores = await Buscar_Coordinadores(Proyecto.Nombre_Proyecto);
-        if(Array.isArray(Coordinadores) && Coordinadores.length > 0){
-            Coordinadores.forEach(Coordinador => {
-                DIV_Proyecto += `
-                    <div class="Card-Coordinador">
-                        <img src="${Coordinador.Foto_Perfil}" alt="Foto del Coordinador ${Coordinador.Nombre_Administrador} ${Coordinador.Apellido_Administrador}">
-                        <hr>
-                        <h2>${Coordinador.Nombre_Administrador} ${Coordinador.Apellido_Administrador}</h2>
-                        <hr>
-                        <h3 lang="en">${Coordinador.Correo_Electronico}</h3>
-                        <hr>
-                        <button onClick="Quitar_Coordinador(${Coordinador.id})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-slash-icon lucide-circle-slash"><circle cx="12" cy="12" r="10"/><line x1="9" x2="15" y1="15" y2="9"/></svg></button>
-                    </div>
-                `
-            });
+//Metodos de Service//
+async function CrearProyecto(json) {
+    try {
+        const response = await nuevoProyecto(json);
+        const res = await response.json();
+        if(res.status == "success"){
+            return true;
         }else{
-            DIV_Proyecto += `
-            <h2>No hay coordinadores aun</h2>
-            `;
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR EN EL SERVIDOR!",
+                html: "Hubo problemas internos, por lo que no se pudo crear el proyecto.",
+            });
+            return false;
         }
-        DIV_Proyecto += `
+    } catch (err) {
+        console.error('Hubo problemas creando un nuevo proyecto', err);
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡CONEXION FALLIDA!",
+            html: "Hubo problemas con la conexion, por lo que no se pudo crear el proyecto.",
+        });
+        return false;
+    }
+}
+async function ConseguirPorNombre(nombre) {
+    try {
+        return await buscarProyectoPorNombre(nombre, 0, 15);
+    } catch (err) {
+        console.error('Hubo problemas consiguiendo los proyectos por el nombre', err);
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡CONEXION FALLIDA!",
+            html: "Hubo problemas con la conexion, por lo que no se pudieron obtener los proyectos.",
+        });
+        return null;
+    }
+}
+async function ConseguirTodosProyectos() {
+    try {
+        return await traerProyectosCompletos(Page, 15);
+    } catch (err) {
+        console.error('Hubo problemas consiguiendo los proyectos', err);
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡CONEXION FALLIDA!",
+            html: "Hubo problemas con la conexion, por lo que no se pudieron obtener los proyectos.",
+        });
+        return null;
+    }
+}
+async function SubirFoto(file) {
+    try{
+        const response = await uploadImageToFolder(file, "Foto_Proyectos");
+        if(response && response.data) {
+            return response.data;
+        } else {
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡ERROR AL SUBIR LA FOTO!",
+                html: "Hubo problemas intentando subir la foto a la nube.",
+                willClose: () => {
+                    PostForm.disabled = false;
+                }
+            });
+            return null;
+        }
+    }catch(err){
+        console.error("Error al subir imagen", err);
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡ERROR AL SUBIR LA FOTO!",
+            html: "Hubo problemas intentando subir la foto a la nube.",
+            willClose: () => {
+                PostForm.disabled = false;
+            }
+        });
+        return null;
+    }
+}
+
+//Metodos de input de busqueda//
+Proyecto_Square.addEventListener('keydown', (e) => {
+    if (!Array_AllowLetters.includes(e.key)) {
+        e.preventDefault();
+    }
+});
+Proyecto_Square.addEventListener('blur', () =>{
+    setTimeout(() => {
+        Proyecto_Square.value = '';
+        Page = 0;
+        RellenarProyectos();
+    }, 1000);
+});
+Proyecto_Square.addEventListener('input', async () => {
+    if(Proyecto_Square.value.length < 8){
+        return;
+    }else{
+        let Name = Proyecto_Square.value.trim();
+        await BuscarByNombre(Name);
+    }
+});
+
+//Metodos de los input de muestra e icono del Modal//
+NewLogo.addEventListener("change", () => {
+    const file = NewLogo.files?.[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = () => (ImagePreviewLogo.src = reader.result);
+        reader.readAsDataURL(file);
+    } else {
+        NewLogo.value = "";
+        ImagePreviewLogo.src = '';
+    }
+});
+NewMuestra.addEventListener("change", () => {
+    const file = NewMuestra.files?.[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = () => (ImagePreviewMuestra.src = reader.result);
+        reader.readAsDataURL(file);
+    } else {
+        NewMuestra.value = "";
+        ImagePreviewMuestra.src = '';
+    }
+});
+
+//Metodos del html//
+async function RellenarProyectos() {
+    const ProyectosRe = await ConseguirTodosProyectos();
+    if(ProyectosRe == null){
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡CONEXION FALLIDA!",
+            html: "Hubo problemas con la conexion, por lo que no se pudo obtener la informacion del proyecto.",
+        });
+        return;
+    }
+    
+    const Proyectos = ProyectosRe.content;
+    if(Proyectos.length == 0){
+        AlertEsquina.fire({
+            icon: "info",
+            title: "¡SIN RESULTADOS!",
+            html: "No hubo coincidencia de ningun proyecto.",
+        });
+        return;
+    }else{
+        let Color;
+        let VigenciaP;
+
+        divs_cards.innerHTML = '';
+        Proyectos.forEach(Proyecto => {
+            if(Proyecto.vigencia == false){
+                Color = 'border-top: 4px solid var(--primary);';
+                VigenciaP = 'Proyecto Desactivado';
+            }else{
+                Color = 'border-top: 4px solid var(--secondary);';
+                VigenciaP = 'Proyecto Activo';
+            }
+
+            divs_cards.innerHTML += `
+                <div class="proyecto-card" onclick="VerProyecto('${Proyecto.id}')" style="${Color}">
+                    <div class="Cards_body">
+                        <div class="proyecto-header">
+                            <img src="${Proyecto.icono}" class="proyecto-image" alt="Imagen de Coordinador">
+                        </div>
+                        <div class="proyecto-details">
+                            <h3 class="proyecto-detail">${Proyecto.nombre}</h3>
+                            <h4 class="proyecto-detail">${VigenciaP}</h4>
                         </div>
                     </div>
                 </div>
             `;
+        });
 
-        Proyectos_Vigentes_Div.innerHTML += DIV_Proyecto
-    });
-}
-Dialog_Proyecto_Icon.addEventListener('change', (e) => {
-    if(e.target.files[0]){
-        Dialog_Proyecto_Icon_Label.textContent = e.target.files[0].name;
-    }else{
-        Dialog_Proyecto_Icon_Label.textContent = 'Seleccionar Imagen de Icono:';
-    }
-});
-Dialog_Proyecto_Img_Muestra.addEventListener('change', (e) => {
-    if(e.target.files[0]){
-        Dialog_Proyecto_Img_Muestra_Label.textContent = e.target.files[0].name;
-    }else{
-        Dialog_Proyecto_Img_Muestra_Label.textContent = 'Seleccionar Imagen de Muestra:';
-    }
-});
-btn_Agregar_Proyecto.addEventListener('click', () => {
-    body.style.filter = "blur(6px)";
-    Title_Dialog.textContent = 'Agregar Proyecto';
-    Dialog_Insert_Update.showModal();
-});
-function LimpiarDialog(){
-    Dialog_Proyecto_Id.value = '';
-    Dialog_Proyecto_Name.value = '';
-    Dialog_Proyecto_Concepto.value = '';
-    Dialog_Proyecto_Cupos.value = '';
-    Dialog_Proyecto_Icon.value = '';
-    Dialog_Proyecto_Icon_Label.textContent = 'Seleccionar Imagen de Icono:';
-    Dialog_Proyecto_Img_Muestra.value = '';
-    Dialog_Proyecto_Img_Muestra_Label.textContent = 'Seleccionar Imagen de Muestra:';
-}
-Dialog_Insert_Update.addEventListener('cancel', (e) => {
-    LimpiarDialog();
-    body.style.filter = "blur(0px)";
-    Dialog_Insert_Update.close();
-});
-btn_Cancelar_Dialog.addEventListener('click', () => {
-    LimpiarDialog();
-    body.style.filter = "blur(0px)";
-    Dialog_Insert_Update.close();
-});
-async function subirImagen(file) {
-  const fd = new FormData();
-  fd.append('image', file);
-  try{
-    const res = await fetch(API_URL_IMGBB, { method: 'POST', body: fd });
-    const obj = await res.json();
-    return obj.data.url;
-  }catch(err){
-        console.error('Error al subir datos' , err);
-        Alert_Error_Insert.hidden = false;
-        setTimeout(() => {
-            Alert_Error_Insert.hidden = true;       
-        }, 3000)
-  }
-}
-async function Agregar_Nuevo_Proyecto(Proyecto_New) {
-    try{
-        const respuesta = await fetch(API_URL_Proyectos, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Proyecto_New)
-            });
-            if(respuesta.ok){
-                Alert_OK_Proyecto.hidden = false;
-                setTimeout(() => {
-                    Alert_OK_Proyecto.hidden = true;
-                }, 3000);
-            }
-            else{
-                const error = await respuesta.text();
-                Alert_Error_Insert.hidden = false;
-                setTimeout(() => {
-                    Alert_Error_Insert.hidden = true;
-                }, 3000);
-            }
-    }catch(err){
-        console.error('Error al cargar datos' , err);
-        Alert_Error_Insert.hidden = false;
-        setTimeout(() => {
-            Alert_Error_Insert.hidden = true;
-        }, 3000);
+        if(Proyectos.length == 15 && Page == 0){
+            PageableCenter.innerHTML = `
+                <button class="page-btn" onclick="SiguientePagina()">
+                    Siguente Pagina...
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-from-line-icon lucide-arrow-right-from-line"><path d="M3 5v14"/><path d="M21 12H7"/><path d="m15 18 6-6-6-6"/></svg>
+                </button>
+            `
+        }else if(Proyectos.length < 15 && Page > 0){
+            PageableCenter.innerHTML = `
+                <button class="page-btn" onclick="PaginaAnterior()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-from-line-icon lucide-arrow-left-from-line"><path d="m9 6-6 6 6 6"/><path d="M3 12h14"/><path d="M21 19V5"/></svg>
+                    Pagina Anterior...
+                </button>
+            `
+        }else if(Proyectos.length == 15 && Page > 0){
+            PageableCenter.innerHTML = `
+                <button class="page-btn" onclick="PaginaAnterior()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-from-line-icon lucide-arrow-left-from-line"><path d="m9 6-6 6 6 6"/><path d="M3 12h14"/><path d="M21 19V5"/></svg>
+                    Pagina Anterior...
+                </button>
+                <button class="page-btn" onclick="SiguientePagina()">
+                    Siguente Pagina...
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-from-line-icon lucide-arrow-right-from-line"><path d="M3 5v14"/><path d="M21 12H7"/><path d="m15 18 6-6-6-6"/></svg>
+                </button>
+            `
+        }
     }
 }
-async function Actualizar_Proyecto(Proyecto, ID) {
-    try{
-        const respuesta = await fetch(`${API_URL_Proyectos}/${ID}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Proyecto)
-            });
-            if(respuesta.ok){
-                Alert_OK_Proyecto.hidden = false;
-                setTimeout(() => {
-                    Alert_OK_Proyecto.hidden = true;
-                }, 3000);
-            }
-            else{
-                const error = await respuesta.text();
-                Alert_Error_Insert.hidden = false;
-                setTimeout(() => {
-                    Alert_Error_Insert.hidden = true;
-                }, 3000);
-            }
-    } catch(err) {
-        console.error('Error al cargar datos' , err);
-        Alert_Error_Insert.hidden = false;
-        setTimeout(() => {
-            Alert_Error_Insert.hidden = true;
-        }, 3000);
-    }
-}
-function Editar_Proyecto(id, name, concepto, cupos, icon_url, img_url) {
-    Dialog_Proyecto_Id.value = id;
-    Dialog_Proyecto_Name.value = name;
-    Dialog_Proyecto_Concepto.value = concepto;
-    Dialog_Proyecto_Cupos.value = cupos;
-    Dialog_Proyecto_Icon_Label.textContent = icon_url;
-    Dialog_Proyecto_Img_Muestra_Label.textContent = img_url;
-
-    body.style.filter = "blur(6px)";
-    Title_Dialog.textContent = 'Actualizar Proyecto';
-    Dialog_Insert_Update.showModal();
-}
-btn_Guardar_Cambios.addEventListener('click', async () => {
-    let Nombre = Dialog_Proyecto_Name.value.trim();
-    let Concepto= Dialog_Proyecto_Concepto.value.trim();
-    let Cupos = Dialog_Proyecto_Cupos.value.trim();
-    let id = Dialog_Proyecto_Id.value.trim();
-
-    if(id == ''){
-        if(!Nombre || !Concepto || !Cupos || !Dialog_Proyecto_Img_Muestra.value || !Dialog_Proyecto_Icon.value){
-        alert("Primero completa todos los campos");
+async function BuscarByNombre(nombre) {
+    const ProyectosJS = await ConseguirPorNombre(nombre);
+    
+    if(ProyectosJS == null){
+        AlertEsquina.fire({
+            icon: "error",
+            title: "¡CONEXION FALLIDA!",
+            html: "Hubo problemas con la conexion, por lo que no se pudieron obtener los proyectos.",
+        });
         return;
-        }  
-
-        let Icon_URL = await subirImagen(Dialog_Proyecto_Icon.files[0]);
-        let Img_Muestra_URL = await subirImagen(Dialog_Proyecto_Img_Muestra.files[0]);
-
-        const Proyecto_New = {
-            "Img_Muestra": Img_Muestra_URL,
-            "Icono_Proyecto": Icon_URL,
-            "Cupos_Proyectos": Cupos,
-            "Nombre_Proyecto": Nombre,
-            "Concepto_Proyecto": Concepto,
-            "Vigencia_Proyecto": 1
-            }
-        Agregar_Nuevo_Proyecto(Proyecto_New);
-        LimpiarDialog();
-        body.style.filter = "blur(0px)";    
-        Dialog_Insert_Update.close();
-        Cargar_Proyectos();
-
+    }
+    
+    const Proyectos = ProyectosJS.content;
+    if(Proyectos.length == 0){
+        AlertEsquina.fire({
+            icon: "info",
+            title: "¡SIN RESULTADOS!",
+            html: "No hubo coincidencia de ningun proyecto.",
+        });
+        return;
     }else{
+        let Color;
+        let VigenciaP;
+        
+        divs_cards.innerHTML = '';
+        Proyectos.forEach(Proyecto => {
+            if(Proyecto.vigencia == false){
+                Color = 'border-top: 4px solid var(--primary);';
+                VigenciaP = 'Proyecto Desactivado';
+            }else{
+                Color = 'border-top: 4px solid var(--secondary);';
+                VigenciaP = 'Proyecto Activo';
+            }
 
-        if(!Nombre || !Concepto || !Cupos){
-            alert("Primero completa todos los campos");
+            divs_cards.innerHTML += `
+                <div class="proyecto-card" onclick="VerProyecto('${Proyecto.id}')" style="${Color}">
+                    <div class="Cards_body">
+                        <div class="proyecto-header">
+                            <img src="${Proyecto.icono}" class="proyecto-image" alt="Imagen de Coordinador">
+                        </div>
+                        <div class="proyecto-details">
+                            <h3 class="proyecto-detail">${Proyecto.nombre}</h3>
+                            <h4 class="proyecto-detail">${VigenciaP}</h4>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+}
+function VerProyecto(id) {
+    localStorage.setItem("IdProyecto", id);
+    window.location.href = "Info Proyecto - Admin.html";
+}
+function SiguientePagina() {
+    Page++;
+    RellenarProyectos();
+}
+function PaginaAnterior() {
+    Page--;
+    RellenarProyectos();
+}
+btn_Agregar_Proyecto.addEventListener('click', () => {
+    LimpiarFormulario();
+    DialogInsert.show();
+});
+
+//Metodos del Modal//
+function LimpiarFormulario(){
+    NewLogo.value = '';
+    ImagePreviewLogo.src = '';
+    NewMuestra.value = '';
+    ImagePreviewMuestra.src = '';
+    NewName.value = '';
+    NewConcepto.value = '';
+    NewCupos.value = '';
+    PostForm.disabled = false;
+}
+PostForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    PostForm.disabled = true;
+
+    const NewNameValue = NewName.value.trim();
+    const NewConceptoValue = NewConcepto.value.trim();
+    const NewCuposValue = NewCupos.value.trim();
+    let NewLogoValue;
+    let NewMuestraValue;
+
+    const fileLogo = NewLogo?.files?.[0];
+    if(fileLogo){
+        const value = await SubirFoto(fileLogo);
+        if(value == null){
             return;
-        }else if((!(Dialog_Proyecto_Icon.value) && (Dialog_Proyecto_Icon_Label.textContent == 'Seleccionar Imagen de Icono:')) || (!(Dialog_Proyecto_Img_Muestra.value) && (Dialog_Proyecto_Img_Muestra_Label.textContent == 'Seleccionar Imagen de Muestra:'))){
-            alert("Primero completa todos los campos | Selecciona imagenes del proyecto");
-            return;
-        }
-
-        let Icon_URL;
-        let Img_Muestra_URL;
-
-        if((!(Dialog_Proyecto_Icon.value) && (Dialog_Proyecto_Icon_Label.textContent != 'Seleccionar Imagen de Icono:')) || (!(Dialog_Proyecto_Img_Muestra.value) && (Dialog_Proyecto_Img_Muestra_Label != 'Seleccionar Imagen de Muestra:'))){
-            Img_Muestra_URL = Dialog_Proyecto_Img_Muestra_Label.textContent;
-            Icon_URL = Dialog_Proyecto_Icon_Label.textContent;
         }else{
-            Icon_URL = await subirImagen(Dialog_Proyecto_Icon.files[0]);
-            Img_Muestra_URL = await subirImagen(Dialog_Proyecto_Img_Muestra.files[0]);
+            NewLogoValue = value;
         }
+    }
 
-        const Proyecto_Update = {
-            "Img_Muestra": Img_Muestra_URL,
-            "Icono_Proyecto": Icon_URL,
-            "Cupos_Proyectos": Cupos,
-            "Nombre_Proyecto": Nombre,
-            "Concepto_Proyecto": Concepto,
-            "Vigencia_Proyecto": 1
+    const fileMuestra = NewMuestra?.files?.[0];
+    if(fileMuestra){
+        const value = await SubirFoto(fileMuestra);
+        if(value == null){
+            return;
+        }else{
+            NewMuestraValue = value;
         }
-        Actualizar_Proyecto(Proyecto_Update, id)
-        LimpiarDialog();
-        body.style.filter = "blur(0px)";    
-        Dialog_Insert_Update.close();
-        Cargar_Proyectos();   
+    }
+
+    const json = {
+        "nombre": NewNameValue,
+        "concepto" : NewConceptoValue,
+        "cupos" : NewCuposValue,
+        "icono": NewLogoValue,
+        "img_muestra": NewMuestraValue,
+        "vigencia": true
+    }
+
+    const res = await CrearProyecto(json);
+    if(!res){
+        PostForm.disabled = false;
+        return;
+    }else{
+        AlertEsquina.fire({
+            icon: "success",
+            title: "¡PROYECTO CREADO!",
+            html: "No hubo ningun problema creando el proyecto.",
+            willClose: () => {
+                LimpiarFormulario();
+                DialogInsert.hide();
+                RellenarProyectos();
+            }
+        });
     }
 });
-function CargaInicialProyectos(){
-    Cargar_Proyectos();
-    Alert_Error_Proyects.hidden = true;
-    Alert_Error_Coordinadores.hidden = true;
-    Alert_Error_Insert.hidden = true;
-    Alert_OK_Proyecto.hidden = true;
+
+async function CargaInicialProyectos(){
+    await RellenarProyectos();
 }
 
+window.VerProyecto = VerProyecto;
+window.SiguientePagina = SiguientePagina;
+window.PaginaAnterior = PaginaAnterior;
 window.addEventListener('DOMContentLoaded', CargaInicialProyectos);

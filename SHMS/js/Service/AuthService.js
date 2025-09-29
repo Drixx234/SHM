@@ -1,4 +1,4 @@
-const API_URL_AUTH = "http://localhost:8080/apiAuth";
+const API_URL_AUTH = "https://shmsapi-9871bf53b299.herokuapp.com/apiAuth";
 
 export async function LogInAdministradores(data) {
     return await fetch(`${API_URL_AUTH}/LoginAdmin`, {

@@ -1,7 +1,7 @@
 // Servicio para comunicación con la API REST
 class ApiService {
     constructor() {
-        this.baseURL = 'http://localhost:8080/api';
+        this.baseURL = 'https://shmsapi-9871bf53b299.herokuapp.com';
     }
 
     // Obtener todos los chats del usuario actual

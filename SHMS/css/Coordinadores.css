@@ -325,8 +325,8 @@ main {
     height: 28px;
 }
 
-/* Modal de agregar/editar coordinador */
-.ModalUpdate .modal-content {
+/* Modal de agregar coordinador */
+.ModalNew .modal-content {
     border-radius: var(--border-radius);
     border: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -454,8 +454,7 @@ main {
     }
     
     .Busqueda-center {
-        flex-direction: column;
-        
+        flex-direction: column;   
     }
 
     #Coordi_Square, .dropdown-center, .Menu_Proyectos, .Btn_Proyectos, .btn-Reset {

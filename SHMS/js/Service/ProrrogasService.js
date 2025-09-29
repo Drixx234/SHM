@@ -1,4 +1,4 @@
-const API_URL_Prorrogas = "http://localhost:8080/apiProrrogas";
+const API_URL_Prorrogas = "https://shmsapi-9871bf53b299.herokuapp.com/apiProrrogas";
 
 export async function getAllProrrogas(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Prorrogas}/getAllProrrogas?page=${page}&size=${size}`, {

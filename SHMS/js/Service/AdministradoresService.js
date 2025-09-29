@@ -1,4 +1,4 @@
-const API_URL_Administradores = "http://localhost:8080/apiAdministradores";
+const API_URL_Administradores = "https://shmsapi-9871bf53b299.herokuapp.com/apiAdministradores";
 
 export async function getAllAdministradores(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Administradores}/getAllAdministradores?page=${page}&size=${size}`, {

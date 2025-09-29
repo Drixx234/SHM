@@ -1,4 +1,4 @@
-const API_URL_Calendario = "http://localhost:8080/apiCalendario";
+const API_URL_Calendario = "https://shmsapi-9871bf53b299.herokuapp.com/apiCalendario";
 
 export async function getAllCalendario(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Calendario}/getAllCalendario?page=${page}&size=${size}`, {

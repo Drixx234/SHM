@@ -160,20 +160,17 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         Horasrequeridas.textContent = limiteHoras;
         const horas = Horas.horas || 0;
-        const porcentaje = Horas.porcentaje || 0;
+        const porcentaje = (horas / limiteHoras) * 100.00 || 0;
         const horasFaltantes = limiteHoras - horas;
         HorasSociales = Horas.horas;
 
         document.getElementById('horas-completadas').textContent = horas;
         document.getElementById('horas-faltantes').textContent = horasFaltantes;
-        document.getElementById('percentage-text').textContent = `${porcentaje.toFixed(1)}%`;
 
         const progressBar = document.getElementById('progress-bar');
         progressBar.style.width = `${porcentaje}%`;
         progressBar.setAttribute('aria-valuenow', porcentaje);
         progressBar.textContent = `${porcentaje.toFixed(1)}%`;
-
-        document.getElementById('progress-pie').style.setProperty('--percentage', `${porcentaje}%`);
     }
     btnHoras.addEventListener('click', async () => {
         Modal_Horas.show();
@@ -185,9 +182,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const HorasTotales = HorasAgregadas + HorasSociales;
         const limiteHoras = await ObtenerLimitHoras();
         const id_horas = idHoras.value;
-        const Porcentaje = (HorasTotales / limiteHoras) * 100.00;
 
-        if(HorasTotales > 150.0){
+        if(HorasTotales > limiteHoras){
             AlertEsquina.fire({
                 icon: "error",
                 title: "¡NO SE PUDO AGREGAR!",
@@ -198,7 +194,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         const data = {
             "horas": HorasTotales,
-            "porcentaje": Porcentaje,
             "codigoEstudiante": CodigoEstudiante
         }
 

@@ -70,6 +70,16 @@ window.addEventListener('DOMContentLoaded', () => {
     const NewOrientadorEspecialidad = document.getElementById("NewOrientadorEspecialidad");
     const btn_NewEspecialidad = document.getElementById("btn_NewEspecialidad");
 
+    const ModalGeneralidades = document.getElementById("ModalGeneralidades");
+    const Modal_Generalidades = new bootstrap.Modal(ModalGeneralidades);
+    const UpdateLimitForm = document.getElementById("UpdateLimitForm");
+    const LimitHours = document.getElementById("LimitHours");
+    const Div_Modal_Limit = document.getElementById("Div_Modal_Limit");
+    const Div_Modal_Logo = document.getElementById("Div_Modal_Logo");
+    const idGeneralidad = document.getElementById("idGeneralidad");
+    const LogoFoto = document.getElementById("LogoFoto");
+    const ImagePreview2 = document.getElementById("ImagePreview2");
+
     async function BuscarAdmin(adminId){
         try{
             const data = buscarAdministrador(adminId);
@@ -114,7 +124,6 @@ window.addEventListener('DOMContentLoaded', () => {
     async function AllGeneralidades() {
         try{
             const res = await CargarGeneralidades();
-            console.log(res);
             return res;
         }catch(err){
             console.error("Problemas cargando las generalidades", err);
@@ -145,7 +154,7 @@ window.addEventListener('DOMContentLoaded', () => {
         Foto_Perfil.src = admin.foto_perfil;
 
         await LlenarEspecialidades();
-        //await LlenarGeneralidades();
+        await LlenarGeneralidades();
     }
 
     async function LlenarEspecialidades(){
@@ -154,8 +163,10 @@ window.addEventListener('DOMContentLoaded', () => {
         Especialidades.forEach(Especialidad => {
             Especialidades_Div.innerHTML += `
                 <div class="divs_inputs2">
-                    <input type="text" readonly placeholder="${Especialidad.nombre}">
-                    <input type="text" readonly placeholder="${Especialidad.orientador}">
+                    <div class="principal_divs" style="width: 100%; align-items: center; margin-bottom: 0">
+                        <input type="text" readonly placeholder="${Especialidad.nombre}">
+                        <input type="text" readonly placeholder="${Especialidad.orientador}">
+                    </div>
                     <button class="btn_Config" onClick="BuscarEspecialidad(${Especialidad.id})">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bolt-icon lucide-bolt"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><circle cx="12" cy="12" r="4"/></svg>
                     </button>
@@ -202,10 +213,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
     async function LlenarGeneralidades() {
         const Generalidades = await AllGeneralidades();
-        Generalidades_Div.innerHTML == '';
+        Generalidades_Div.innerHTML = '';
         Generalidades.forEach(Generalidad => {
             Generalidades_Div.innerHTML += `
-
+                <div class="divs_inputs">
+                    <label>${Generalidad.nombre}</label>
+                    <div class="divs_inputs2">
+                        <input type="text" readonly placeholder="${Generalidad.valor}">
+                        <button class="btn_Config" onClick="ActualizarGeneralidades(${Generalidad.id})">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bolt-icon lucide-bolt"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><circle cx="12" cy="12" r="4"/></svg>
+                        </button>
+                    </div>
+                </div>
             `;
         });
     }
@@ -222,6 +241,26 @@ window.addEventListener('DOMContentLoaded', () => {
                 html: "Hubieron problemas con la conexion, por lo que no se pudo actualizar la especialidad."
             });
             return;   
+        }
+    }
+
+    function ActualizarGeneralidades(id){
+        if(id == 1){
+            Div_Modal_Limit.hidden = false;
+            Div_Modal_Logo.hidden = true;
+            LimitHours.value = '';
+            LogoFoto.value = '';
+            ImagePreview2.src = '';
+            idGeneralidad.value = id;
+            Modal_Generalidades.show();
+        }else if(id == 2){
+            Div_Modal_Limit.hidden = true;
+            Div_Modal_Logo.hidden = false;
+            LimitHours.value = '';
+            LogoFoto.value = '';
+            ImagePreview2.src = '';
+            idGeneralidad.value = id;
+            Modal_Generalidades.show();
         }
     }
 
@@ -267,6 +306,17 @@ window.addEventListener('DOMContentLoaded', () => {
         UpdatedCorreo.value = CorreoAdmin.value;
         UpdatedPassword.value = ConstraseniaAdmin.value;
         Modal_Updated.show();
+    });
+
+    LogoFoto.addEventListener("change", () => {
+        const file = LogoFoto.files?.[0];
+        if(file){
+            const reader = new FileReader();
+            reader.onload = () => (ImagePreview2.src = reader.result);
+            reader.readAsDataURL(file);
+        } else {
+            LogoFoto.value = "";
+        }
     });
 
     UpdatedPerfilFoto.addEventListener("change", () => {
@@ -491,7 +541,105 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    async function ModificarGeneralidad(json) {
+        try {
+            const res = await ActualizarValores(json);
+            const data = await res.json();
+            console.log(data);
+            if(data.status == "success"){
+                return true;
+            }else{
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡PROCESO NO COMPLETADO!",
+                    html: "Hubo problemas intentando actualizar el ajuste general.", 
+                });
+                return false;
+            }
+        } catch (err) {
+            console.error("Hubieron problemas intentando modificar las generalidades");
+            AlertEsquina.fire({
+                icon: "error",
+                title: "¡PROCESO INTERRUMPIDO!",
+                html: "Hubo problemas con la conexion, por lo que no se pudo realizar la accion.", 
+            });
+            return false;
+        }
+    }
+
+    UpdateLimitForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        UpdateLimitForm.disable = true;
+        const idGen = idGeneralidad.value;
+        let Valor_Generalidad;
+
+        if(idGen == 2){
+            const file = LogoFoto?.files?.[0];
+            if(file){
+                try{
+                    const response = await uploadImageToFolder(file, "Logo_Ricaldone");
+                    if(response && response.data) {
+                        Valor_Generalidad = response.data;
+                    } else {
+                        AlertEsquina.fire({
+                            icon: "error",
+                            title: "¡ERROR AL SUBIR LA FOTO!",
+                            html: "Hubieron problemas intentando subir la foto de perfil a la nube.", 
+                        });
+                        return;
+                    }
+                }catch(err){
+                    console.error("Error al subir imagen", err);
+                    AlertEsquina.fire({
+                        icon: "error",
+                        title: "¡ERROR AL SUBIR LA FOTO!",
+                        html: "Hubieron problemas intentando subir la foto de perfil a la nube.", 
+                    });
+                    return;
+                }
+            }else{
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡CAMPO INCOMPLETO!",
+                    html: "Rellene el campo para poder continuar con el proceso.",
+                });
+                return;
+            }
+        }else if(idGen == 1){
+            if(LimitHours.value.trim() == ''){
+                AlertEsquina.fire({
+                    icon: "error",
+                    title: "¡CAMPO INCOMPLETO!",
+                    html: "Rellene el campo para poder continuar con el proceso.",
+                });
+                return;
+            }
+            Valor_Generalidad = LimitHours.value.trim();
+        }
+
+        const json = {
+            "id": idGen,
+            "valor": Valor_Generalidad
+        };
+
+        const res = await ModificarGeneralidad(json);
+        if(res){
+            AlertEsquina.fire({
+                icon: "success",
+                title: "¡ACTUALIZADO EXITOSAMENTE!",
+                html: "No hubo problemas actualizando el ajuste.", 
+                willClose: () => {
+                    Modal_Generalidades.hide();
+                    localStorage.removeItem("LogoRicaldone");
+                    window.location.reload();
+                }
+            });
+        }else{
+            return;
+        }
+    });
+
     window.BuscarEspecialidad = BuscarEspecialidad;
-    
+    window.ActualizarGeneralidades = ActualizarGeneralidades;
 RellenarInfo();
 });

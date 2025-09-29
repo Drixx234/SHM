@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyectos Vigentes | Social Hours</title>
+    <title>Proyectos | Social Hours</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="css/General.css">
     <link rel="stylesheet" href="css/Proyecto.css">
@@ -29,10 +29,7 @@
         <nav class="Navbar_Options navbar-expand-md" id="Navbar_Options">
             <ul>
                 <li>
-                    <a href="Proyectos - Admin.html"><button>Proyectos Vigentes</button></a>
-                </li>
-                <li>
-                    <a href="Proyectos Cancelados - Admin.html"><button>Proyectos Cancelados</button></a>
+                    <a href="Proyectos - Admin.html"><button>Proyectos</button></a>
                 </li>
                 <li>
                     <a href="Tablero - Admin.html"><button>Tablero de Comunicados</button></a>
@@ -52,10 +49,7 @@
                 <hr>
                 <menu class="Bar_Options">
                     <li>
-                        <a href="Proyectos - Admin.html"><button>Proyectos Vigentes</button></a>
-                    </li>
-                    <li>
-                        <a href="Proyectos Cancelados - Admin.html"><button>Proyectos Cancelados</button></a>
+                        <a href="Proyectos - Admin.html"><button>Proyectos</button></a>
                     </li>
                     <li>
                         <a href="Tablero - Admin.html"><button>Tablero de Comunicados</button></a>
@@ -68,43 +62,71 @@
     <main>
         <div class="home">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round-icon lucide-users-round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
-            <h2>Proyectos Vigentes</h2>
+            <h2>Proyectos</h2>
         </div>
-            
-        <div>
-            <div class="accordion accordion-flush Proyectos_Menus" id="accordionFlushExample">
+        
+        <div class="Principal">
+            <div class="Busqueda-center">
+                <input type="text" id="Proyecto_Square" name="busqueda" placeholder="Buscar Proyecto..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
             </div>
-        </div>
-        <dialog id="Dialog_Insert_Update" class="Dialog_Insert_Update">
-            <div class="Proyectos_Info_div Info_Proyectos">
-                <h2 id="Title_Dialog"></h2>
-                <label for="Dialog_Proyecto_Id" hidden>
-                    <input type="text" id="Dialog_Proyecto_Id" readonly>
-                </label>
-                <label for="Dialog_Proyecto_Name">Nombre del Proyecto:
-                    <input type="text" id="Dialog_Proyecto_Name">
-                </label>
-                <label for="Dialog_Proyecto_Concepto">Descripcion del Proyecto:
-                    <textarea id="Dialog_Proyecto_Concepto"></textarea>
-                </label>
-                <label for="Dialog_Proyecto_Cupos">Cupos del Proyectos
-                    <input type="number" id="Dialog_Proyecto_Cupos">
-                </label>
-                <label for="Dialog_Proyecto_Icon" id="Dialog_Proyecto_Icon_Label" class="Input_File">Seleccionar Imagen de Icono:
-                    <span id="Dialog_Proyecto_Icon_Label"></span>
-                </label>
-                <input type="file" accept="image/*" id="Dialog_Proyecto_Icon" style="display: none;">
-
-                <label for="Dialog_Proyecto_Img_Muestra" id="Dialog_Proyecto_Img_Muestra_Label" class="Input_File">Seleccionar Imagen de Muestra:
-                    <span id="Dialog_Proyecto_Img_Muestra_Label"></span>
-                </label>
-                <input type="file" accept="image/*" id="Dialog_Proyecto_Img_Muestra" style="display: none;">
-                <div class="Div_secondary">
-                    <button type="button" style="background-color: rgb(185, 129, 24);" id="btn_Guardar_Cambios">Guardar Cambios</button>
-                    <button type="button" style="background-color: brown;" id="btn_Cancelar_Dialog">Cancelar</button>
+            <div class="divs_cards" id="divs_cards">
+            </div>
+            <div>
+                <div class="Pageable" id="PageableCenter">
                 </div>
             </div>
-        </dialog>
+        </div>
+        
+        <div class="modal ModalNew fade" id="ModalNew" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content p-3 Form_Update">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title TitleModal">Agregar Nuevo Proyecto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" style="color: white;" aria-label="Cerrar"></button>
+                    </div>
+                    <form id="PostForm" method="post" autocomplete="off">
+                        <div class="modal-body">
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="NewLogo" class="form-label">Logo del proyecto<span style="color:red">*</span></label>
+                                <input type="file" class="form-control" id="NewLogo" accept="image/*"/>
+                                <div class="mt-2">
+                                    <img id="ImagePreviewLogo" class="img-preview" src="" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="NewMuestra" class="form-label">Imagen de muestra del proyecto<span style="color:red">*</span></label>
+                                <input type="file" class="form-control" id="NewMuestra" accept="image/*"/>
+                                <div class="mt-2">
+                                    <img id="ImagePreviewMuestra" class="img-preview2" src="" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="NewName" class="form-label">Nombre del Proyecto<span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="NewName" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="NewConcepto" class="form-label">Concepto del Proyecto<span style="color:red">*</span></label>
+                                <textarea class="form-control" id="NewConcepto" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="height: 180px;"></textarea>
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="NewCupos" class="form-label">Cupos disponibles en el Proyecto<span style="color:red">*</span></label>
+                                <input type="number" class="form-control" id="NewCupos" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 
     <button title="Agregar Nuevo Proyecto" class="btn_Plus_Project" id="btn_Agregar_Proyecto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus-icon lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></button>

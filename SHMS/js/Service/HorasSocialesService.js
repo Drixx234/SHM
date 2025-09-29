@@ -1,4 +1,4 @@
-const API_URL_HorasSociales = "http://localhost:8080/apiHoras";
+const API_URL_HorasSociales = "https://shmsapi-9871bf53b299.herokuapp.com/apiHoras";
 
 export async function buscarHoras(codigo) {
     const res = await fetch(`${API_URL_HorasSociales}/getByCodigo/${codigo}`, {

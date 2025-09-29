@@ -1,4 +1,4 @@
-const API_URL_Roles = "http://localhost:8080/apiRoles";
+const API_URL_Roles = "https://shmsapi-9871bf53b299.herokuapp.com/apiRoles";
 
 export async function listarRoles() {
     const res = await fetch(`${API_URL_Roles}/getAll`, {

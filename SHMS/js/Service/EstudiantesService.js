@@ -1,4 +1,4 @@
-const API_URL_Estudiantes = "http://localhost:8080/apiEstudiantes";
+const API_URL_Estudiantes = "https://shmsapi-9871bf53b299.herokuapp.com/apiEstudiantes";
 
 export async function traerEstudiantes(page = 0, size = 10) {
     const res = await fetch(`${API_URL_Estudiantes}/getEstudiantes?page=${page}&size=${size}`, {

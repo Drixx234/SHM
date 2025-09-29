@@ -101,8 +101,8 @@ async function BuscarByNombre(nombre) {
 }
 async function BuscarPorProyecto(id) {
     try{
-        const res = await findAllByProyecto(id, Page, 15);
-        Llenar_Cards(res, true);
+        const res = await findAllByProyecto(id, Page, 50);
+        Llenar_Cards(res, false);
     }catch(err){
         console.log();
         AlertEsquina.fire({
@@ -171,7 +171,6 @@ function Llenar_Cards(JSAdministradores, Paginacion){
     PageableCenter.innerHTML = '';
 
     const Administradores = JSAdministradores.content;
-    let Color;
 
     Administradores.forEach(administrador => {
         divs_cards.innerHTML += `
@@ -210,7 +209,7 @@ function Llenar_Cards(JSAdministradores, Paginacion){
         }else if(Administradores.length == 0){
             PageableCenter.innerHTML = '';
             AlertEsquina.fire({
-                icon: "error",
+                icon: "info",
                 title: "¡SIN RESULTADOS!",
                 html: "No se encontro ningun resultado de coordinadores.",
             });

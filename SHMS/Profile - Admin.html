@@ -126,7 +126,7 @@
                 </div>
                 <div class="info_perfil" id="article_generalidades" hidden>
                     <h4>Ajustes Generales</h4>
-                    <div class="secondary_divs" id="Generalidades_Div">
+                    <div class="secondary_divs" id="Generalidades_Div" style="margin-top: 1.5rem;">
                     </div>
                 </div>
             </article>
@@ -234,6 +234,38 @@
                             <div class="modal-footer border-0">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary" id="btn_NewEspecialidad">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal ModalUpdate fade" id="ModalGeneralidades" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-3 Form_Update">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title TitleModal">Actualizar Limite de Horas Sociales</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="color: white;" aria-label="Cerrar"></button>
+                        </div>
+                        <form id="UpdateLimitForm">
+                            <div class="modal-body">
+                                <div class="mb-3 divs_inputs2" hidden>
+                                    <input type="number" step="1" class="form-control" id="idGeneralidad"/>
+                                </div>
+                                <div class="mb-3 divs_inputs" id="Div_Modal_Limit">
+                                    <label for="LimitHours" class="form-label">¿Cuantas horas quieres agregar?<span style="color:red">*</span></label>
+                                    <input type="number" step="1" class="form-control" id="LimitHours"/>
+                                </div>
+                                <div class="mb-3 divs_inputs" id="Div_Modal_Logo">
+                                    <label for="LogoFoto" class="form-label">¿Cambiar imagen del logo del Ricaldone?<span style="color:red">*</span></label>
+                                    <input type="file" class="form-control" id="LogoFoto" accept="image/*"/>
+                                    <div class="mt-2">
+                                    <img id="ImagePreview2" class="img-preview2" alt="Vista previa" src="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center;">
+                                <button type="submit" class="btn" style="width: 80%; background-color: rgb(177, 98, 43);">Guardar</button>
                             </div>
                         </form>
                     </div>

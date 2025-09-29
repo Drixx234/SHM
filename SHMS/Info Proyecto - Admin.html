@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacion de Proyecto | Social Hours</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/General.css">
+    <link rel="stylesheet" href="css/Proyecto.css">
+</head>
+<body>
+    <header>
+        <nav class="Barra-Navegacion navbar-expand-md">
+            <ul>
+                <li><a href="Dashboard - Admin.html"><img id="img_Logo" class="Logo" alt="Logo del Instituto Tecnico Ricaldone"></a></li>
+                <ul class="Menu-center">
+                    <a href="Dashboard - Admin.html" class="Unactive-Btn"><li>Inicio</li></a>
+                    <a href="Estudiantes - Admin.html" class="Unactive-Btn"><li>Estudiantes</li></a>
+                    <a href="Proyectos - Admin.html" class="Active-Btn"><li>Proyectos</li></a>
+                    <a href="Calendario - Admin.html" class="Unactive-Btn"><li>Calendario</li></a>
+                    <a href="Chat.html" class="Unactive-Btn"><li>Chats</li></a>
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class="Logo-menu" id="btnMenu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg></button>
+                    <hr>
+                    <!--Dialog para ver el perfil-->
+                    <a href="Profile - Admin.html"><button class="Logo-person" id="btnPerson"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button></a>
+                </ul>
+            </ul>
+        </nav>
+        <nav class="Navbar_Options navbar-expand-md" id="Navbar_Options">
+            <ul>
+                <li>
+                    <a href="Proyectos - Admin.html"><button>Proyectos</button></a>
+                </li>
+                <li>
+                    <a href="Tablero - Admin.html"><button>Tablero de Comunicados</button></a>
+                </li>
+            </ul>
+        </nav>
+        <!--Menu Lateral-->
+        <div class="offcanvas offcanvas-start SideBar" tabindex="0" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-body">
+                <menu class="Bar-Menu-center">
+                    <div><a href="Dashboard - Admin.html"><li>Inicio</li></a></div>
+                    <div><a href="Estudiantes - Admin.html"><li>Estudiantes</li></a></div>
+                    <div class="Bar-Button-Active"><a href="Proyectos - Admin.html"><li>Proyectos</li></a></div>
+                    <div><a href="Calendario - Admin.html"><li>Calendario</li></a></div>
+                    <div><a href="Chat.html"><li>Chats</li></a></div>
+                </menu>
+                <hr>
+                <menu class="Bar_Options">
+                    <li>
+                        <a href="Proyectos - Admin.html"><button>Proyectos</button></a>
+                    </li>
+                    <li>
+                        <a href="Tablero - Admin.html"><button>Tablero de Comunicados</button></a>
+                    </li>
+                </menu>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text-icon lucide-book-open-text"><path d="M12 7v14"/><path d="M16 12h2"/><path d="M16 8h2"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/><path d="M6 12h2"/><path d="M6 8h2"/></svg>
+            <h2>Informacion del Proyecto</h2>
+        </div>
+
+        <div class="Main_Columns">
+            <article class="Principal_Article">
+                <div class="Principal Info">
+                    <div class="principal_divs" hidden>
+                        <div class="divs_inputs">
+                            <input type="text" id="idProyecto" readonly>
+                        </div>
+                    </div>
+                    <div class="secondary_divs">
+                        <div class="divs_inputs">
+                            <label for="NombreProyecto">Nombre del Proyecto</label>
+                            <input type="text" id="NombreProyecto" readonly>
+                        </div>
+                    </div>
+                    <div class="secondary_divs">
+                        <div class="divs_inputs">
+                            <label for="ConceptoProyecto">Concepto del Proyecto</label>
+                            <textarea type="text" id="ConceptoProyecto" readonly></textarea>
+                        </div>
+                    </div>
+                    <div class="principal_divs">
+                        <div class="divs_inputs">
+                            <label for="VigenciaProyecto">Vigencia del Proyecto</label>
+                            <input type="text" id="VigenciaProyecto" readonly>
+                        </div>
+                        <div class="divs_inputs">
+                            <label for="CuposProyectos">Cupos disponibles del Proyecto</label>
+                            <input type="number" id="CuposProyectos" readonly>
+                        </div>
+                    </div>
+                    <div class="secondary_divs" style="margin-top: 2rem;">
+                        <div class="btn-Center">
+                            <button type="button" style="background-color: brown;" id="btnDeshabilitar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-power-off-icon lucide-power-off"><path d="M18.36 6.64A9 9 0 0 1 20.77 15"/><path d="M6.16 6.16a9 9 0 1 0 12.68 12.68"/><path d="M12 2v4"/><path d="m2 2 20 20"/></svg>
+                                Deshabilitar Proyecto
+                            </button>
+                            <button type="button" style="background-color: rgb(68, 101, 163);" id="btnHabilitar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-power-icon lucide-power"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg>
+                                Habilitar Proyecto
+                            </button>
+                            <button type="button" style="background-color: rgb(163, 96, 20);" id="btnUpdate">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-pen-icon lucide-user-pen"><path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/></svg>
+                                Actualizar informacion
+                            </button>
+                        </div>
+                        <div class="btn-Center">
+                            <button type="button" style="background-color: rgb(97, 134, 184);" id="btnBack">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+                                Regresar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="Principal Estudiantes_Div">
+                    <h3>Estudiantes del Proyecto</h3>
+                    <div class="cards_Container_Estudiantes" id="Cards_Estudiantes">                    
+                    </div>
+                    <div class="Pageable" id="PageableCenter">
+                    </div>
+                </div>
+            </article>
+            <article class="Secondary_Article">
+                <div class="Principal Info">
+                    <img id="Icono_Proyecto" alt="foto del icono del proyecto">
+                </div>
+                <div class="Principal Info">
+                    <img id="Muestra_Proyecto" alt="foto de muestra del proyecto">
+                </div>
+            </article>
+        </div>
+
+        <div class="modal ModalNew fade" id="ModalUpdate" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content p-3 Form_Update">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title TitleModal">Agregar Nuevo Proyecto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" style="color: white;" aria-label="Cerrar"></button>
+                    </div>
+                    <form id="PutForm" method="post" autocomplete="off">
+                        <div class="modal-body">
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="UpdateLogo" class="form-label">Logo del proyecto<span style="color:red">*</span></label>
+                                <input type="file" class="form-control" id="UpdateLogo" accept="image/*"/>
+                                <div class="mt-2">
+                                    <img id="ImagePreviewLogo" class="img-preview" src="" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="UpdateMuestra" class="form-label">Imagen de muestra del proyecto<span style="color:red">*</span></label>
+                                <input type="file" class="form-control" id="UpdateMuestra" accept="image/*"/>
+                                <div class="mt-2">
+                                    <img id="ImagePreviewMuestra" class="img-preview2" src="" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="UpdateName" class="form-label">Nombre del Proyecto<span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="UpdateName" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="UpdateConcepto" class="form-label">Concepto del Proyecto<span style="color:red">*</span></label>
+                                <textarea class="form-control" id="UpdateConcepto" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="height: 180px;"></textarea>
+                            </div>
+
+                            <div class="mb-3 divs_inputs">
+                                <label for="UpdateCupos" class="form-label">Cupos disponibles en el Proyecto<span style="color:red">*</span></label>
+                                <input type="number" class="form-control" id="UpdateCupos" required autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="SubmitForm">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/Controller/ProyectoInfo.js"></script>
+    <script type="module" src="js/Controller/General.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>

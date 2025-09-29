@@ -1,4 +1,4 @@
-const API_URL_Especialidades = "http://localhost:8080/apiEspecialidades";
+const API_URL_Especialidades = "https://shmsapi-9871bf53b299.herokuapp.com/apiEspecialidades";
 
 export async function getAll(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Especialidades}/getEspecialidades?page=${page}&size=${size}`, {

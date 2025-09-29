@@ -1,4 +1,4 @@
-const API_URL_Tablero = "http://localhost:8080/apiTablero";
+const API_URL_Tablero = "https://shmsapi-9871bf53b299.herokuapp.com/apiTablero";
 
 export async function getAllPublicaciones(page = 0, size = 5) {
     const res = await fetch(`${API_URL_Tablero}/getAllPublicaciones?page=${page}&size=${size}`, {
